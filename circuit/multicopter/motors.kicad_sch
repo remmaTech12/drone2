@@ -1,0 +1,5890 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "e827265f-cdbf-4ee3-a7c8-b01eb0d83bcf")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Device:C_Small"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.254 1.778 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C_Small"
+				(at 0.254 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor, small symbol"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "capacitor cap"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_Small_0_1"
+				(polyline
+					(pts
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
+					)
+					(stroke
+						(width 0.3302)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.524 0.508) (xy 1.524 0.508)
+					)
+					(stroke
+						(width 0.3048)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_Small_1_1"
+				(pin passive line
+					(at 0 2.54 270)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 2.032)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:D_Schottky"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Schottky"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Schottky diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode Schottky"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Schottky_0_1"
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Schottky_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:R"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Motor:Motor_DC"
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "M"
+				(at 2.54 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Motor_DC"
+				(at 2.54 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 -2.286 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 -2.286 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "DC Motor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "DC Motor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "PinHeader*P2.54mm* TerminalBlock*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Motor_DC_0_0"
+				(polyline
+					(pts
+						(xy -1.27 -3.302) (xy -1.27 0.508) (xy 0 -2.032) (xy 1.27 0.508) (xy 1.27 -3.302)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Motor_DC_0_1"
+				(circle
+					(center 0 -1.524)
+					(radius 3.2512)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -7.62) (xy 0 -7.112)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -4.7752) (xy 0 -5.1816)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 1.7272) (xy 0 2.0828)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.032) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Motor_DC_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Transistor_FET:IRLML0030"
+			(pin_names hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "IRLML0030"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+				(at 5.08 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "5.3A Id, 30V Vds, 27mOhm Rds, N-Channel HEXFET Power MOSFET, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "N-Channel HEXFET MOSFET Logic-Level"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "IRLML0030_0_1"
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "IRLML0030_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "flightcontroller-rescue:0-pspice"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#GND"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "pspice_0"
+				(at 0 -1.778 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "0-pspice_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 0 -1.27) (xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0-pspice_1_1"
+				(pin power_in line
+					(at 0 0 0)
+					(length 0) hide
+					(name "0"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 68.58 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "02450b09-160c-4125-b8e4-bd10e6bd2243")
+	)
+	(junction
+		(at 137.16 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f5f858d-1acf-4e56-bff2-975c6b68ea4f")
+	)
+	(junction
+		(at 68.58 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "32965adc-e8fd-49dc-8ead-546b3b21d66d")
+	)
+	(junction
+		(at 68.58 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3f27802a-a7ef-4c48-979b-0a96de10ca7b")
+	)
+	(junction
+		(at 68.58 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "44a332b5-7195-45a8-9f82-c9df23ae0b2c")
+	)
+	(junction
+		(at 128.27 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4909142d-8818-4247-b532-c915dea2a6e7")
+	)
+	(junction
+		(at 208.28 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "58929f5f-2e32-43fc-9ab3-b120c2ade06d")
+	)
+	(junction
+		(at 199.39 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6128a876-4326-4f42-a5da-f177019d2633")
+	)
+	(junction
+		(at 68.58 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "619651d1-125e-4c3c-a65a-a59f35577683")
+	)
+	(junction
+		(at 137.16 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "71c51b62-bc79-45fe-b6ca-03f0e7828a98")
+	)
+	(junction
+		(at 208.28 64.77)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "73cf40d1-6ec4-4b26-94d6-e1ac7fde2ffb")
+	)
+	(junction
+		(at 208.28 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "81dcd5ef-0055-44c9-8d82-e555902542ab")
+	)
+	(junction
+		(at 137.16 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8ecbf57f-432e-41e6-9f39-aad6f999761c")
+	)
+	(junction
+		(at 208.28 49.53)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "91acbf80-844d-419b-8163-46463731e8c2")
+	)
+	(junction
+		(at 208.28 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9a9faf6a-ce29-42f9-ad1d-86092a82c0e4")
+	)
+	(junction
+		(at 59.69 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b387669a-bb9c-4cdb-85b0-deccfffc4583")
+	)
+	(junction
+		(at 128.27 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b870a3cf-2b59-4dc4-9eac-97fc6a5918cb")
+	)
+	(junction
+		(at 137.16 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cf9dc441-249b-4912-9480-ab455f23654c")
+	)
+	(junction
+		(at 208.28 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d4cb2a2b-c544-4f0c-8f44-ec939ba60e4b")
+	)
+	(junction
+		(at 68.58 110.49)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e4a2e60e-f828-4c28-838f-57581790ce85")
+	)
+	(junction
+		(at 199.39 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e8539648-5864-4eeb-b874-235a81318f4f")
+	)
+	(junction
+		(at 59.69 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f3aa15e4-caf9-4c6b-9eb0-99a965689437")
+	)
+	(junction
+		(at 137.16 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f8382e20-fb6a-4dde-9c10-54bd1cad280f")
+	)
+	(junction
+		(at 137.16 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f96c07ba-47f4-450e-ab48-f59f2b8a4bc0")
+	)
+	(wire
+		(pts
+			(xy 59.69 80.01) (xy 59.69 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "001708a9-8022-4ab9-b5bd-b69f38192732")
+	)
+	(wire
+		(pts
+			(xy 199.39 69.85) (xy 200.66 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06494514-c526-403a-9877-f6495c9ee75a")
+	)
+	(wire
+		(pts
+			(xy 152.4 110.49) (xy 152.4 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08e03262-754b-44ed-b49a-95ef8287cd02")
+	)
+	(wire
+		(pts
+			(xy 137.16 40.64) (xy 137.16 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09a95ce1-da76-4641-987b-96bcc9ef6ecd")
+	)
+	(wire
+		(pts
+			(xy 208.28 110.49) (xy 223.52 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1797d7d5-6f82-4d02-98da-c4745787850f")
+	)
+	(wire
+		(pts
+			(xy 208.28 62.23) (xy 208.28 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18e8cc4b-3563-4d69-b44d-761d5e2ef96d")
+	)
+	(wire
+		(pts
+			(xy 233.68 106.68) (xy 233.68 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "190fbda0-db35-4d17-9041-aa88b174d82f")
+	)
+	(wire
+		(pts
+			(xy 93.98 44.45) (xy 93.98 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "242353fe-6bb6-4ac2-9256-72dedc2cfd32")
+	)
+	(wire
+		(pts
+			(xy 68.58 110.49) (xy 83.82 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "248b75d2-a927-4a9e-ace1-a705ba7989c3")
+	)
+	(wire
+		(pts
+			(xy 83.82 120.65) (xy 83.82 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24f89f93-b15a-448c-b91f-edb74f57d3cd")
+	)
+	(wire
+		(pts
+			(xy 128.27 130.81) (xy 129.54 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2647e4ea-fd0a-49d1-b6e1-23873872de84")
+	)
+	(wire
+		(pts
+			(xy 128.27 80.01) (xy 128.27 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26fd7089-a61d-4b68-bdff-9c3fffd0c109")
+	)
+	(wire
+		(pts
+			(xy 162.56 119.38) (xy 162.56 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c9f2e4a-d91a-4a84-a3fc-f1c078e9be88")
+	)
+	(wire
+		(pts
+			(xy 199.39 130.81) (xy 200.66 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d1be9b4-6640-42a6-ac73-0638fc62b12e")
+	)
+	(wire
+		(pts
+			(xy 137.16 102.87) (xy 137.16 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34f4f941-a3ed-4053-8bfd-f3123ac2fa07")
+	)
+	(wire
+		(pts
+			(xy 208.28 49.53) (xy 223.52 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3af5c6a9-28e3-40ca-812b-6807abdf592d")
+	)
+	(wire
+		(pts
+			(xy 59.69 134.62) (xy 59.69 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c945cf5-b138-4f53-82aa-5f192658d103")
+	)
+	(wire
+		(pts
+			(xy 83.82 110.49) (xy 83.82 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cd00f54-85ed-46f7-9ae5-44d46efe1417")
+	)
+	(wire
+		(pts
+			(xy 223.52 110.49) (xy 223.52 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d8a9540-e242-45d1-9b3d-5d7bfdf57b03")
+	)
+	(wire
+		(pts
+			(xy 208.28 125.73) (xy 208.28 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40334ce8-bec5-480a-b92f-8d5b05b7ba9f")
+	)
+	(wire
+		(pts
+			(xy 137.16 44.45) (xy 162.56 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42d12900-e316-4f0c-8b36-44b6f5d74f70")
+	)
+	(wire
+		(pts
+			(xy 137.16 135.89) (xy 137.16 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42dde411-dc96-4fd3-b63c-d35a8bba0df7")
+	)
+	(wire
+		(pts
+			(xy 137.16 63.5) (xy 152.4 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46ab179d-4f95-4404-b007-5f1f72df0ac8")
+	)
+	(wire
+		(pts
+			(xy 137.16 48.26) (xy 152.4 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "488dced5-2830-4ca4-9b8f-973f2adb42fa")
+	)
+	(wire
+		(pts
+			(xy 223.52 49.53) (xy 223.52 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c6258b2-44f3-44fc-8138-808886db71e5")
+	)
+	(wire
+		(pts
+			(xy 93.98 119.38) (xy 93.98 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d2f363b-4d1c-40b2-b083-82655c6babd5")
+	)
+	(wire
+		(pts
+			(xy 45.72 130.81) (xy 48.26 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e9556f5-ea12-48dd-b588-569889668d34")
+	)
+	(wire
+		(pts
+			(xy 208.28 45.72) (xy 208.28 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "549d1757-8e3f-4fc3-9b00-e9bcb09e0224")
+	)
+	(wire
+		(pts
+			(xy 208.28 45.72) (xy 233.68 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c6873b6-1652-43bb-8823-2cd47befe566")
+	)
+	(wire
+		(pts
+			(xy 233.68 119.38) (xy 233.68 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5c89198b-f476-4aa7-a6a4-540f152b0e98")
+	)
+	(wire
+		(pts
+			(xy 152.4 58.42) (xy 152.4 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ddd08ef-44d8-47ef-ac7c-09362610b47d")
+	)
+	(wire
+		(pts
+			(xy 128.27 142.24) (xy 128.27 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6021839b-4389-4329-a114-63e6670e090f")
+	)
+	(wire
+		(pts
+			(xy 195.58 130.81) (xy 199.39 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61cd528d-0104-405c-bf8c-fc17c52263b1")
+	)
+	(wire
+		(pts
+			(xy 68.58 48.26) (xy 83.82 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "628a077a-e32b-4a39-b57d-dcd357318c3e")
+	)
+	(wire
+		(pts
+			(xy 68.58 44.45) (xy 68.58 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "62ef86f3-9511-485e-922c-862f40dbd296")
+	)
+	(wire
+		(pts
+			(xy 124.46 130.81) (xy 128.27 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "633ec2ea-8395-4bad-bc19-546ed09091a5")
+	)
+	(wire
+		(pts
+			(xy 68.58 125.73) (xy 83.82 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6353c180-0cd6-43c8-99ad-adaffc455d6c")
+	)
+	(wire
+		(pts
+			(xy 68.58 106.68) (xy 93.98 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64c08463-bf63-467e-b677-fe42cc759106")
+	)
+	(wire
+		(pts
+			(xy 55.88 68.58) (xy 59.69 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "664966b4-f9cf-4d3c-8ee6-99ee43eade55")
+	)
+	(wire
+		(pts
+			(xy 152.4 120.65) (xy 152.4 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a0c67b4-0dd7-41b3-ba54-12e7aafce750")
+	)
+	(wire
+		(pts
+			(xy 208.28 106.68) (xy 208.28 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ace9210-e298-4432-830a-20fa20d74509")
+	)
+	(wire
+		(pts
+			(xy 137.16 106.68) (xy 137.16 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c1334af-2f48-4290-a15d-bd0ea80cd5a0")
+	)
+	(wire
+		(pts
+			(xy 223.52 59.69) (xy 223.52 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c4c8ac0-d615-425b-a908-9e2d1d5fe571")
+	)
+	(wire
+		(pts
+			(xy 162.56 44.45) (xy 162.56 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e72ddc5-31eb-40a5-ba96-e01e7ddcf5de")
+	)
+	(wire
+		(pts
+			(xy 83.82 48.26) (xy 83.82 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70d843c3-303c-4629-bd3b-63e3fc4118f5")
+	)
+	(wire
+		(pts
+			(xy 195.58 69.85) (xy 199.39 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "71d4d6f2-ddbf-4a76-ab74-9a22f71ff7c8")
+	)
+	(wire
+		(pts
+			(xy 208.28 106.68) (xy 233.68 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75b29293-1523-4641-b9f3-4f1adf7e00ee")
+	)
+	(wire
+		(pts
+			(xy 93.98 106.68) (xy 93.98 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7620937c-177b-455f-8901-fab3aac0382f")
+	)
+	(wire
+		(pts
+			(xy 137.16 125.73) (xy 137.16 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78178caf-b917-4c05-b93c-34330b35bc38")
+	)
+	(wire
+		(pts
+			(xy 68.58 73.66) (xy 68.58 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c9929bc-bd67-4bdb-81d5-b5e07aa9e14b")
+	)
+	(wire
+		(pts
+			(xy 185.42 130.81) (xy 187.96 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8073cafc-7798-452c-83ac-225908640d01")
+	)
+	(wire
+		(pts
+			(xy 68.58 102.87) (xy 68.58 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80907e1c-83b1-4dfa-8790-73ba9981d9f4")
+	)
+	(wire
+		(pts
+			(xy 59.69 68.58) (xy 60.96 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "820b0bac-17dd-4dd2-97bb-368ddb94518b")
+	)
+	(wire
+		(pts
+			(xy 208.28 135.89) (xy 208.28 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87d2e960-e5b6-48b1-b74a-ec18dc5faa24")
+	)
+	(wire
+		(pts
+			(xy 137.16 106.68) (xy 162.56 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87fb478f-1c49-456d-bbd9-05f08ad377c0")
+	)
+	(wire
+		(pts
+			(xy 137.16 44.45) (xy 137.16 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89e9f440-bf54-48c0-9ea1-a1862a66670a")
+	)
+	(wire
+		(pts
+			(xy 59.69 72.39) (xy 59.69 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92537947-c8e0-4273-8791-f0ae345748c7")
+	)
+	(wire
+		(pts
+			(xy 45.72 68.58) (xy 48.26 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9466cc2e-dc68-4572-9793-153a30a8d7c3")
+	)
+	(wire
+		(pts
+			(xy 59.69 142.24) (xy 59.69 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9592db0b-3ed8-4ee2-bfed-30acdd31e3ab")
+	)
+	(wire
+		(pts
+			(xy 55.88 130.81) (xy 59.69 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96589f70-1c08-4f51-8c2d-8f8e8e9a3be6")
+	)
+	(wire
+		(pts
+			(xy 114.3 130.81) (xy 116.84 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97738833-9c6b-4652-9458-8690aa706a3c")
+	)
+	(wire
+		(pts
+			(xy 128.27 134.62) (xy 128.27 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b058311-8d37-44b3-9966-ec368e48c679")
+	)
+	(wire
+		(pts
+			(xy 68.58 125.73) (xy 68.58 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ba5cde6-c8b5-46a4-84aa-36e1ad5d60eb")
+	)
+	(wire
+		(pts
+			(xy 114.3 68.58) (xy 116.84 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5589916-7f70-478f-acf8-1383230931fe")
+	)
+	(wire
+		(pts
+			(xy 208.28 41.91) (xy 208.28 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9e94f3b-e78f-47c7-98e8-6538ef43ae62")
+	)
+	(wire
+		(pts
+			(xy 199.39 73.66) (xy 199.39 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aab55a30-5012-4851-b6e6-2351ce5f2af7")
+	)
+	(wire
+		(pts
+			(xy 128.27 68.58) (xy 129.54 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abeec076-c416-44b8-81f5-7648dbdd8393")
+	)
+	(wire
+		(pts
+			(xy 233.68 45.72) (xy 233.68 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac27eaa0-c427-457d-bb01-9bb432daef01")
+	)
+	(wire
+		(pts
+			(xy 162.56 57.15) (xy 162.56 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af307ba7-6f53-4874-9e4d-471aad3231cd")
+	)
+	(wire
+		(pts
+			(xy 137.16 73.66) (xy 137.16 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af497410-92ef-4140-9197-49eab287d370")
+	)
+	(wire
+		(pts
+			(xy 68.58 135.89) (xy 68.58 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b08b4a8e-3f99-4a06-b614-ba6a6820fba8")
+	)
+	(wire
+		(pts
+			(xy 223.52 120.65) (xy 223.52 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b672decc-4d25-4153-a59e-1c4085bc476d")
+	)
+	(wire
+		(pts
+			(xy 83.82 58.42) (xy 83.82 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba5851db-054f-475b-ae4a-59f0b393fdd0")
+	)
+	(wire
+		(pts
+			(xy 199.39 134.62) (xy 199.39 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c08c1489-9f60-421d-a302-6a3f4a65c82f")
+	)
+	(wire
+		(pts
+			(xy 199.39 81.28) (xy 199.39 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4b34ab3-39ac-4c79-b86c-0c75a74ac3ff")
+	)
+	(wire
+		(pts
+			(xy 137.16 110.49) (xy 152.4 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c77d09c0-cf69-410e-bebe-3a037b63189d")
+	)
+	(wire
+		(pts
+			(xy 68.58 63.5) (xy 83.82 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c79c4d1f-2d6f-4dff-8679-46c2dc0281bc")
+	)
+	(wire
+		(pts
+			(xy 208.28 64.77) (xy 223.52 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb8d9751-0d96-4449-857a-e9fffcd43041")
+	)
+	(wire
+		(pts
+			(xy 59.69 130.81) (xy 60.96 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cbadb1c9-39dc-458b-83d6-61f8b79f0e90")
+	)
+	(wire
+		(pts
+			(xy 137.16 63.5) (xy 137.16 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf3f87a4-426a-4984-8280-b043c17155f0")
+	)
+	(wire
+		(pts
+			(xy 124.46 68.58) (xy 128.27 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d00e6d1d-462e-4248-aaea-9e49f3621fd1")
+	)
+	(wire
+		(pts
+			(xy 233.68 58.42) (xy 233.68 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0f8f750-7f06-4a24-90e3-1a6629927828")
+	)
+	(wire
+		(pts
+			(xy 93.98 57.15) (xy 93.98 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5ab0c0e-9ebd-4449-a1bb-6d3019875d8a")
+	)
+	(wire
+		(pts
+			(xy 137.16 125.73) (xy 152.4 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9f03444-8fce-4689-baa4-a66ee15789e6")
+	)
+	(wire
+		(pts
+			(xy 68.58 44.45) (xy 93.98 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd23a998-7727-4840-8efb-fb1e3e9d6945")
+	)
+	(wire
+		(pts
+			(xy 68.58 106.68) (xy 68.58 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df0819d9-ed0e-4db5-8b23-e7c4f933eaf5")
+	)
+	(wire
+		(pts
+			(xy 185.42 69.85) (xy 187.96 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e16ebd19-d71b-4235-aba6-8643cafea641")
+	)
+	(wire
+		(pts
+			(xy 208.28 125.73) (xy 223.52 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3c3bf11-c457-4a31-aa0b-b7882b960026")
+	)
+	(wire
+		(pts
+			(xy 152.4 48.26) (xy 152.4 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e501a87f-c7c9-4074-94df-a5e39aff32bf")
+	)
+	(wire
+		(pts
+			(xy 68.58 40.64) (xy 68.58 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e93b920f-f421-498b-9f6e-cfacc29fa5ce")
+	)
+	(wire
+		(pts
+			(xy 162.56 106.68) (xy 162.56 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea9decc7-9954-4b35-b832-79b4de529977")
+	)
+	(wire
+		(pts
+			(xy 208.28 102.87) (xy 208.28 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f10eeca7-c926-417c-a52a-343bcdfd40ab")
+	)
+	(wire
+		(pts
+			(xy 208.28 74.93) (xy 208.28 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f677c6c9-824f-4604-b9fb-83549f0d6b4a")
+	)
+	(wire
+		(pts
+			(xy 128.27 72.39) (xy 128.27 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa6e53b2-2736-4243-b703-74ac1b970065")
+	)
+	(wire
+		(pts
+			(xy 68.58 60.96) (xy 68.58 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb619f0f-e429-44f8-8fc4-e814a5b88889")
+	)
+	(wire
+		(pts
+			(xy 199.39 142.24) (xy 199.39 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff9abeaa-7472-44cd-b113-4e8822fda5c7")
+	)
+	(hierarchical_label "+BATT"
+		(shape input)
+		(at 208.28 41.91 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0c36a047-ee6f-4930-921a-67bbc1dcc0d2")
+	)
+	(hierarchical_label "motor4"
+		(shape input)
+		(at 45.72 130.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0d03c0a0-1b2d-4bcf-b43b-cdc5c006f781")
+	)
+	(hierarchical_label "motor6"
+		(shape input)
+		(at 185.42 130.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1c9496e0-11ea-44b9-bf0d-8d5b9e1dde9d")
+	)
+	(hierarchical_label "+BATT"
+		(shape input)
+		(at 137.16 102.87 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "27c1cd6d-ef14-4c79-aa91-cd5c4e868748")
+	)
+	(hierarchical_label "+BATT"
+		(shape input)
+		(at 68.58 102.87 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4c069d46-1c8e-47d1-9933-236e10b6e8cb")
+	)
+	(hierarchical_label "+BATT"
+		(shape input)
+		(at 208.28 102.87 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4c75cd2e-c3d5-447f-a946-b17ac074039a")
+	)
+	(hierarchical_label "+BATT"
+		(shape input)
+		(at 68.58 40.64 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "691e35c6-813f-457c-9cd8-25dea609841c")
+	)
+	(hierarchical_label "motor3"
+		(shape input)
+		(at 185.42 69.85 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "71bc2fd2-0ad3-4949-8982-cda15cadbb8d")
+	)
+	(hierarchical_label "motor2"
+		(shape input)
+		(at 114.3 68.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b4693f67-57f5-44ab-b216-4598d3abfaf5")
+	)
+	(hierarchical_label "motor1"
+		(shape input)
+		(at 45.72 68.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d02ae612-b5d3-4f4b-b99b-e1c04ed2a0e5")
+	)
+	(hierarchical_label "+BATT"
+		(shape input)
+		(at 137.16 40.64 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ed1bab4b-5277-4a1c-bf49-9a7d522e42f8")
+	)
+	(hierarchical_label "motor5"
+		(shape input)
+		(at 114.3 130.81 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fbb22d9f-1571-46fa-ac81-730e1107f6b8")
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML0030")
+		(at 134.62 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00d5cecd-93a7-41e2-a94f-6b1859f0cba9")
+		(property "Reference" "Q3"
+			(at 139.827 67.4116 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SQ2310CES"
+			(at 139.827 69.723 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 139.7 70.485 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+			(at 134.62 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 134.62 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4e09ee18-dd4c-4b81-8da0-84cc6390c0b1")
+		)
+		(pin "2"
+			(uuid "62f6d6ff-8cf8-4f25-ae33-b06b0604b3f1")
+		)
+		(pin "3"
+			(uuid "5dd7b6a0-e13b-4872-8c90-8bc9afd57ced")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "Q3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 233.68 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "07b51036-9b5d-4189-a354-6b03dd2526eb")
+		(property "Reference" "C2"
+			(at 236.0168 54.7116 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22uF"
+			(at 236.0168 57.023 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 233.68 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.jp/datasheet/2/40/cx5r_KGM-3223198.pdf"
+			(at 233.68 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 233.68 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "1a997c41-c1d2-4c09-93ff-8146a541d191")
+		)
+		(pin "1"
+			(uuid "6febca0e-2305-4ef8-984d-10adb5e1cbe7")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 59.69 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "237e222d-2534-4ba0-b415-8e5bfcc59820")
+		(property "Reference" "#GND018"
+			(at 59.69 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 59.69 142.5194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 59.69 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "46a68f9b-e5b2-48f1-bc65-4d2677bdd93e")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 128.27 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2481bf77-1399-47a5-9c1d-75e571bc19ff")
+		(property "Reference" "#GND012"
+			(at 128.27 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 128.27 80.2894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 128.27 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3311dd8d-0273-4125-bd74-21eab01d0688")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 162.56 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2966fcaf-0cd6-4386-89d9-2e1466c45599")
+		(property "Reference" "#GND017"
+			(at 162.56 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 162.56 118.3894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.56 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 162.56 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "56492072-019e-4e24-9baa-5933119144a7")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_DC")
+		(at 137.16 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3a03a9fd-4fb2-4927-98e5-74fbe22a2819")
+		(property "Reference" "M4"
+			(at 141.1732 115.6716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_DC"
+			(at 141.1732 117.983 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 137.16 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 137.16 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "3b5ab22e-e225-4519-bc65-09c526847178")
+		)
+		(pin "1"
+			(uuid "443ac2a4-a37f-438e-a721-f5570ce28d30")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "M4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 128.27 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3f35871d-dbbb-48f9-a7be-8683812388ad")
+		(property "Reference" "#GND013"
+			(at 128.27 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 128.27 142.5194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 128.27 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7ed43618-c361-4cc9-b583-e529e4013a38")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 128.27 138.43 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4146a166-56cf-4b54-a1c2-c3ccf359de12")
+		(property "Reference" "R8"
+			(at 130.048 137.2616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 130.048 139.573 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 130.048 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b660832e-43f5-4bc7-9f54-48ac39ea345b")
+		)
+		(pin "1"
+			(uuid "b8880616-0d77-4ff2-8627-e633bbc09fdd")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 59.69 76.2 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "42a3c655-1b85-4b15-882d-7e0ff1c8ae03")
+		(property "Reference" "R3"
+			(at 61.468 75.0316 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 61.468 77.343 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 61.468 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 59.69 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6ceee4b8-31aa-484d-84bd-ea3673f9ec9e")
+		)
+		(pin "2"
+			(uuid "4959b789-d5b5-49f7-b6f3-babf05ac225c")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 191.77 130.81 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4cfa1083-b90d-447b-8cef-d766d0b49e7e")
+		(property "Reference" "R18"
+			(at 191.77 125.5522 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100Ω"
+			(at 191.77 127.8636 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
+			(at 191.77 129.032 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 191.77 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 191.77 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "68f09d30-cea3-4ee4-b372-79391df685fb")
+		)
+		(pin "2"
+			(uuid "036e1eee-45d4-4fa3-8c9e-7232ca5ac18e")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_DC")
+		(at 68.58 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "54fb27bc-f874-476b-bd1b-2a958ca011f2")
+		(property "Reference" "M5"
+			(at 72.5932 115.6716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_DC"
+			(at 72.5932 117.983 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 68.58 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "184e24d8-eeb6-45b8-8cf4-b75f2a545691")
+		)
+		(pin "1"
+			(uuid "60af7250-1c06-4cbf-a79e-40b8fdb1cead")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "M5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 52.07 68.58 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "59886c6d-d80e-462e-9fea-e8d37565dc91")
+		(property "Reference" "R1"
+			(at 52.07 63.3222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100Ω"
+			(at 52.07 65.6336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
+			(at 52.07 66.802 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 52.07 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "da95e1f3-7e75-458b-9f9d-449bf4ede5d7")
+		)
+		(pin "1"
+			(uuid "84e840ae-493e-4803-a34c-5a9b5cd63e47")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 93.98 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5b7d2886-2410-4d9e-bd98-99071f5710a5")
+		(property "Reference" "C1"
+			(at 96.3168 53.4416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22uF"
+			(at 96.3168 55.753 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 93.98 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.jp/datasheet/2/40/cx5r_KGM-3223198.pdf"
+			(at 93.98 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "73caba92-017e-4630-acc7-60666515b819")
+		)
+		(pin "2"
+			(uuid "26d087df-2f2e-49f0-9a2f-a8b294c55722")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 83.82 116.84 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "60ff9436-26d2-4ab7-8e91-3a75902d7778")
+		(property "Reference" "D6"
+			(at 85.852 115.6716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS34"
+			(at 85.852 117.983 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 83.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f486a30d-a9ee-4e59-808d-95a2f11aec3e")
+		)
+		(pin "2"
+			(uuid "d37fef84-7dea-4363-92bc-d9ca177ab29e")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 83.82 54.61 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "618bb3c5-f55c-4815-a532-683daf1fb7bc")
+		(property "Reference" "D1"
+			(at 85.852 53.4416 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS34"
+			(at 85.852 55.753 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 83.82 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "890a3ef4-e93a-4f21-ab20-f22ea5657e99")
+		)
+		(pin "2"
+			(uuid "fa9550fc-a87c-41b6-bba0-33a6a08966bb")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 223.52 116.84 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "623c518c-b7e9-462e-9d4c-cfbb4d127793")
+		(property "Reference" "D7"
+			(at 225.552 115.6716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS34"
+			(at 225.552 117.983 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "73101ff4-def7-491c-b179-90a09ca19623")
+		)
+		(pin "2"
+			(uuid "b5e7ff4d-01e4-49d5-a513-64819df70228")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 93.98 58.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "68c30564-6b84-4df1-a9ba-60757b7b1d87")
+		(property "Reference" "#GND010"
+			(at 93.98 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 93.98 56.1594 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 93.98 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c129c61d-2183-4851-bc8a-b7ad3c32b232")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 233.68 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6a90316a-f564-4a73-8de3-c4b473b2200d")
+		(property "Reference" "C11"
+			(at 236.0168 115.6716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22uF"
+			(at 236.0168 117.983 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 233.68 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.jp/datasheet/2/40/cx5r_KGM-3223198.pdf"
+			(at 233.68 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 233.68 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "601ebd35-4f51-4835-92c3-f07d87dae9d2")
+		)
+		(pin "1"
+			(uuid "e9dd3708-bdd5-40dd-9eb5-8742fa18a3c6")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "C11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 162.56 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6f6bc29d-b7d5-4186-b344-cc6636c17247")
+		(property "Reference" "C4"
+			(at 164.8968 115.6716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22uF"
+			(at 164.8968 117.983 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 162.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.jp/datasheet/2/40/cx5r_KGM-3223198.pdf"
+			(at 162.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a7ce3654-329d-4b2a-873d-6bc86a08a7e1")
+		)
+		(pin "1"
+			(uuid "626fcfc5-7afa-494f-87aa-519e6347f465")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML0030")
+		(at 134.62 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "757aa2b0-7971-4821-9315-37a0b66ba2b1")
+		(property "Reference" "Q4"
+			(at 139.827 129.6416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SQ2310CES"
+			(at 139.827 131.953 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 139.7 132.715 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+			(at 134.62 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 134.62 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4dab94ab-4df7-4a20-8d92-7f77eaf98f57")
+		)
+		(pin "2"
+			(uuid "9d346bd6-3a3e-4b78-a240-2281874567a1")
+		)
+		(pin "3"
+			(uuid "526201ef-b645-43eb-ae1a-e5fd1fe40eed")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "Q4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 120.65 130.81 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "78e79f15-1648-4419-86b7-25cdfa8125d3")
+		(property "Reference" "R6"
+			(at 120.65 125.5522 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100Ω"
+			(at 120.65 127.8636 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
+			(at 120.65 129.032 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 120.65 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 120.65 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "916febb8-4445-4605-9500-d278dd7397ca")
+		)
+		(pin "2"
+			(uuid "e768f7b5-86cf-444a-bb4b-929bb86cf6f0")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 120.65 68.58 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7d1cdbea-0600-4fd4-b415-9b18c6cdfc08")
+		(property "Reference" "R5"
+			(at 120.65 63.3222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100Ω"
+			(at 120.65 65.6336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
+			(at 120.65 66.802 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 120.65 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 120.65 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "183b563e-f1ba-4721-9687-3918b3b49902")
+		)
+		(pin "2"
+			(uuid "70a23a50-b847-4119-bb25-293e1c5d703f")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 208.28 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7e2be25b-5bd6-469c-b837-b22524c74d0f")
+		(property "Reference" "#GND09"
+			(at 208.28 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 208.28 81.5594 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9bf8c383-bc0c-4457-800a-a5e6801d01f6")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 152.4 54.61 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "810f6434-03ac-4acd-8f52-4b5df06f2db0")
+		(property "Reference" "D3"
+			(at 154.432 53.4416 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS34"
+			(at 154.432 55.753 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 152.4 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 152.4 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2b28226c-45bc-4e19-b392-06196975bbe1")
+		)
+		(pin "1"
+			(uuid "5dcc0be3-b90e-4c93-b02b-ce4282be8abd")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 137.16 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "815030b7-9658-4d51-b01d-a04362726111")
+		(property "Reference" "#GND015"
+			(at 137.16 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 137.16 142.5194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 137.16 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 137.16 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7b6af1f4-3d3d-4b2d-8d23-3ceff04e449c")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 137.16 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8459ebec-6b96-4a00-b6d3-d4a7b288d86c")
+		(property "Reference" "#GND014"
+			(at 137.16 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 137.16 80.2894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 137.16 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 137.16 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "106c03fe-6f18-4a8d-9736-872467990d0f")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 68.58 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "891ffbf0-df46-4a56-bc49-3ffe6c85f828")
+		(property "Reference" "#GND08"
+			(at 68.58 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 68.58 80.2894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c5f65f04-2dbe-4218-9192-2290971b65d2")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 233.68 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8c8a90a8-fef7-454e-a5e4-a27f281466bd")
+		(property "Reference" "#GND023"
+			(at 233.68 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 233.68 118.3894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 233.68 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 233.68 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 233.68 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50febd78-7643-4404-99f2-97c6cca9c09e")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 128.27 76.2 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "904cce2b-0315-4bf3-b5ef-5083c8c0d371")
+		(property "Reference" "R7"
+			(at 130.048 75.0316 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 130.048 77.343 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 130.048 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bdc217f7-fd75-4300-8191-469c2344518f")
+		)
+		(pin "2"
+			(uuid "f515dbfd-e9ed-4432-8c28-9251ad1257a6")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 93.98 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "905666b8-ea93-47d8-82cf-d24194c57fe0")
+		(property "Reference" "#GND020"
+			(at 93.98 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 93.98 118.3894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 93.98 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "955bdd70-70d3-4afc-9c5b-e5fd8700733f")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND020")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 199.39 138.43 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "913ca373-35f6-4d21-8139-4996cbe1a130")
+		(property "Reference" "R19"
+			(at 201.168 137.2616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 201.168 139.573 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 201.168 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 199.39 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "04466111-17fd-41a4-b6e8-f74cdc743397")
+		)
+		(pin "1"
+			(uuid "be0c4a57-a10c-40ee-ba42-741a03657551")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML0030")
+		(at 205.74 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "943e3efe-a0f5-4706-a08b-9b38dc9fbf53")
+		(property "Reference" "Q6"
+			(at 210.947 129.6416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SQ2310CES"
+			(at 210.947 131.953 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 210.82 132.715 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+			(at 205.74 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d0584854-434a-4c0e-b75d-4c84ea9d1fb8")
+		)
+		(pin "2"
+			(uuid "b953442a-34d3-497a-be51-6bddf2de8868")
+		)
+		(pin "3"
+			(uuid "102b5ac5-b829-400a-94d0-4c218c940fbb")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "Q6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 208.28 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9640bb16-5e2e-4e8e-a34f-ce835fbe8471")
+		(property "Reference" "#GND022"
+			(at 208.28 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 208.28 142.5194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7b100c58-4ead-4ceb-b1b5-f01a86332645")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 59.69 138.43 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "98d6813f-d794-4d99-9848-368cec1a965e")
+		(property "Reference" "R17"
+			(at 61.468 137.2616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 61.468 139.573 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 61.468 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 59.69 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "bbd891f7-e6bb-4806-97d9-43249e4fbcf1")
+		)
+		(pin "1"
+			(uuid "ac21232a-89df-40e7-87be-8ad164744026")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 52.07 130.81 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "993833a0-db15-45e5-9fd2-17bfb397842b")
+		(property "Reference" "R16"
+			(at 52.07 125.5522 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100Ω"
+			(at 52.07 127.8636 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
+			(at 52.07 129.032 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 52.07 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b121732f-3d36-4914-9df3-c7206c7ef253")
+		)
+		(pin "2"
+			(uuid "e66082f6-b028-4a0d-9c85-8d4328bfede1")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 199.39 77.47 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9b5637c7-87be-4f70-9ae7-41b2f0dc8757")
+		(property "Reference" "R4"
+			(at 201.168 76.3016 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10kΩ"
+			(at 201.168 78.613 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 201.168 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 199.39 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a9b561fc-c258-4d99-afbb-578661923ed5")
+		)
+		(pin "2"
+			(uuid "0ea006bc-7a89-4c4a-80e7-a8b71c8182bf")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_DC")
+		(at 68.58 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9c27572f-5390-4587-a4c0-2e9df74d6778")
+		(property "Reference" "M1"
+			(at 72.5932 53.4416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_DC"
+			(at 72.5932 55.753 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 68.58 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0e1035a8-8011-479e-9020-96ad41b823e1")
+		)
+		(pin "1"
+			(uuid "0769c644-fa43-403e-af2a-f20da260689c")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "M1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 162.56 58.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9cb45be2-5a95-4c52-8764-b8cb1387a16f")
+		(property "Reference" "#GND016"
+			(at 162.56 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 162.56 56.1594 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 162.56 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 162.56 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7c7289aa-f346-4358-becd-6e93e96a4e5f")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 233.68 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a0396b8b-bd29-43f8-aa33-8a408fbcbc69")
+		(property "Reference" "#GND011"
+			(at 233.68 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 233.68 57.4294 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 233.68 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 233.68 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 233.68 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8a8eefab-1dc9-4b62-b76a-f4e7bf45bd07")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 191.77 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a266bc53-31ce-41ec-88ec-bda23b6990c7")
+		(property "Reference" "R2"
+			(at 191.77 64.5922 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100Ω"
+			(at 191.77 66.9036 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_1210_3225Metric"
+			(at 191.77 68.072 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 191.77 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 191.77 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "acd4b65a-a198-4ca6-aa71-d2d253e67253")
+		)
+		(pin "1"
+			(uuid "184ce4a0-a941-47a9-9c67-8384e299f882")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 68.58 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ac3a51c6-980d-4b50-a455-354da8050b24")
+		(property "Reference" "#GND019"
+			(at 68.58 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 68.58 142.5194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8908f3a7-06a4-4d16-9e2d-ef3c9ab265e5")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND019")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML0030")
+		(at 66.04 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "acfbe12a-82e4-409f-a08e-bf20d169fbf9")
+		(property "Reference" "Q1"
+			(at 71.247 67.4116 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SQ2310CES"
+			(at 71.247 69.723 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 71.12 70.485 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+			(at 66.04 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 66.04 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "822caa2c-3162-48f8-9cc1-f37ccd37476d")
+		)
+		(pin "2"
+			(uuid "6a2cbe4b-969b-4304-ab06-b899b9144305")
+		)
+		(pin "3"
+			(uuid "feb811a9-95ce-47cc-b0d9-9b5bfed6aa96")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "Q1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_DC")
+		(at 137.16 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b4ed3e22-dc0b-452d-aab5-fe476a3d379b")
+		(property "Reference" "M3"
+			(at 141.1732 53.4416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_DC"
+			(at 141.1732 55.753 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 137.16 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 137.16 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f3f80931-9225-4db2-a2f3-e959bc62d556")
+		)
+		(pin "2"
+			(uuid "71a861b3-939c-4314-8504-62d59df9ae1d")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "M3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 59.69 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cb5750b5-00d2-4dee-9bb8-bbff153a00a2")
+		(property "Reference" "#GND01"
+			(at 59.69 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 59.69 80.2894 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 59.69 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a0e70b62-f146-4a94-946c-95487b0ebe44")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML0030")
+		(at 66.04 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d00d049d-173c-4b2c-b839-118e78451c78")
+		(property "Reference" "Q5"
+			(at 71.247 129.6416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SQ2310CES"
+			(at 71.247 131.953 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 71.12 132.715 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+			(at 66.04 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 66.04 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c7b3d99f-5964-47ba-bb6c-f73dbffb7cae")
+		)
+		(pin "2"
+			(uuid "087fbf68-5fc6-4f88-af15-c7898ff2ca38")
+		)
+		(pin "3"
+			(uuid "5a71bc5d-0bc0-4cb3-87da-9215d768f547")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "Q5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 199.39 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e273a5fe-ff02-49f2-9871-71a4d9f2dabf")
+		(property "Reference" "#GND07"
+			(at 199.39 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 199.39 81.5594 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 199.39 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 199.39 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0acac3d3-bdd0-4f29-91c3-03a069497d53")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 162.56 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e33c2efe-b4bc-4448-b4ca-f78424d59f7c")
+		(property "Reference" "C3"
+			(at 164.8968 53.4416 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22uF"
+			(at 164.8968 55.753 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 162.56 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.jp/datasheet/2/40/cx5r_KGM-3223198.pdf"
+			(at 162.56 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 162.56 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aa3e6a85-2dd7-4f81-ac65-6e5ec3139a5f")
+		)
+		(pin "2"
+			(uuid "4637e27b-3dc2-48ed-b76c-e162961dabfc")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:IRLML0030")
+		(at 205.74 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e5bd2fa7-9de9-427c-b035-0584283794c4")
+		(property "Reference" "Q2"
+			(at 210.947 68.6816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SQ2310CES"
+			(at 210.947 70.993 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 210.82 71.755 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.infineon.com/dgdl/irlml0030pbf.pdf?fileId=5546d462533600a401535664773825df"
+			(at 205.74 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 205.74 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "765374f8-9c3d-48a1-bfd7-b3d910db9673")
+		)
+		(pin "2"
+			(uuid "232b7469-c142-4a82-b2bc-f019e6090a37")
+		)
+		(pin "3"
+			(uuid "c9a98e98-8efd-456b-a675-663e719325b7")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 152.4 116.84 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ea000d98-ce8d-446e-bfae-3c679cf6b585")
+		(property "Reference" "D4"
+			(at 154.432 115.6716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS34"
+			(at 154.432 117.983 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 152.4 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 152.4 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a25c7fdf-96d5-4a54-ab29-b9ce8df09076")
+		)
+		(pin "2"
+			(uuid "00774ed0-4310-4586-97b9-02ac735ef20c")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_DC")
+		(at 208.28 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ec4f0649-2f2e-4eae-b5b2-05138929e520")
+		(property "Reference" "M2"
+			(at 212.2932 54.7116 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_DC"
+			(at 212.2932 57.023 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 208.28 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e795ccba-6b9b-4e69-8f54-1ffa0060cc66")
+		)
+		(pin "2"
+			(uuid "623afbdd-1206-4d5d-807c-efac0a7f750d")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "M2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Motor:Motor_DC")
+		(at 208.28 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "edc24da2-3b50-447b-b375-92ad8726c3cd")
+		(property "Reference" "M6"
+			(at 212.2932 115.6716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Motor_DC"
+			(at 212.2932 117.983 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 208.28 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 117.856 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 208.28 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "be20e66e-f637-4355-9678-e068bb51c6e0")
+		)
+		(pin "1"
+			(uuid "9ac07b4d-e321-4ce5-ba97-f6e23c28aaf2")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "M6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 93.98 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eeef52d3-cbaa-4ae2-ba7d-c70793eb188a")
+		(property "Reference" "C5"
+			(at 96.3168 115.6716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "22uF"
+			(at 96.3168 117.983 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric"
+			(at 93.98 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.jp/datasheet/2/40/cx5r_KGM-3223198.pdf"
+			(at 93.98 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "876ecffe-739a-49f2-86a4-16d0a31de3c6")
+		)
+		(pin "1"
+			(uuid "16496e30-b0e4-47fc-abf3-38fff4ea0e4b")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "flightcontroller-rescue:0-pspice")
+		(at 199.39 144.78 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f41c59e1-9c0e-4cd9-8379-99a5b55b418b")
+		(property "Reference" "#GND021"
+			(at 199.39 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "0"
+			(at 199.39 142.5194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 199.39 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 199.39 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "11401f8d-4cbd-47bb-8f9d-2ad35dd4c4ef")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "#GND021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky")
+		(at 223.52 55.88 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fd816f01-eb3b-4db0-a92c-71f800755c2f")
+		(property "Reference" "D2"
+			(at 225.552 54.7116 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "SS34"
+			(at 225.552 57.023 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMC"
+			(at 223.52 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 223.52 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9c2d30e7-dd42-4eed-a5f7-4bfde3878029")
+		)
+		(pin "2"
+			(uuid "a00fef1e-e303-450b-b0bc-d67ce1ac39f4")
+		)
+		(instances
+			(project "multicopter"
+				(path "/0ee1da66-2d68-41dc-a47e-4b8386601436/4c2e2fbb-3611-4b32-95c0-9b0dd48a7b08"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

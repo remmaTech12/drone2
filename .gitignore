@@ -1,0 +1,6 @@
+*.FCBak
+*-backups
+_autosave-*
+fp-info-cache
+*.kicad_sch-bak
+*.lck
