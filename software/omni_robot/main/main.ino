@@ -48,7 +48,12 @@ void setup()
   pinMode(LED_PIN, OUTPUT);
   pinMode(SW_PIN, INPUT);
   util.blink_led();
-  pinMode(12, OUTPUT);
+  pinMode(MOTOR1_PWM_PIN, OUTPUT);
+  pinMode(MOTOR2_PWM_PIN, OUTPUT);
+  pinMode(MOTOR3_PWM_PIN, OUTPUT);
+  pinMode(MOTOR4_PWM_PIN, OUTPUT);
+  pinMode(MOTOR5_PWM_PIN, OUTPUT);
+  pinMode(MOTOR6_PWM_PIN, OUTPUT);
 
   delay(300);
 }
@@ -67,12 +72,23 @@ void loop()
     SerialBT.readBytes(recv_data, 2);
   }
 
-  if (is_builtin_button_pressed()) {
+  int motor_pwm = 100;
+  if (util.is_builtin_button_pressed()) {
     util.on_led();
-    analogWrite(32, 255);
+    analogWrite(MOTOR1_PWM_PIN, 100);
+    analogWrite(MOTOR2_PWM_PIN, 100);
+    analogWrite(MOTOR3_PWM_PIN, 100);
+    analogWrite(MOTOR4_PWM_PIN, 100);
+    analogWrite(MOTOR5_PWM_PIN, 100);
+    analogWrite(MOTOR6_PWM_PIN, 100);
   } else {
     util.off_led();
-    analogWrite(32, 0);
+    analogWrite(MOTOR1_PWM_PIN, 0);
+    analogWrite(MOTOR2_PWM_PIN, 0);
+    analogWrite(MOTOR3_PWM_PIN, 0);
+    analogWrite(MOTOR4_PWM_PIN, 0);
+    analogWrite(MOTOR5_PWM_PIN, 0);
+    analogWrite(MOTOR6_PWM_PIN, 0);
   }
 
   /*
