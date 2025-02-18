@@ -9,6 +9,7 @@
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
 #include "BluetoothSerial.h"
+#include "Bitcraze_PMW3901.h"
 
 #define MOTOR_NUM 3
 
@@ -18,6 +19,7 @@ BodyControl body_control;
 
 Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
 BluetoothSerial SerialBT;
+Bitcraze_PMW3901 pmw3901(PMW3901_PIN_CS);
 
 unsigned long previous_ms = 0;
 
@@ -33,11 +35,18 @@ void setup()
   motor[2].setup(2, MOTOR3_ENC_A_PIN, MOTOR3_ENC_B_PIN, MOTOR3_IN1_PIN, MOTOR3_IN2_PIN);
   body_control.setup(motor, MOTOR_NUM);
 
+  delay(1000);
+
   // initialize bno055
-  if (!bno.begin())
+  while (!bno.begin())
   {
-    Serial.print("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
-    while (1);
+    Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
+  }
+
+  // initialize pmw3901
+  while (!pmw3901.begin())
+  {
+    Serial.println("Ooops, no PMW3901 detected ... Check the SPI connection!");
   }
 
   // bluetooth
@@ -90,6 +99,13 @@ void loop()
     analogWrite(MOTOR5_PWM_PIN, 0);
     analogWrite(MOTOR6_PWM_PIN, 0);
   }
+
+  int16_t dx, dy;
+  pmw3901.readMotionCount(&dx, &dy);
+  Serial.print("dx: ");
+  Serial.print(dx);
+  Serial.print(" dy: ");
+  Serial.println(dy);
 
   /*
   // led

@@ -22,3 +22,5 @@
 
 #define LED_PIN 12
 #define SW_PIN 34
+
+#define PMW3901_PIN_CS 5
