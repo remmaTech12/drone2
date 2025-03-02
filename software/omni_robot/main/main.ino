@@ -10,6 +10,7 @@
 #include <utility/imumaths.h>
 #include "BluetoothSerial.h"
 #include "Bitcraze_PMW3901.h"
+#include <VL53L1X.h>
 
 #define MOTOR_NUM 3
 
@@ -20,6 +21,7 @@ BodyControl body_control;
 Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
 BluetoothSerial SerialBT;
 Bitcraze_PMW3901 pmw3901(PMW3901_PIN_CS);
+VL53L1X vl53l1x;
 
 unsigned long previous_ms = 0;
 
@@ -48,6 +50,15 @@ void setup()
   {
     Serial.println("Ooops, no PMW3901 detected ... Check the SPI connection!");
   }
+
+  vl53l1x.setTimeout(500);
+  if (!vl53l1x.init()) {
+    Serial.println("Failed to detect and initialize sensor!");
+    while (1);  
+  }
+  vl53l1x.setDistanceMode(VL53L1X::Long);
+  vl53l1x.setMeasurementTimingBudget(50000);
+  vl53l1x.startContinuous(50);
 
   // bluetooth
   SerialBT.begin("ESP32_omni_robot");  // Bluetooth device name
@@ -107,13 +118,7 @@ void loop()
   Serial.print(" dy: ");
   Serial.println(dy);
 
-  /*
-  // led
-  if (util.is_remote_button_pressed(recv_data) || util.is_builtin_button_pressed()) {
-    util.on_led();
-  } else {
-    util.off_led();
-  }
+  Serial.println(vl53l1x.read());
 
   // imu
   sensors_event_t accelerometerData, angVelocityData;
@@ -124,6 +129,14 @@ void loop()
   util.printEvent(&angVelocityData);
   uint8_t system, gyro, accel, mag = 0;
   bno.getCalibration(&system, &gyro, &accel, &mag);
+
+  /*
+  // led
+  if (util.is_remote_button_pressed(recv_data) || util.is_builtin_button_pressed()) {
+    util.on_led();
+  } else {
+    util.off_led();
+  }
 
   // control
   body_control.switch_control_mode();
