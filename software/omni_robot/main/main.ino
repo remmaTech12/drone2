@@ -81,15 +81,15 @@ void loop()
     SerialBT.readBytes(recv_data, 2);
   }
 
-  int motor_pwm = 100;
+  int motor_pwm = 255;
   if (util.is_builtin_button_pressed()) {
     util.on_led();
-    analogWrite(MOTOR1_PWM_PIN, 100);
-    analogWrite(MOTOR2_PWM_PIN, 100);
-    analogWrite(MOTOR3_PWM_PIN, 100);
-    analogWrite(MOTOR4_PWM_PIN, 100);
-    analogWrite(MOTOR5_PWM_PIN, 100);
-    analogWrite(MOTOR6_PWM_PIN, 100);
+    analogWrite(MOTOR1_PWM_PIN, motor_pwm);
+    analogWrite(MOTOR2_PWM_PIN, motor_pwm);
+    analogWrite(MOTOR3_PWM_PIN, motor_pwm);
+    analogWrite(MOTOR4_PWM_PIN, motor_pwm);
+    analogWrite(MOTOR5_PWM_PIN, motor_pwm);
+    analogWrite(MOTOR6_PWM_PIN, motor_pwm);
   } else {
     util.off_led();
     analogWrite(MOTOR1_PWM_PIN, 0);
