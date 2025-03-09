@@ -9,9 +9,9 @@ class Util {
     void blink_led() {
       char blink_times = 3;
       for (int i = 0; i < blink_times; i++) {
-        digitalWrite(LED_PIN, HIGH);
+        digitalWrite(LED_DEBUG_PIN, HIGH);
         delay(50);
-        digitalWrite(LED_PIN, LOW);
+        digitalWrite(LED_DEBUG_PIN, LOW);
         delay(50);
       }
     }
@@ -22,7 +22,8 @@ class Util {
       Serial.print(time);
     }
 
-    void printEvent(sensors_event_t* event) {
+    void printIMUEvent(sensors_event_t* event) {
+      Serial.print("IMU data: ");
       double x = -1000000, y = -1000000,
              z = -1000000;  // dumb values, easy to spot problem
       if (event->type == SENSOR_TYPE_ACCELEROMETER) {
@@ -72,12 +73,12 @@ class Util {
       Serial.println(z);
     }
 
-    bool is_builtin_button_pressed() { return digitalRead(SW_PIN) == HIGH; }
+    bool is_builtin_button_pressed() { return digitalRead(SW_DEBUG_PIN) == HIGH; }
     bool is_remote_button_pressed(uint8_t* recv_data) {
       return recv_data[0] == 'T' && recv_data[1] != 0;
     }
-    void on_led() { digitalWrite(LED_PIN, HIGH); }
-    void off_led() { digitalWrite(LED_PIN, LOW); }
+    void on_led() { digitalWrite(LED_DEBUG_PIN, HIGH); }
+    void off_led() { digitalWrite(LED_DEBUG_PIN, LOW); }
 
    private:
 };
