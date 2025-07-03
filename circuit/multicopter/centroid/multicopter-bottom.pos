@@ -1,0 +1,9 @@
+### Footprint positions - created on 2025-03-31T18:32:25+0900 ###
+### Printed by KiCad version 8.0.8-8.0.8-0~ubuntu24.04.1
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val       Package                                     PosX       PosY       Rot  Side
+L1        22uH      L_Vishay_IHLP-2020                       51.2000    32.5100  180.0000  bottom
+U3        PMW3901   JST_PH_B7B-PH-K_1x07_P2.00mm_Vertical    25.2700    40.1700    0.0000  bottom
+U6        VL53L1X   JST_PH_B7B-PH-K_1x07_P2.00mm_Vertical    37.3700    21.5200  180.0000  bottom
+## End

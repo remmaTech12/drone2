@@ -1,0 +1,19 @@
+G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,8.0.8-8.0.8-0~ubuntu24.04.1*
+G04 #@! TF.CreationDate,2025-03-31T18:32:50+09:00*
+G04 #@! TF.ProjectId,multicopter,6d756c74-6963-46f7-9074-65722e6b6963,rev?*
+G04 #@! TF.SameCoordinates,Original*
+G04 #@! TF.FileFunction,Paste,Bot*
+G04 #@! TF.FilePolarity,Positive*
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 8.0.8-8.0.8-0~ubuntu24.04.1) date 2025-03-31 18:32:50*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%ADD10R,1.903000X2.790000*%
+G04 APERTURE END LIST*
+D10*
+X122416500Y-90480000D03*
+X117563500Y-90480000D03*
+M02*

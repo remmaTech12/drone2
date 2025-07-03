@@ -5506,6 +5506,51 @@
 				(hide yes)
 			)
 		)
+		(property "Mounting Type" "SMD"
+			(at 209.55 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MCT06030D1002BP500 "
+			(at 209.55 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "23.1"
+			(at 209.55 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Beyschlag "
+			(at 209.55 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
+			(at 209.55 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c0f4fedc-7788-4541-893e-780bfc8bf8c2")
 		)
@@ -5683,7 +5728,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_PH_B7B-PH-K_1x07_P2.00mm_Vertical"
 			(at 152.4 118.364 0)
 			(effects
 				(font
@@ -5703,6 +5748,51 @@
 		)
 		(property "Description" ""
 			(at 152.4 118.364 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "THT"
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "B7B-PH-K-S"
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "50.77"
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "JST Sales America Inc."
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.digikey.jp/ja/products/detail/jst-sales-america-inc/B7B-PH-K-S/926616?gclsrc=aw.ds&&utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=Pmax%20Shopping_Product_Low%20Volume&utm_term=&productid=926616&utm_content=&utm_id=go_cmp-20195885710_adg-_ad-__dev-c_ext-_prd-926616_sig-Cj0KCQjwv_m-BhC4ARIsAIqNeBu2G8TW-BNO-WA5Ju2lPlK-TyQ1g0RhKNV_zl-8SEs0E9Bj2J8ldAQaAvN9EALw_wcB&gad_source=1&gclid=Cj0KCQjwv_m-BhC4ARIsAIqNeBu2G8TW-BNO-WA5Ju2lPlK-TyQ1g0RhKNV_zl-8SEs0E9Bj2J8ldAQaAvN9EALw_wcB"
+			(at 152.4 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6201,6 +6291,51 @@
 				(hide yes)
 			)
 		)
+		(property "Mounting Type" "SMD"
+			(at 224.79 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "BNO055"
+			(at 224.79 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "2,036.1 "
+			(at 224.79 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Bosch Sensortec"
+			(at 224.79 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Bosch-Sensortec/BNO055?qs=QhAb4EtQfbV8Z2YmISucWw%3D%3D"
+			(at 224.79 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "056a2793-2f3d-49c1-b4f4-aca3354626fa")
 		)
@@ -6450,7 +6585,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 35.56 116.84 0)
 			(effects
 				(font
@@ -6469,6 +6604,33 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
+			(at 35.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "THT"
+			(at 35.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" ""
+			(at 35.56 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" ""
 			(at 35.56 116.84 0)
 			(effects
 				(font
@@ -6519,7 +6681,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_PH_B7B-PH-K_1x07_P2.00mm_Vertical"
 			(at 153.67 162.56 0)
 			(effects
 				(font
@@ -6539,6 +6701,51 @@
 		)
 		(property "Description" ""
 			(at 153.67 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "THT"
+			(at 152.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "B7B-PH-K-S"
+			(at 152.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "50.77"
+			(at 152.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "JST Sales America Inc."
+			(at 152.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.digikey.jp/ja/products/detail/jst-sales-america-inc/B7B-PH-K-S/926616?gclsrc=aw.ds&&utm_adgroup=&utm_source=google&utm_medium=cpc&utm_campaign=Pmax%20Shopping_Product_Low%20Volume&utm_term=&productid=926616&utm_content=&utm_id=go_cmp-20195885710_adg-_ad-__dev-c_ext-_prd-926616_sig-Cj0KCQjwv_m-BhC4ARIsAIqNeBu2G8TW-BNO-WA5Ju2lPlK-TyQ1g0RhKNV_zl-8SEs0E9Bj2J8ldAQaAvN9EALw_wcB&gad_source=1&gclid=Cj0KCQjwv_m-BhC4ARIsAIqNeBu2G8TW-BNO-WA5Ju2lPlK-TyQ1g0RhKNV_zl-8SEs0E9Bj2J8ldAQaAvN9EALw_wcB"
+			(at 152.4 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6829,7 +7036,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/0603ZD226MAT2A?qs=sSYV1F9c5cE%2FKdrrBmQkqw%3D%3D"
 			(at 85.09 166.37 0)
 			(effects
 				(font
@@ -6839,6 +7046,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/0603ZW106MAT2A?qs=BZBei1rCqCDILT8BMORbpw%3D%3D"
+			(at 85.09 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KYOCERA AVX "
+			(at 85.09 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 85.09 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "0603ZD226MAT2A "
+			(at 85.09 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "85.8"
 			(at 85.09 166.37 0)
 			(effects
 				(font
@@ -6954,7 +7197,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SMC"
+		(property "Footprint" "Diode_SMD:D_SOD-123F"
 			(at 66.04 157.48 0)
 			(effects
 				(font
@@ -6973,6 +7216,60 @@
 			)
 		)
 		(property "Description" "Schottky diode"
+			(at 66.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Vendor" "https://www.mouser.jp/ProductDetail/onsemi-Fairchild/SS34?qs=2ONuHmP%2FXzb3ub11UdFfdQ%3D%3D&srsltid=AfmBOop4ud1ItcB-HYMCmTOmqkT8PGUqx9dmA59F7xl38_CdzAgJf0R1&_gl=1*1arwo9r*_ga*MTQ5MzU3NjA1OS4xNzM4NzIyMDQ4*_ga_15W4STQT4T*MTc0MjQyODU5Ny41LjAuMTc0MjQyODU5OS41OC4wLjA."
+			(at 66.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 66.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "SS34FA "
+			(at 66.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "62.7"
+			(at 66.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" " onsemi / Fairchild "
+			(at 66.04 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/onsemi-Fairchild/SS34FA?qs=R26iFe%2FkX%2FK1QUwZdCmBBw%3D%3D"
 			(at 66.04 157.48 0)
 			(effects
 				(font
@@ -7117,7 +7414,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/TDK/MMZ1608S102ATA00?qs=8Kz9Wu9QwqVBjJnYaU1j7g%3D%3D"
 			(at 72.39 181.61 0)
 			(effects
 				(font
@@ -7127,6 +7424,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Dale/CRCW0603147RFKTA?qs=sGAEpiMZZMtlubZbdhIBIFhyVsDsW4rVsTDNpacpLcg%3D"
+			(at 72.39 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 72.39 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" " MMZ1608S102ATA00 "
+			(at 72.39 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "16.5"
+			(at 72.39 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" " TDK "
 			(at 72.39 181.61 0)
 			(effects
 				(font
@@ -7202,7 +7535,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Bivar/SM0603UBWC?qs=hWDdE2Pc5RAVU9aZAE1txQ%3D%3D"
 			(at 39.37 66.04 0)
 			(effects
 				(font
@@ -7212,6 +7545,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Bivar/SM0603URC?qs=hWDdE2Pc5RAmyCtviNtSxQ%3D%3D"
+			(at 39.37 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 39.37 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "SM0603UBWC "
+			(at 39.37 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "242.6"
+			(at 39.37 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Bivar "
 			(at 39.37 66.04 0)
 			(effects
 				(font
@@ -7498,6 +7867,51 @@
 				(hide yes)
 			)
 		)
+		(property "MANUFACTURER" "KYOCERA AVX "
+			(at 241.3 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 241.3 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "KAM15AR71C104KM "
+			(at 241.3 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/KAM15AR71C104KM?qs=Jm2GQyTW%2FbjvjfiJhcHTCg%3D%3D"
+			(at 241.3 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "56.1"
+			(at 241.3 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "54b356de-4751-4a00-b4c0-f8fb93834ca3")
 		)
@@ -7767,7 +8181,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/0603ZD226MAT2A?qs=sSYV1F9c5cE%2FKdrrBmQkqw%3D%3D"
 			(at 38.1 180.34 0)
 			(effects
 				(font
@@ -7777,6 +8191,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/0603ZW106MAT2A?qs=BZBei1rCqCDILT8BMORbpw%3D%3D"
+			(at 38.1 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KYOCERA AVX "
+			(at 38.1 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 38.1 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "0603ZD226MAT2A "
+			(at 38.1 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "85.8"
 			(at 38.1 180.34 0)
 			(effects
 				(font
@@ -7920,7 +8370,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Pulse-Electronics/GBK160808T-221Y-N?qs=j%252B1pi9TdxUbKNI%252BrSL0iyA%3D%3D"
 			(at 31.75 71.12 0)
 			(effects
 				(font
@@ -7930,6 +8380,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Bourns/CR0603-JW-101ELF?qs=jAUlru4btJFOerhakJcyhQ%3D%3D"
+			(at 31.75 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 31.75 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "GBK160808T-221Y-N "
+			(at 31.75 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "16.5"
+			(at 31.75 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Pulse Electronics "
 			(at 31.75 71.12 0)
 			(effects
 				(font
@@ -8112,7 +8598,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm_H5mm"
+		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_NO_CK_KMR2"
 			(at 36.83 40.64 0)
 			(effects
 				(font
@@ -8131,6 +8617,51 @@
 			)
 		)
 		(property "Description" ""
+			(at 31.75 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 31.75 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "KMR231NGLFS"
+			(at 31.75 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "137"
+			(at 31.75 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "C&K"
+			(at 31.75 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/CK/KMR231NGLFS?qs=sb%252But3Lm4x1Y5NsXXdZx2g%3D%3D"
 			(at 31.75 40.64 0)
 			(effects
 				(font
@@ -8209,6 +8740,51 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
+			(at 191.77 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 191.77 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MCT06030D1002BP500 "
+			(at 191.77 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "23.1"
+			(at 191.77 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Beyschlag "
+			(at 191.77 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
 			(at 191.77 64.77 0)
 			(effects
 				(font
@@ -8563,6 +9139,51 @@
 				(hide yes)
 			)
 		)
+		(property "Mounting Type" "SMD"
+			(at 203.2 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MCT06030D1002BP500 "
+			(at 203.2 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "23.1"
+			(at 203.2 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Beyschlag "
+			(at 203.2 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
+			(at 203.2 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b330a217-65c6-428b-9887-5f9684f9c510")
 		)
@@ -8631,6 +9252,51 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
+			(at 246.38 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 246.38 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MCT06030D1002BP500 "
+			(at 246.38 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "23.1"
+			(at 246.38 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Beyschlag "
+			(at 246.38 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
 			(at 246.38 76.2 0)
 			(effects
 				(font
@@ -8708,6 +9374,51 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
+			(at 246.38 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 246.38 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MCT06030D1002BP500 "
+			(at 246.38 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "23.1"
+			(at 246.38 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Beyschlag "
+			(at 246.38 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
 			(at 246.38 73.66 0)
 			(effects
 				(font
@@ -8845,6 +9556,51 @@
 			)
 		)
 		(property "Description" "High Efficiency 1.2MHz 2A Step Up Converter, 2-24V Vin, 28V Vout, 4A current limit, 1.2MHz, SOT23-6"
+			(at 48.26 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 48.26 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MT3608"
+			(at 48.26 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "53"
+			(at 48.26 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "CYLDCHIP"
+			(at 48.26 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://ja.aliexpress.com/item/1005005498022711.html?src=google&pdp_npi=4%40dis!JPY!54!54!!!!!%40!12000034464997520!ppc!!!&src=google&albch=shopping&acnt=742-864-1166&isdl=y&slnk=&plac=&mtctp=&albbt=Google_7_shopping&aff_platform=google&aff_short_key=UneMJZVf&gclsrc=aw.ds&&albagn=888888&&ds_e_adid=739603138789&ds_e_matchtype=search&ds_e_device=c&ds_e_network=g&ds_e_product_group_id=293946777986&ds_e_product_id=ja1005005498022711&ds_e_product_merchant_id=5335339490&ds_e_product_country=JP&ds_e_product_language=ja&ds_e_product_channel=online&ds_e_product_store_id=&ds_url_v=2&albcp=22344558927&albag=177287554075&isSmbAutoCall=false&needSmbHouyi=false&gad_source=1&gclid=Cj0KCQjwv_m-BhC4ARIsAIqNeBtzgigddLSSvJ0K1PMs7Jc373YKzMiAuiZepQqQtj2_9rMwPwUyjbsaAlg1EALw_wcB"
 			(at 48.26 171.45 0)
 			(effects
 				(font
@@ -9087,13 +9843,49 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "Espressif Systems"
+		(property "MANUFACTURER" "CXH"
 			(at 77.47 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "THT"
+			(at 77.47 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" ""
+			(at 77.47 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "74.66"
+			(at 77.47 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.alibaba.com/product-detail/2-54mm-Pitch-1x19-pins-Header-1600109002943.html"
+			(at 77.47 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -9275,6 +10067,51 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "MCT06030D1002BP500 "
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "23.1"
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Beyschlag "
+			(at 196.85 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Beyschlag/MCT06030D1002BP500?qs=ncxkyCpAYDAJSzgYSRSsnA%3D%3D"
 			(at 196.85 64.77 0)
 			(effects
 				(font
@@ -9552,7 +10389,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Dale/CRCW06035K10FKEC?qs=sGAEpiMZZMtlubZbdhIBIKbhzOdzan%2FGt7ImYW9MzNM%3D"
 			(at 31.75 50.8 0)
 			(effects
 				(font
@@ -9562,6 +10399,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Dale/CRCW0603147RFKTA?qs=sGAEpiMZZMtlubZbdhIBIFhyVsDsW4rVsTDNpacpLcg%3D"
+			(at 31.75 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 31.75 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" " CRCW06035K10FKEC "
+			(at 31.75 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "19.8"
+			(at 31.75 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Dale "
 			(at 31.75 50.8 0)
 			(effects
 				(font
@@ -9639,6 +10512,51 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/KAM15AR71C104KM?qs=Jm2GQyTW%2FbjvjfiJhcHTCg%3D%3D"
+			(at 252.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KYOCERA AVX "
+			(at 252.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 252.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "KAM15AR71C104KM "
+			(at 252.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/KYOCERA-AVX/KAM15AR71C104KM?qs=Jm2GQyTW%2FbjvjfiJhcHTCg%3D%3D"
+			(at 252.73 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "56.1"
 			(at 252.73 88.9 0)
 			(effects
 				(font
@@ -9784,7 +10702,7 @@
 				(hide yes)
 			)
 		)
-		(property "Purchase link" ""
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Susumu/RG1608P-752-B-T5?qs=sGAEpiMZZMtlubZbdhIBIPbXU5%252BlCJyDh7Vi0D1CC3A%3D"
 			(at 72.39 166.37 0)
 			(effects
 				(font
@@ -9794,6 +10712,42 @@
 			)
 		)
 		(property "Vendor" "https://www.mouser.jp/ProductDetail/Vishay-Dale/CRCW0603147RFKTA?qs=sGAEpiMZZMtlubZbdhIBIFhyVsDsW4rVsTDNpacpLcg%3D"
+			(at 72.39 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 72.39 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "RG1608P-752-B-T5 "
+			(at 72.39 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "34.7"
+			(at 72.39 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" " Susumu "
 			(at 72.39 166.37 0)
 			(effects
 				(font
@@ -10013,6 +10967,51 @@
 				(hide yes)
 			)
 		)
+		(property "MANUFACTURER" "Vishay / Vitramon "
+			(at 252.73 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 252.73 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" " VJ0603Y682KXBAC31X "
+			(at 252.73 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Vitramon/VJ0603Y682KXBAC31X?qs=sGAEpiMZZMsh%252B1woXyUXj5b5vGCCHxb%252B3J6Quj9FcJg%3D"
+			(at 252.73 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "41.3"
+			(at 252.73 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dcade961-a692-4e3e-b389-bab98dbfeb54")
 		)
@@ -10140,6 +11139,51 @@
 			)
 		)
 		(property "Description" "Inductor"
+			(at 48.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mounting Type" "SMD"
+			(at 48.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Production Number" "IHLP2020BZER220M5A "
+			(at 48.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Unit Price" "207.9"
+			(at 48.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay / Dale "
+			(at 48.26 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Purchase link" "https://www.mouser.jp/ProductDetail/Vishay-Dale/IHLP2020BZER220M5A?qs=Imq1NPwxi76LTZn5EfE7yw%3D%3D"
 			(at 48.26 157.48 0)
 			(effects
 				(font
