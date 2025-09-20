@@ -96,6 +96,3 @@ class Motor {
     volatile long encoder_value_ = 0;
     int rpm_ = 0;
 };
-
-Motor* Motor::instances[3] = {nullptr, nullptr, nullptr};
-void (*Motor::wrapper_functions[3])() = {Motor::encoder_func_wrapper0, Motor::encoder_func_wrapper1, Motor::encoder_func_wrapper2};
