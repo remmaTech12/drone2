@@ -113,12 +113,14 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
         return;
     }
 
+#ifdef DEBUG_MOTOR_COMMAND
     Serial.print("roll_ctrl: ");
     Serial.print(ctl_data[0]);
     Serial.print(", pitch_ctrl: ");
     Serial.print(ctl_data[1]);
     Serial.print(", yaw_ctrl: ");
     Serial.println(ctl_data[2]);
+#endif
 
     int motor_data[4] = {0, 0, 0, 0};
     int cmd_thrust = 0;
@@ -146,11 +148,12 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
 }
 
 int Motor::calculate_thrust(double thrust_scale, int cmd_data[4]) {
-    double kth = 40;
+    constexpr double kth = 40;
+    constexpr double kth_scale = 3.0;
     if (cmd_data[0] < kth) {
-        cmd_data[0] *= 3;
+        cmd_data[0] *= kth_scale;
     } else {
-        cmd_data[0] = ((LIMIT_MOTOR - 3*kth) / (LIMIT_MOTOR - kth)) * (cmd_data[0] - kth) + 3*kth;
+        cmd_data[0] = ((LIMIT_MOTOR - kth_scale*kth) / (LIMIT_MOTOR - kth)) * (cmd_data[0] - kth) + kth_scale*kth;
     }
     int cmd_thrust = cmd_data[0]*thrust_scale;
     limit_command(cmd_thrust, 0, LIMIT_MOTOR*thrust_scale);
