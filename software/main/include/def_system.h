@@ -1,8 +1,10 @@
 // PIN allccation
-#define MOTOR_PWM1 12
-#define MOTOR_PWM2 13
-#define MOTOR_PWM3 14
-#define MOTOR_PWM4 15
+#define MOTOR_PWM1 32
+#define MOTOR_PWM2 33
+#define MOTOR_PWM3 25
+#define MOTOR_PWM4 26
+#define MOTOR_PWM5 27
+#define MOTOR_PWM6 14
 
 #define BUILTIN_LED 2
 #define LED_DEBUG_PIN 12
