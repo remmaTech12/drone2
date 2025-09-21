@@ -10,12 +10,14 @@
 #define MOTOR_DIR4 33
 
 #define BUILTIN_LED 2
+#define LED_DEBUG_PIN 12
+#define SW_DEBUG_PIN 34
 
 #define EMERGENCY_SWITCH 4
-
+#define PMW3901_CS_PIN 5
 
 // System setting
-#define SAMPLING_TIME_MS 14
+#define SAMPLING_TIME_MS 20
 #define RECEIVE_DATA_SIZE 7
 #define PID_MAX 2000
 #define LIMIT_MOTOR 255

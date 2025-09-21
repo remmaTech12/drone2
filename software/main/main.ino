@@ -13,6 +13,7 @@ Motor motor;
 Arm arm;
 Emergency emergency;
 Control control;
+unsigned long previous_ms = 0;
 
 void setup() {
     Serial.begin(115200);
@@ -26,6 +27,10 @@ void setup() {
 }
 
 void loop() {
+    unsigned long current_ms = millis();
+    if (current_ms - previous_ms < SAMPLING_TIME_MS) return;
+    previous_ms = current_ms;
+
     int cmd_data[4];
     float ang_data[3];
     float angvel_data[3];
