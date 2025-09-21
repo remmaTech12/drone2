@@ -3,15 +3,6 @@
 Motor::Motor() {}
 
 void Motor::setup() {
-    pinMode(MOTOR_DIR1, OUTPUT);
-    pinMode(MOTOR_DIR2, OUTPUT);
-    pinMode(MOTOR_DIR3, OUTPUT);
-    pinMode(MOTOR_DIR4, OUTPUT);
-    digitalWrite(MOTOR_DIR1, HIGH);
-    digitalWrite(MOTOR_DIR2, HIGH);
-    digitalWrite(MOTOR_DIR3, LOW);
-    digitalWrite(MOTOR_DIR4, LOW);
-
     pinMode(MOTOR_PWM1, OUTPUT);
     pinMode(MOTOR_PWM2, OUTPUT);
     pinMode(MOTOR_PWM3, OUTPUT);

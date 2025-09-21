@@ -4,16 +4,11 @@
 #define MOTOR_PWM3 14
 #define MOTOR_PWM4 15
 
-#define MOTOR_DIR1 18
-#define MOTOR_DIR2 19
-#define MOTOR_DIR3 32
-#define MOTOR_DIR4 33
-
 #define BUILTIN_LED 2
 #define LED_DEBUG_PIN 12
 #define SW_DEBUG_PIN 34
 
-#define EMERGENCY_SWITCH 4
+#define EMERGENCY_SWITCH 34
 #define PMW3901_CS_PIN 5
 
 // System setting
