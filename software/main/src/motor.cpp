@@ -16,17 +16,11 @@ void Motor::setup() {
     pinMode(MOTOR_PWM2, OUTPUT);
     pinMode(MOTOR_PWM3, OUTPUT);
     pinMode(MOTOR_PWM4, OUTPUT);
-    ledcSetup(0, 12800, 8);
-    ledcAttachPin(MOTOR_PWM1, 0);
-    ledcSetup(1, 12800, 8);
-    ledcAttachPin(MOTOR_PWM2, 1);
-    ledcSetup(2, 12800, 8);
-    ledcAttachPin(MOTOR_PWM3, 2);
-    ledcSetup(3, 12800, 8);
-    ledcAttachPin(MOTOR_PWM4, 3);
-    for (int i = 0; i < 4; i++) {
-        ledcWrite(i, 0);
-    }
+
+    analogWrite(MOTOR_PWM1, 0);
+    analogWrite(MOTOR_PWM2, 0);
+    analogWrite(MOTOR_PWM3, 0);
+    analogWrite(MOTOR_PWM4, 0);
 }
 
 /*
@@ -65,9 +59,10 @@ void Motor::limit_command(int &cmd, int min, int max) {
 }
 
 void Motor::stop_motor() {
-    for (int i=0; i<4; i++) {
-        ledcWrite(i, 0);
-    }
+    analogWrite(MOTOR_PWM1, 0);
+    analogWrite(MOTOR_PWM2, 0);
+    analogWrite(MOTOR_PWM3, 0);
+    analogWrite(MOTOR_PWM4, 0);
 }
 
 /*
@@ -148,9 +143,10 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
         limit_command(motor_data[i], 0, LIMIT_MOTOR);
     };
 
-    for (int i=0; i<4; i++) {
-        ledcWrite(i, motor_data[i]);
-    }
+    analogWrite(MOTOR_PWM1, motor_data[0]);
+    analogWrite(MOTOR_PWM2, motor_data[1]);
+    analogWrite(MOTOR_PWM3, motor_data[2]);
+    analogWrite(MOTOR_PWM4, motor_data[3]);
 
 #ifdef DEBUG_MOTOR_COMMAND
     Serial.print("MOTOR COMMAND: ");

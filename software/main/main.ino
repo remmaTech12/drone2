@@ -1,12 +1,12 @@
 #include "./include/recv.h"
-#include "./include/imu_bmx055.h"
+#include "./include/imu_bno055.h"
 #include "./include/pid.h"
 #include "./include/motor.h"
 #include "./include/def_system.h"
 #include "./include/emergency.h"
 #include "./include/control.h"
 
-imu_bmx055 imu;
+imu_bno055 imu_sensor;
 Receiver receiver;
 PID pid;
 Motor motor;
@@ -17,7 +17,7 @@ Control control;
 void setup() {
     Serial.begin(115200);
 
-    imu.setup();
+    imu_sensor.setup();
     receiver.setup();
     motor.setup();
     emergency.setup();
@@ -38,8 +38,8 @@ void loop() {
     receiver.set_arm_status(arm);
     receiver.emergency_stop(arm, motor);
 
-    imu.get_attitude_data(ang_data);
-    imu.get_angvel_data(angvel_data);
+    imu_sensor.get_attitude_data(ang_data);
+    imu_sensor.get_angvel_data(angvel_data);
 
     control.calculate_pid_ang(cmd_data, ang_data);
     control.calculate_pid_angvel(angvel_data);
