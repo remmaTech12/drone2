@@ -4,7 +4,7 @@
 Emergency::Emergency() {}
 
 void Emergency::setup() {
-    pinMode(EMERGENCY_SWITCH, INPUT_PULLUP);
+    pinMode(EMERGENCY_SWITCH, INPUT);
 }
 
 void Emergency::emergency_stop(Arm &arm, Motor &motor) {
