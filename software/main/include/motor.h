@@ -9,7 +9,7 @@ class Motor {
     Motor();
 
     void setup();
-    //void test_control(int motor_val);
+    void test_control(int motor_val);
     //void test_count();
     void control(int cmd_data[4], float pid_rpy[3], Arm &arm);
     void stop_motor();

@@ -5,31 +5,39 @@ Motor::Motor() {}
 void Motor::setup() {
     pinMode(MOTOR_PWM1, OUTPUT);
     pinMode(MOTOR_PWM2, OUTPUT);
-    pinMode(MOTOR_PWM3, OUTPUT);
-    pinMode(MOTOR_PWM4, OUTPUT);
+//    pinMode(MOTOR_PWM3, OUTPUT);
+//    pinMode(MOTOR_PWM4, OUTPUT);
+    pinMode(MOTOR_PWM5, OUTPUT);
+    pinMode(MOTOR_PWM6, OUTPUT);
 
     analogWrite(MOTOR_PWM1, 0);
     analogWrite(MOTOR_PWM2, 0);
-    analogWrite(MOTOR_PWM3, 0);
-    analogWrite(MOTOR_PWM4, 0);
+//    analogWrite(MOTOR_PWM3, 0);
+//    analogWrite(MOTOR_PWM4, 0);
+    analogWrite(MOTOR_PWM5, 0);
+    analogWrite(MOTOR_PWM6, 0);
 }
 
-/*
 void Motor::test_control(int motor_val) {
     int test_motor_val = motor_val;
-    if (digitalRead(EMERGENCY_SWITCH) == LOW) {
-        ledcWrite(0, test_motor_val);
-        ledcWrite(1, test_motor_val);
-        ledcWrite(2, test_motor_val);
-        ledcWrite(3, test_motor_val);
+    if (digitalRead(EMERGENCY_SWITCH) == HIGH) {
+        analogWrite(MOTOR_PWM1, test_motor_val);
+        analogWrite(MOTOR_PWM2, test_motor_val);
+//        analogWrite(MOTOR_PWM3, test_motor_val);
+//        analogWrite(MOTOR_PWM4, test_motor_val);
+        analogWrite(MOTOR_PWM5, test_motor_val);
+        analogWrite(MOTOR_PWM6, test_motor_val);
     } else {
-        ledcWrite(0, 0);
-        ledcWrite(1, 0);
-        ledcWrite(2, 0);
-        ledcWrite(3, 0);
+        analogWrite(MOTOR_PWM1, 0);
+        analogWrite(MOTOR_PWM2, 0);
+//        analogWrite(MOTOR_PWM3, 0);
+//        analogWrite(MOTOR_PWM4, 0);
+        analogWrite(MOTOR_PWM5, 0);
+        analogWrite(MOTOR_PWM6, 0);
     }
 }
 
+/*
 void Motor::test_count() {
     if (pre_button == HIGH && digitalRead(EMERGENCY_SWITCH) == LOW) {
         tcount += 5;
@@ -54,6 +62,8 @@ void Motor::stop_motor() {
     analogWrite(MOTOR_PWM2, 0);
     analogWrite(MOTOR_PWM3, 0);
     analogWrite(MOTOR_PWM4, 0);
+    analogWrite(MOTOR_PWM5, 0);
+    analogWrite(MOTOR_PWM6, 0);
 }
 
 /*
@@ -138,8 +148,8 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
 
     analogWrite(MOTOR_PWM1, motor_data[0]);
     analogWrite(MOTOR_PWM2, motor_data[1]);
-    analogWrite(MOTOR_PWM3, motor_data[2]);
-    analogWrite(MOTOR_PWM4, motor_data[3]);
+    analogWrite(MOTOR_PWM5, motor_data[2]);
+    analogWrite(MOTOR_PWM6, motor_data[3]);
 
 #ifdef DEBUG_MOTOR_COMMAND
     Serial.print("MOTOR COMMAND: ");
