@@ -34,6 +34,7 @@ void imu_bno055::get_angvel_data(float data[3]) {
   data[0] = angVelocityData.gyro.x;
   data[1] = angVelocityData.gyro.y;
   data[2] = angVelocityData.gyro.z;
+  // printIMUEvent(&angVelocityData);
 }
 
 void imu_bno055::calibrate() {
