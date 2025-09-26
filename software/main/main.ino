@@ -19,7 +19,7 @@ void setup() {
     Serial.begin(115200);
 
     imu_sensor.setup();
-    //receiver.setup();
+    receiver.setup();
     motor.setup();
     emergency.setup();
 
@@ -47,12 +47,10 @@ void loop() {
 
     emergency.emergency_stop(arm, motor);
 
-    /*
     receiver.update_data();
     receiver.get_command(cmd_data);
     receiver.set_arm_status(arm);
     receiver.emergency_stop(arm, motor);
-    */
 
     imu_sensor.get_attitude_data(ang_data);
     imu_sensor.get_angvel_data(angvel_data);
@@ -62,6 +60,5 @@ void loop() {
     control.get_control_val(ctl_data);
 
     // motor.control(cmd_data, ctl_data, arm);
-    // motor.test_control(cmd_data[0]);
-    motor.test_control(255);
+    motor.test_control(cmd_data[0]);
 }
