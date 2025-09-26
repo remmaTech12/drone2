@@ -1,51 +1,6 @@
 #include "Transmit.h"
 
-// BLE Callbacks
-class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
-private:
-    Transmit* transmit;
-    
-public:
-    MyAdvertisedDeviceCallbacks(Transmit* tx) : transmit(tx) {}
-    
-    void onResult(BLEAdvertisedDevice advertisedDevice) {
-        Serial.print("BLE Advertised Device found: ");
-        Serial.println(advertisedDevice.toString().c_str());
-        
-        // ESP32_Drone_BLEデバイスを探す（UUIDとデバイス名の両方で確認）
-        if (advertisedDevice.haveServiceUUID() && 
-            advertisedDevice.isAdvertisingService(BLEUUID("12345678-1234-1234-1234-123456789abc")) &&
-            advertisedDevice.haveName() && advertisedDevice.getName() == "ESP32_Drone_BLE") {
-            
-            Serial.println("Found target BLE device with matching UUID and name");
-            Serial.print("Device Address: ");
-            Serial.println(advertisedDevice.getAddress().toString().c_str());
-            
-            BLEDevice::getScan()->stop();
-            transmit->myDevice = new BLEAdvertisedDevice(advertisedDevice);
-            transmit->doConnect = true;
-            transmit->doScan = true;
-        }
-    }
-};
-
-class MyClientCallback : public BLEClientCallbacks {
-private:
-    Transmit* transmit;
-    
-public:
-    MyClientCallback(Transmit* tx) : transmit(tx) {}
-    
-    void onConnect(BLEClient* pclient) {
-        transmit->connected = true;
-        Serial.println("Connected to BLE Server");
-    }
-
-    void onDisconnect(BLEClient* pclient) {
-        transmit->connected = false;
-        Serial.println("Disconnected from BLE Server");
-    }
-};
+BluetoothSerial SerialBT;
 
 Transmit::Transmit() {}
 
@@ -57,20 +12,23 @@ void Transmit::setup() {
 }
 
 void Transmit::bluetooth_setup() {
-    Serial.println("Starting BLE Client...");
-    
-    BLEDevice::init("");
-    pClient = BLEDevice::createClient();
-    pClient->setClientCallbacks(new MyClientCallback(this));
-    
-    BLEScan* pBLEScan = BLEDevice::getScan();
-    pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks(this));
-    pBLEScan->setInterval(1349);
-    pBLEScan->setWindow(449);
-    pBLEScan->setActiveScan(true);
-    
-    Serial.println("Scanning for BLE devices...");
-    pBLEScan->start(5, false);
+    SerialBT.begin("ESP32test", true);
+    Serial.println("The device started in master mode, make sure remote BT device is on!");
+
+    connected = SerialBT.connect(address);
+    if (connected) {
+        Serial.println("Connected Succesfully!");
+    } else {
+        while (!SerialBT.connected(10000)) {
+            Serial.println(
+                "Failed to connect. Make sure remote device is available and "
+                "in range, then restart app.");
+        }
+    }
+    if (SerialBT.disconnect()) {
+        Serial.println("Disconnected Succesfully!");
+    }
+    SerialBT.connect();
 }
 
 void Transmit::notify_bluetooth_setup_finished() {
@@ -100,40 +58,6 @@ uint8_t Transmit::pack_switch_data() {
 }
 
 void Transmit::transmit_data() {
-    // BLE接続の管理
-    if (doConnect == true) {
-        if (connectToServer()) {
-            Serial.println("We are now connected to the BLE Server.");
-        } else {
-            Serial.println("We have failed to connect to the server; there is nothing more we will do.");
-        }
-        doConnect = false;
-    }
-
-    // 接続が切れた場合の再スキャン
-    if (connected == false && doScan == true) {
-        BLEDevice::getScan()->start(0);  // this is just example to start scan after disconnect, most of the times you want to do it in callback
-        doScan = false;
-    }
-
-    // デバッグ情報を追加
-    static unsigned long last_debug_time = 0;
-    if (millis() - last_debug_time > 1000) { // 1秒ごとにデバッグ情報を出力
-        Serial.print("Transmitter Status - Connected: ");
-        Serial.print(connected);
-        Serial.print(", DoConnect: ");
-        Serial.print(doConnect);
-        Serial.print(", DoScan: ");
-        Serial.println(doScan);
-        last_debug_time = millis();
-    }
-
-    // 接続されていない場合は送信しない
-    if (!connected) {
-        delay(m_sampling_time_ms);
-        return;
-    }
-
     uint8_t send_data[TRANSMIT_DATA_SIZE];
 
     input.sense_value();
@@ -175,49 +99,7 @@ void Transmit::transmit_data() {
     send_data[4] = input.get_right_x_val();
     send_data[5] = pack_switch_data();
     send_data[6] = calculate_checksum(send_data);
-    
-    // BLEでデータ送信
-    if (pCharacteristic != nullptr) {
-        pCharacteristic->writeValue(send_data, TRANSMIT_DATA_SIZE);
-    }
+    SerialBT.write(send_data, sizeof(send_data)/sizeof(send_data[0]));
 
     delay(m_sampling_time_ms);
-}
-
-bool Transmit::connectToServer() {
-    Serial.print("Forming a connection to ");
-    Serial.println(myDevice->getAddress().toString().c_str());
-    
-    pClient->connect(myDevice);
-    Serial.println(" - Connected to server");
-
-    // Obtain a reference to the service we are after in the remote BLE server.
-    BLERemoteService* pRemoteService = pClient->getService(BLEUUID("12345678-1234-1234-1234-123456789abc"));
-    if (pRemoteService == nullptr) {
-        Serial.print("Failed to find our service UUID: ");
-        Serial.println("12345678-1234-1234-1234-123456789abc");
-        pClient->disconnect();
-        return false;
-    }
-    Serial.println(" - Found our service");
-
-    // Obtain a reference to the characteristic in the service of the remote BLE server.
-    pCharacteristic = pRemoteService->getCharacteristic(BLEUUID("87654321-4321-4321-4321-cba987654321"));
-    if (pCharacteristic == nullptr) {
-        Serial.print("Failed to find our characteristic UUID: ");
-        Serial.println("87654321-4321-4321-4321-cba987654321");
-        pClient->disconnect();
-        return false;
-    }
-    Serial.println(" - Found our characteristic");
-
-    // BLERemoteCharacteristicでは直接データを送信するだけでOK
-    Serial.println(" - Ready to send data");
-
-    return true;
-}
-
-void Transmit::scanForBLE() {
-    BLEScan* pBLEScan = BLEDevice::getScan();
-    pBLEScan->start(5, false);
 }

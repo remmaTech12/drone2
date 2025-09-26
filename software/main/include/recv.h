@@ -2,10 +2,7 @@
 #define Receiver_h
 #include "def_system.h"
 #include "Arduino.h"
-#include "BLEDevice.h"
-#include "BLEServer.h"
-#include "BLEUtils.h"
-#include "BLE2902.h"
+#include "BluetoothSerial.h"
 #include "arm.h"
 #include "motor.h"
 
@@ -13,11 +10,7 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
-class MyCallbacks;
-
 class Receiver {
-    friend class MyCallbacks;
-    
    public:
     Receiver();
 
@@ -32,7 +25,6 @@ class Receiver {
     int disconnect_count = 0;
     bool first_byte_check = true;
     bool checksum_success = true;
-    bool is_data_available = false;
     uint8_t recv_data[RECEIVE_DATA_SIZE];
     uint8_t pre_left_sw_data  = 0x00;
     uint8_t pre_right_sw_data = 0x00;
@@ -40,7 +32,6 @@ class Receiver {
     void notify_bluetooth_setup_finished();
     uint8_t calculate_checksum();
     bool is_right_switch_pressed();
-    void handleBLEWrite(String rxValue);
 };
 
 #endif  // #ifndef Receiver_h

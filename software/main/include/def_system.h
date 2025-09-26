@@ -27,7 +27,7 @@
 
 // Debug setting
 //#define DEBUG_RECV_SWITCH
-#define DEBUG_RECV_JOYSTICK
+//#define DEBUG_RECV_JOYSTICK
 //#define DEBUG_PID_COMMAND
 //#define DEBUG_RECV_COMMAND
 //#define DEBUG_MOTOR_COMMAND

@@ -16,10 +16,10 @@ Control control;
 unsigned long previous_ms = 0;
 
 void setup() {
-    // Serial.begin(115200);  // メモリ節約のため無効化
+    Serial.begin(115200);
 
     imu_sensor.setup();
-    receiver.setup();  // BLE通信を有効化
+    //receiver.setup();
     motor.setup();
     emergency.setup();
 
@@ -35,23 +35,24 @@ void setup() {
     delay(300);
 }
 
-int cmd_data[4];
-float ang_data[3];
-float angvel_data[3];
-float ctl_data[3];
-
 void loop() {
     unsigned long current_ms = millis();
     if (current_ms - previous_ms < SAMPLING_TIME_MS) return;
     previous_ms = current_ms;
 
+    int cmd_data[4];
+    float ang_data[3];
+    float angvel_data[3];
+    float ctl_data[3];
+
     emergency.emergency_stop(arm, motor);
 
+    /*
     receiver.update_data();
     receiver.get_command(cmd_data);
-    motor.test_control(cmd_data[0]);
     receiver.set_arm_status(arm);
     receiver.emergency_stop(arm, motor);
+    */
 
     imu_sensor.get_attitude_data(ang_data);
     imu_sensor.get_angvel_data(angvel_data);
@@ -61,4 +62,6 @@ void loop() {
     control.get_control_val(ctl_data);
 
     // motor.control(cmd_data, ctl_data, arm);
+    // motor.test_control(cmd_data[0]);
+    motor.test_control(255);
 }
