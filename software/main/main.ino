@@ -6,9 +6,11 @@
 #include "./include/emergency.h"
 #include "./include/control.h"
 #include "./include/flow_pmw3901.h"
+#include "./include/tof_vl53l1x.h"
 
 imu_bno055 imu_sensor;
 flow_pmw3901 flow_sensor;
+tof_vl53l1x tof_sensor;
 Receiver receiver;
 PID pid;
 Motor motor;
@@ -22,6 +24,7 @@ void setup() {
 
     imu_sensor.setup();
     flow_sensor.setup();
+    tof_sensor.setup();
     receiver.setup();
     motor.setup();
     emergency.setup();
@@ -48,6 +51,7 @@ void loop() {
     float angvel_data[3];
     float ctl_data[3];
     int flow_data[2];
+    int16_t distance;
 
     emergency.emergency_stop(arm, motor);
 
@@ -61,6 +65,9 @@ void loop() {
 
     flow_sensor.readMotionCount(flow_data);
     flow_sensor.printMotionCount();
+
+    tof_sensor.readDistance(distance);
+    tof_sensor.printDistance();
 
     control.calculate_pid_ang(cmd_data, ang_data);
     control.calculate_pid_angvel(angvel_data);
