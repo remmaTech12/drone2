@@ -1,3 +1,4 @@
+#pragma once
 // PIN allccation
 #define MOTOR_PWM1 32
 #define MOTOR_PWM2 26
@@ -11,7 +12,8 @@
 #define SW_DEBUG_PIN 34
 
 #define EMERGENCY_SWITCH 34
-#define PMW3901_CS_PIN 5
+//#define PMW3901_CS_PIN 5
+const int PMW3901_CS_PIN = 5;
 
 // System setting
 #define SAMPLING_TIME_MS 20

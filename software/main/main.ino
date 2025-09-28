@@ -5,8 +5,10 @@
 #include "./include/def_system.h"
 #include "./include/emergency.h"
 #include "./include/control.h"
+#include "./include/flow_pmw3901.h"
 
 imu_bno055 imu_sensor;
+flow_pmw3901 flow_sensor;
 Receiver receiver;
 PID pid;
 Motor motor;
@@ -19,6 +21,7 @@ void setup() {
     Serial.begin(115200);
 
     imu_sensor.setup();
+    flow_sensor.setup();
     receiver.setup();
     motor.setup();
     emergency.setup();
@@ -44,6 +47,7 @@ void loop() {
     float ang_data[3];
     float angvel_data[3];
     float ctl_data[3];
+    int flow_data[2];
 
     emergency.emergency_stop(arm, motor);
 
@@ -54,6 +58,9 @@ void loop() {
 
     imu_sensor.get_attitude_data(ang_data);
     imu_sensor.get_angvel_data(angvel_data);
+
+    flow_sensor.readMotionCount(flow_data);
+    flow_sensor.printMotionCount();
 
     control.calculate_pid_ang(cmd_data, ang_data);
     control.calculate_pid_angvel(angvel_data);
