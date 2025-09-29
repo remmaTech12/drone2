@@ -41,17 +41,17 @@ void setup() {
     delay(300);
 }
 
+int cmd_data[4];
+float ang_data[3];
+float angvel_data[3];
+float ctl_data[3];
+int flow_data[2];
+int16_t distance;
+
 void loop() {
     unsigned long current_ms = millis();
     if (current_ms - previous_ms < SAMPLING_TIME_MS) return;
     previous_ms = current_ms;
-
-    int cmd_data[4];
-    float ang_data[3];
-    float angvel_data[3];
-    float ctl_data[3];
-    int flow_data[2];
-    int16_t distance;
 
     emergency.emergency_stop(arm, motor);
 
@@ -75,4 +75,5 @@ void loop() {
 
     // motor.control(cmd_data, ctl_data, arm);
     motor.test_control(cmd_data[0]);
+    //motor.test_control(distance);
 }
