@@ -10,6 +10,28 @@ void imu_bno055::setup() {
   }
 }
 
+static inline void quatToRPY_ZYX(const imu::Quaternion& q_in,
+  float& roll_deg, float& pitch_deg, float& yaw_deg)
+{
+  float w = q_in.w(), x = q_in.x(), y = q_in.y(), z = q_in.z();
+  float n = sqrtf(w*w + x*x + y*y + z*z);
+  if (n > 0.f) { w/=n; x/=n; y/=n; z/=n; }
+  
+  float sinp = 2.f*(w*y - z*x);
+  if (sinp >  1.f) sinp =  1.f;
+  if (sinp < -1.f) sinp = -1.f;
+  
+  float roll  = atan2f(2.f*(w*x + y*z), 1.f - 2.f*(x*x + y*y));
+  float pitch = asinf(sinp);
+  float yaw   = atan2f(2.f*(w*z + x*y), 1.f - 2.f*(y*y + z*z));
+  
+  const float R2D = 180.0f / 3.14159265358979323846f;
+  roll_deg  = roll  * R2D;
+  pitch_deg = pitch * R2D;
+  yaw_deg   = yaw   * R2D;
+}
+
+
 void imu_bno055::get_attitude_data(float data[3]) {
   /*
   sensors_event_t angVelocityData;
@@ -29,14 +51,17 @@ void imu_bno055::get_attitude_data(float data[3]) {
   Serial.print(" ");
   Serial.println(accelerometerData.acceleration.z);
   */
-  sensors_event_t orientationData;
-  bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
+  imu::Quaternion q = bno.getQuat();
+  float roll_deg, pitch_deg, yaw_deg;
+  quatToRPY_ZYX(q, roll_deg, pitch_deg, yaw_deg);
+  //sensors_event_t orientationData;
+  //bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
 
-  double roll_deg  = -orientationData.orientation.z;
-  double pitch_deg = -orientationData.orientation.y;
-  double yaw_deg   = -orientationData.orientation.x;
+  //double roll_deg  = -orientationData.orientation.z;
+  //double pitch_deg = -orientationData.orientation.y;
+  //double yaw_deg   = -orientationData.orientation.x;
   auto clamp = [](float value) -> double {
-    while (value > 180.0) value -= 360.0;
+    while (value >  180.0) value -= 360.0;
     while (value < -180.0) value += 360.0;
     return value;
   };
