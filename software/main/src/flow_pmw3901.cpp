@@ -11,7 +11,14 @@ void flow_pmw3901::setup() {
 }
 
 void flow_pmw3901::readMotionCount(int data[2]) {
-  sensor.readMotionCount(&dx, &dy);
+  int16_t tmp_dx, tmp_dy;
+  sensor.readMotionCount(&tmp_dx, &tmp_dy);
+
+  // coordinate transformation
+  dx = -tmp_dy;
+  dy = -tmp_dx;
+
+  // store the data
   data[0] = dx;
   data[1] = dy;
 }
