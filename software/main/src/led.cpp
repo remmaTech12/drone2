@@ -16,3 +16,11 @@ void led::blink() {
     delay(50);
   }
 }
+
+void led::on() {
+  digitalWrite(LED_DEBUG_PIN, HIGH);
+}
+
+void led::off() {
+  digitalWrite(LED_DEBUG_PIN, LOW);
+}

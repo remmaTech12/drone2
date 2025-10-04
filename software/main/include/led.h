@@ -8,6 +8,8 @@ class led {
 
     void setup();
     void blink();
+    void on();
+    void off();
 
   private:
     int led_pin;
