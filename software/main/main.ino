@@ -47,21 +47,22 @@ void loop() {
     if (current_ms - previous_ms < SAMPLING_TIME_MS) return;
     previous_ms = current_ms;
 
-    emergency.emergency_stop(arm, motor);
-
     receiver.update_data();
     receiver.get_command(cmd_data);
     receiver.set_arm_status(arm);
     receiver.emergency_stop(arm, motor);
 
+    if (arm.get_arm_status()) led.on();
+    else led.off();
+
     imu_sensor.get_attitude_data(ang_data);
     imu_sensor.get_angvel_data(angvel_data);
 
     flow_sensor.readMotionCount(flow_data);
-    flow_sensor.printMotionCount();
+    //flow_sensor.printMotionCount();
 
     tof_sensor.readDistance(distance);
-    tof_sensor.printDistance();
+    //tof_sensor.printDistance();
 
     control.calculate_pid_ang(cmd_data, ang_data);
     control.calculate_pid_angvel(angvel_data);
