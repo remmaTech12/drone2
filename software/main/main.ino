@@ -2,6 +2,7 @@
 #include "./include/imu_bno055.h"
 #include "./include/pid.h"
 #include "./include/motor.h"
+#include "./include/led.h"
 #include "./include/def_system.h"
 #include "./include/emergency.h"
 #include "./include/control.h"
@@ -17,6 +18,7 @@ Motor motor;
 Arm arm;
 Emergency emergency;
 Control control;
+led led;
 unsigned long previous_ms = 0;
 
 void setup() {
@@ -28,15 +30,7 @@ void setup() {
     receiver.setup();
     motor.setup();
     emergency.setup();
-
-    pinMode(LED_DEBUG_PIN, OUTPUT);
-    // blink LED_DEBUG_PIN 3 times
-    for (int i = 0; i < 3; i++) {
-        digitalWrite(LED_DEBUG_PIN, HIGH);
-        delay(100);
-        digitalWrite(LED_DEBUG_PIN, LOW);
-        delay(100);
-    }
+    led.setup();
 
     delay(300);
 }
