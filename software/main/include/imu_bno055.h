@@ -1,7 +1,6 @@
 #pragma once
 #include "def_system.h"
 #include <Adafruit_BNO055.h>
-#include "MadgwickAHRS.h"
 
 class imu_bno055 {
   public:
@@ -16,5 +15,4 @@ class imu_bno055 {
 
   private:
     Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
-    Madgwick madgwick;
 };

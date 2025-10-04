@@ -8,16 +8,14 @@ void imu_bno055::setup() {
   {
     Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
   }
-  const double SAMPLE_FREQUENCY = 1.0 / (SAMPLING_TIME_MS * 0.001);
-  madgwick.begin(SAMPLE_FREQUENCY);
 }
 
 void imu_bno055::get_attitude_data(float data[3]) {
+  /*
   sensors_event_t angVelocityData;
   bno.getEvent(&angVelocityData, Adafruit_BNO055::VECTOR_GYROSCOPE);
   sensors_event_t accelerometerData;
   bno.getEvent(&accelerometerData, Adafruit_BNO055::VECTOR_ACCELEROMETER);
-  /*
   Serial.print("angvel: ");
   Serial.print(angVelocityData.gyro.x);
   Serial.print(" ");
@@ -30,45 +28,31 @@ void imu_bno055::get_attitude_data(float data[3]) {
   Serial.print(accelerometerData.acceleration.y);
   Serial.print(" ");
   Serial.println(accelerometerData.acceleration.z);
-  madgwick.updateIMU(angVelocityData.gyro.x, angVelocityData.gyro.y, angVelocityData.gyro.z,
-                     accelerometerData.acceleration.x, accelerometerData.acceleration.y, accelerometerData.acceleration.z);
-  data[0] = madgwick.getRoll();
-  data[1] = madgwick.getPitch();
-  data[2] = madgwick.getYaw();
-  Serial.print("Roll: ");
-  Serial.print(data[0]);
-  Serial.print(" Pitch: ");
-  Serial.print(data[1]);
-  Serial.print(" Yaw: ");
-  Serial.println(data[2]);
   */
   sensors_event_t orientationData;
   bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
-  data[2] = -orientationData.orientation.x;
-  data[1] = -orientationData.orientation.y;
-  data[0] = -orientationData.orientation.z;
-  // clamp from -180 to 180
-  // create a small macro
-  // use while loop to clamp
-  // please create a lambda function to clamp
+
+  double roll_deg  = -orientationData.orientation.z;
+  double pitch_deg = -orientationData.orientation.y;
+  double yaw_deg   = -orientationData.orientation.x;
   auto clamp = [](float value) -> double {
-    while (value > 180.0) {
-      value -= 360.0;
-    }
-    while (value < -180.0) {
-      value += 360.0;
-    }
+    while (value > 180.0) value -= 360.0;
+    while (value < -180.0) value += 360.0;
     return value;
   };
-  const double roll  = clamp(data[0]);
-  const double pitch = clamp(data[1]);
-  const double yaw   = clamp(data[2]);
+  roll_deg  = clamp(roll_deg);
+  pitch_deg = clamp(pitch_deg);
+  yaw_deg   = clamp(yaw_deg);
   Serial.print("Euler: ");
-  Serial.print(roll);
+  Serial.print(roll_deg);
   Serial.print(" ");
-  Serial.print(pitch);
+  Serial.print(pitch_deg);
   Serial.print(" ");
-  Serial.println(yaw);
+  Serial.println(yaw_deg);
+
+  data[0] = roll_deg * DEG_TO_RAD;
+  data[1] = pitch_deg * DEG_TO_RAD;
+  data[2] = yaw_deg * DEG_TO_RAD;
 }
 
 void imu_bno055::get_accel_data(float data[3]) {
