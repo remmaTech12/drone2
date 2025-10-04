@@ -19,7 +19,6 @@ void Motor::setup() {
 }
 
 void Motor::test_control(int motor_val) {
-    Serial.println(motor_val);
     constexpr int offset = 118;
     int test_motor_val = (motor_val - offset) * 2.0;
     //int test_motor_val = motor_val * 10.0;
