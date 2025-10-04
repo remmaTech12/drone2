@@ -10,6 +10,6 @@ void Emergency::setup() {
 void Emergency::emergency_stop(Arm &arm, Motor &motor) {
     if (digitalRead(EMERGENCY_SWITCH) == LOW) {
         arm.set_arm_status(false);
-        //motor.stop_motor();
+        motor.stop_motor();
     }
 }
