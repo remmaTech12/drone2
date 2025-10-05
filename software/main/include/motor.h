@@ -11,7 +11,7 @@ class Motor {
     void setup();
     void test_control(int motor_val);
     //void test_count();
-    void control(int cmd_data[4], float pid_rpy[3], Arm &arm);
+    void control(int cmd_data[4], float pid_rpy[3], Arm &arm, int16_t height);
     void stop_motor();
 
    private:
@@ -26,6 +26,7 @@ class Motor {
     void limit_command(int &cmd, int min, int max);
     //void debug_print(int data[4]);
     int calculate_thrust(double thrust_scale, int cmd_data[4]);
+    int calculate_thrust_based_on_height(int cmd_data[4], int16_t height, double thrust_scale);
     void calculate_motor_control(float ctl_data[3], int motor_data[4]);
 };
 

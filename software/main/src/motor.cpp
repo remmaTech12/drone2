@@ -112,7 +112,7 @@ void Motor::format_pid_data(float pid_data[3]) {
 }
 */
 
-void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
+void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, int16_t height) {
     if (arm.get_arm_status() == false) { 
         stop_motor();
         return;
@@ -129,15 +129,16 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
 
     int motor_data[4] = {0, 0, 0, 0};
     int cmd_thrust = 0;
-    double thrust_scale = 0.65;
+    double thrust_scale = 0.9;
 
-    cmd_thrust = calculate_thrust(thrust_scale, cmd_data);
+    //cmd_thrust = calculate_thrust(thrust_scale, cmd_data);
+    cmd_thrust = calculate_thrust_based_on_height(cmd_data, height, thrust_scale);
     calculate_motor_control(ctl_data, motor_data);
 
     for (int i = 0; i < 4; i++) {
-//        double ctl_limit = LIMIT_MOTOR * (1.0f - thrust_scale);
-//        limit_command(motor_data[i], 0, ctl_limit);
-//        motor_data[i] += cmd_thrust;
+        double ctl_limit = LIMIT_MOTOR * (1.0f - thrust_scale);
+        limit_command(motor_data[i], 0, ctl_limit);
+        motor_data[i] += cmd_thrust;
         limit_command(motor_data[i], 0, LIMIT_MOTOR);
     };
 
@@ -168,6 +169,20 @@ int Motor::calculate_thrust(double thrust_scale, int cmd_data[4]) {
         cmd_data[0] = ((LIMIT_MOTOR - kth_scale*kth) / (LIMIT_MOTOR - kth)) * (cmd_data[0] - kth) + kth_scale*kth;
     }
     int cmd_thrust = cmd_data[0]*thrust_scale;
+    limit_command(cmd_thrust, 0, LIMIT_MOTOR*thrust_scale);
+
+    return cmd_thrust;
+}
+
+int Motor::calculate_thrust_based_on_height(int cmd_data[4], int16_t height, double thrust_scale) {
+    // TODO: should be in control.cpp
+    constexpr double max_height = 200.0;
+    constexpr double max_cmd_thrust = 255.0;
+    const double raw_cmd_thrust = cmd_data[0];
+    const double target_height = max_height / max_cmd_thrust * raw_cmd_thrust;
+
+    constexpr double Kp = 1.0;
+    int cmd_thrust = Kp * (target_height - height);
     limit_command(cmd_thrust, 0, LIMIT_MOTOR*thrust_scale);
 
     return cmd_thrust;
