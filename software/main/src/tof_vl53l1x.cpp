@@ -21,6 +21,10 @@ void tof_vl53l1x::readDistance(int16_t &dist) {
   }
 }
 
+int16_t tof_vl53l1x::getDistance() {
+  return distance;
+}
+
 void tof_vl53l1x::printDistance() {
   Serial.print("VL53L1X sensor output: distance: ");
   Serial.print(distance);

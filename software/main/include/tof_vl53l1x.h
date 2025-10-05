@@ -8,6 +8,7 @@ class tof_vl53l1x {
 
     void setup();
     void readDistance(int16_t &dist);
+    int16_t getDistance();
     void printDistance();
 
   private:
