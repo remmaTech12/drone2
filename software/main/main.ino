@@ -62,9 +62,9 @@ void loop() {
     //flow_sensor.printMotionCount();
 
     tof_sensor.readDistance(distance);
+    const double height = tof_sensor.getDistance();
     //tof_sensor.printDistance();
 
-    cmd_data[0] = 0.0f;
     cmd_data[1] = 127.0f;
     cmd_data[2] = 127.0f;
     cmd_data[3] = 127.0f;
@@ -72,6 +72,6 @@ void loop() {
     control.calculate_pid_angvel(angvel_data);
     control.get_control_val(ctl_data);
 
-    motor.control(cmd_data, ctl_data, arm);
+    motor.control(cmd_data, ctl_data, arm, height);
     //motor.test_control(cmd_data[0]);
 }
