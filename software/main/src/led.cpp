@@ -18,9 +18,11 @@ void led::blink() {
 }
 
 void led::on() {
-  digitalWrite(LED_DEBUG_PIN, HIGH);
+  //digitalWrite(LED_DEBUG_PIN, HIGH);
+  analogWrite(LED_DEBUG_PIN, 10);
 }
 
 void led::off() {
-  digitalWrite(LED_DEBUG_PIN, LOW);
+  //digitalWrite(LED_DEBUG_PIN, LOW);
+  analogWrite(LED_DEBUG_PIN, 0);
 }
