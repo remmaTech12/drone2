@@ -46,7 +46,7 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
 
     float filtered_out_data[3] = {0.0f, 0.0f, 0.0f};
     double cutoff_freq = 10;
-    low_pass_filter(cutoff_freq, pre_filtered_control_data_,out_data, filtered_out_data);
+    low_pass_filter(cutoff_freq, pre_filtered_control_data_, out_data, filtered_out_data);
 
     for (int i=0; i<3; i++) {
         constexpr float max_cmd_val = 50.0f;
@@ -100,7 +100,7 @@ void Control::low_pass_filter(float cutoff_freq, float pre_filtered_data[3], flo
 }
 
 void Control::get_control_val(float ctl_data[3]) {
-    ctl_data[0] = angvel_ctl_data_[0];
-    ctl_data[1] = angvel_ctl_data_[1];
-    ctl_data[2] = angvel_ctl_data_[2];
+    ctl_data[0] = ang_ref_data_[0]; //angvel_ctl_data_[0];
+    ctl_data[1] = ang_ref_data_[1]; //angvel_ctl_data_[1];
+    ctl_data[2] = ang_ref_data_[2]; //angvel_ctl_data_[2];
 }
