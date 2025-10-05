@@ -21,25 +21,15 @@ void Motor::setup() {
 void Motor::test_control(int motor_val) {
     constexpr int offset = 118;
     int test_motor_val = (motor_val - offset) * 2.0;
-    //int test_motor_val = motor_val * 10.0;
     limit_command(test_motor_val, 0, 255);
-    //if (digitalRead(EMERGENCY_SWITCH) == HIGH) {
-        analogWrite(MOTOR_PWM1, test_motor_val);
-        analogWrite(MOTOR_PWM2, test_motor_val);
-//        analogWrite(MOTOR_PWM3, test_motor_val);
-//        analogWrite(MOTOR_PWM4, test_motor_val);
-        analogWrite(MOTOR_PWM5, test_motor_val);
-        analogWrite(MOTOR_PWM6, test_motor_val);
-        /*
-    } else {
-        analogWrite(MOTOR_PWM1, 0);
-        analogWrite(MOTOR_PWM2, 0);
-//        analogWrite(MOTOR_PWM3, 0);
-//        analogWrite(MOTOR_PWM4, 0);
-        analogWrite(MOTOR_PWM5, 0);
-        analogWrite(MOTOR_PWM6, 0);
-    }
-        */
+
+    //if (digitalRead(EMERGENCY_SWITCH) == LOW) { test_motor_val = 0; }
+    //else { test_motor_val = 100; }
+
+    analogWrite(MOTOR_PWM6, test_motor_val);
+    analogWrite(MOTOR_PWM5, test_motor_val);
+    analogWrite(MOTOR_PWM2, test_motor_val);
+    analogWrite(MOTOR_PWM1, test_motor_val);
 }
 
 /*
@@ -145,20 +135,27 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm) {
     calculate_motor_control(ctl_data, motor_data);
 
     for (int i = 0; i < 4; i++) {
-        double ctl_limit = LIMIT_MOTOR * (1.0f - thrust_scale);
-        limit_command(motor_data[i], 0, ctl_limit);
-        motor_data[i] += cmd_thrust;
+//        double ctl_limit = LIMIT_MOTOR * (1.0f - thrust_scale);
+//        limit_command(motor_data[i], 0, ctl_limit);
+//        motor_data[i] += cmd_thrust;
         limit_command(motor_data[i], 0, LIMIT_MOTOR);
     };
 
-    analogWrite(MOTOR_PWM1, motor_data[0]);
-    analogWrite(MOTOR_PWM2, motor_data[1]);
-    analogWrite(MOTOR_PWM5, motor_data[2]);
-    analogWrite(MOTOR_PWM6, motor_data[3]);
+    analogWrite(MOTOR_PWM6, motor_data[0]);
+    analogWrite(MOTOR_PWM5, motor_data[1]);
+    analogWrite(MOTOR_PWM2, motor_data[2]);
+    analogWrite(MOTOR_PWM1, motor_data[3]);
 
 #ifdef DEBUG_MOTOR_COMMAND
     Serial.print("MOTOR COMMAND: ");
-    debug_print(motor_data);
+    Serial.print("motor0: ");
+    Serial.print(motor_data[0]);
+    Serial.print(", motor1: ");
+    Serial.print(motor_data[1]);
+    Serial.print(", motor2: ");
+    Serial.print(motor_data[2]);
+    Serial.print(", motor3: ");
+    Serial.println(motor_data[3]);
 #endif
 }
 
@@ -177,8 +174,7 @@ int Motor::calculate_thrust(double thrust_scale, int cmd_data[4]) {
 }
 
 void Motor::calculate_motor_control(float ctl_data[3], int motor_data[4]) {
-    double offset_motor[4] = {22.0f, 0.0f, 23.0f, 32.0f};
-    //double offset_motor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+    double offset_motor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
     motor_data[0] = + ctl_data[0] - ctl_data[1] - ctl_data[2] + offset_motor[0];
     motor_data[1] = + ctl_data[0] + ctl_data[1] + ctl_data[2] + offset_motor[1];
     motor_data[2] = - ctl_data[0] + ctl_data[1] - ctl_data[2] + offset_motor[2];
