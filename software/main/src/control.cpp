@@ -100,7 +100,7 @@ void Control::low_pass_filter(float cutoff_freq, float pre_filtered_data[3], flo
 }
 
 void Control::get_control_val(float ctl_data[3]) {
-    ctl_data[0] = ang_ref_data_[0]; //angvel_ctl_data_[0];
-    ctl_data[1] = ang_ref_data_[1]; //angvel_ctl_data_[1];
-    ctl_data[2] = ang_ref_data_[2]; //angvel_ctl_data_[2];
+    ctl_data[0] = angvel_ctl_data_[0];
+    ctl_data[1] = angvel_ctl_data_[1];
+    ctl_data[2] = angvel_ctl_data_[2];
 }
