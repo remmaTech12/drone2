@@ -16,6 +16,8 @@ void Motor::setup() {
 //    analogWrite(MOTOR_PWM4, 0);
     analogWrite(MOTOR_PWM5, 0);
     analogWrite(MOTOR_PWM6, 0);
+
+    prev_time_ = millis();
 }
 
 void Motor::test_control(int motor_val) {
@@ -129,7 +131,7 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, int16_t height
 
     int motor_data[4] = {0, 0, 0, 0};
     int cmd_thrust = 0;
-    double thrust_scale = 0.9;
+    double thrust_scale = 0.7;
 
     //cmd_thrust = calculate_thrust(thrust_scale, cmd_data);
     cmd_thrust = calculate_thrust_based_on_height(cmd_data, height, thrust_scale);
@@ -182,7 +184,16 @@ int Motor::calculate_thrust_based_on_height(int cmd_data[4], int16_t height, dou
     const double target_height = max_height / max_cmd_thrust * raw_cmd_thrust;
 
     constexpr double Kp = 1.0;
-    int cmd_thrust = Kp * (target_height - height);
+    constexpr double Ki = 0.0;
+
+    const double err_height = target_height - height;
+    const double curr_time = millis();
+    const double dt = (curr_time - prev_time_) / 1000.0;
+    prev_time_ = curr_time;
+    err_height_i_ += err_height * dt;
+    err_height_i_ = std::clamp(err_height_i_, -500.0, 500.0);
+
+    int cmd_thrust = Kp * err_height + Ki * err_height_i_;
     limit_command(cmd_thrust, 0, LIMIT_MOTOR*thrust_scale);
 
     return cmd_thrust;

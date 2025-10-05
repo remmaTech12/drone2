@@ -21,6 +21,9 @@ class Motor {
     int tcount = 0;
     int pre_button = LOW;
 
+    double err_height_i_ = 0.0;
+    double prev_time_ = 0.0;
+
     //void format_cmd_data(int cmd_data[4]);
     //void format_pid_data(float pid_rpy[3]);
     void limit_command(int &cmd, int min, int max);
