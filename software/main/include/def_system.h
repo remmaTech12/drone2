@@ -28,6 +28,8 @@ const int PMW3901_CS_PIN = 5;
 #define CTL_CNT_TOTAL_NUM 100
 
 // Debug setting
+//#define DEBUG_IMU_ATTITUDE
+//#define DEBUG_IMU_ANGVEL
 //#define DEBUG_RECV_SWITCH
 //#define DEBUG_RECV_JOYSTICK
 //#define DEBUG_PID_COMMAND
