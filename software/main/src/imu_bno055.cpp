@@ -14,29 +14,26 @@ void imu_bno055::get_attitude_data(float data[3]) {
   sensors_event_t orientationData;
   bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
 
-  double roll_deg  = -orientationData.orientation.z;
-  double pitch_deg = -orientationData.orientation.y;
-  double yaw_deg   = -orientationData.orientation.x;
+  double raw_roll_deg  = -orientationData.orientation.z;
+  double raw_pitch_deg = -orientationData.orientation.y;
+  double raw_yaw_deg   = -orientationData.orientation.x;
   auto clamp = [](float value) -> double {
     while (value >  180.0) value -= 360.0;
     while (value < -180.0) value += 360.0;
     return value;
   };
-  roll_deg  = clamp(roll_deg);
-  pitch_deg = clamp(pitch_deg);
-  yaw_deg   = clamp(yaw_deg);
-  /*
-  Serial.print("Euler: ");
-  Serial.print(roll_deg);
-  Serial.print(" ");
-  Serial.print(pitch_deg);
-  Serial.print(" ");
-  Serial.println(yaw_deg);
-  */
+  data[0] = clamp(raw_roll_deg);  // deg
+  data[1] = clamp(raw_pitch_deg); // deg
+  data[2] = clamp(raw_yaw_deg);   // deg
 
-  data[0] = roll_deg * DEG_TO_RAD;
-  data[1] = pitch_deg * DEG_TO_RAD;
-  data[2] = yaw_deg * DEG_TO_RAD;
+#ifdef DEBUG_IMU_ATTITUDE
+  Serial.print("Euler: ");
+  Serial.print(data[0]);
+  Serial.print(" ");
+  Serial.print(data[1]);
+  Serial.print(" ");
+  Serial.println(data[2]);
+#endif
 }
 
 void imu_bno055::get_accel_data(float data[3]) {
@@ -50,9 +47,18 @@ void imu_bno055::get_accel_data(float data[3]) {
 void imu_bno055::get_angvel_data(float data[3]) {
   sensors_event_t angVelocityData;
   bno.getEvent(&angVelocityData, Adafruit_BNO055::VECTOR_GYROSCOPE);
-  data[0] = angVelocityData.gyro.x;
-  data[1] = angVelocityData.gyro.y;
-  data[2] = angVelocityData.gyro.z;
+  data[0] = angVelocityData.gyro.x * RAD_TO_DEG;
+  data[1] = angVelocityData.gyro.y * RAD_TO_DEG;
+  data[2] = angVelocityData.gyro.z * RAD_TO_DEG;
+
+#ifdef DEBUG_IMU_ANGVEL
+  Serial.print("Gyro: ");
+  Serial.print(data[0]);
+  Serial.print(" ");
+  Serial.print(data[1]);
+  Serial.print(" ");
+  Serial.println(data[2]);
+#endif
 }
 
 void imu_bno055::calibrate() {
