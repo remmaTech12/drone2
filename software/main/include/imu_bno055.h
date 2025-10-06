@@ -15,4 +15,6 @@ class imu_bno055 {
 
   private:
     Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
+    bool initialized_ = false;
+    std::vector<float> initial_attitude_data_ = {0.0f, 0.0f, 0.0f};
 };
