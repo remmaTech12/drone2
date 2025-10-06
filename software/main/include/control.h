@@ -9,7 +9,7 @@ class Control {
 
     void setup();
     void get_pid(float data[3]);
-    void calculate_pid_ang(int cmd_data[4], float ang_data[3]);
+    void calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_data[2]);
     void calculate_pid_angvel(float angvel_data[3]);
     void calculate_and_remove_bias(bool is_armed);
     void get_control_val(float ctl_data[3]);
@@ -21,7 +21,7 @@ class Control {
     void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
 
     // Gain for angles: roll, pitch, yaw
-    float Kp_ang_[3] = { 1.5f,  1.5f,  1.0f};
+    float Kp_ang_[3] = { 2.0f,  2.0f,  1.0f};
     float Ki_ang_[3] = { 0.0f,  0.0f,  0.0f};
     float Kd_ang_[3] = { 0.0f,  0.0f,  0.0f};
 

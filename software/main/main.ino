@@ -68,7 +68,7 @@ void loop() {
     cmd_data[1] = 127.0f;
     cmd_data[2] = 127.0f;
     cmd_data[3] = 127.0f;
-    control.calculate_pid_ang(cmd_data, ang_data);
+    control.calculate_pid_ang(cmd_data, ang_data, flow_data);
     control.calculate_pid_angvel(angvel_data);
     control.get_control_val(ctl_data);
 

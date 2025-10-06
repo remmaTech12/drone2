@@ -18,7 +18,7 @@ void Control::calculate_and_remove_bias(bool is_armed) {
     if (is_armed) cnt++;
 }
 
-void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
+void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_data[2]) {
     float ref_data[3];
     float out_data[3] = {0.0f, 0.0f, 0.0f};
     ref_data[0] = (float) (cmd_data[3] - 127.0f) / 2.0f;
@@ -31,8 +31,21 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     calculate_pid(ref_data, ang_data, err_ang_data_i_, pre_ang_data_, pre_filtered_ang_dterm_data_, out_data,
                   Kp_ang_, Ki_ang_, Kd_ang_);
 
+    // add flow compensation
+    /*
+    float Kp_flow = 10.0f;
+    int dx = flow_data[0];
+    int dy = flow_data[1];
+    out_data[0] += Kp_flow * dy;
+    out_data[1] += Kp_flow * -dx;
+    Serial.print("roll: ");
+    Serial.println(out_data[0]);
+    Serial.print("pitch: ");
+    Serial.println(out_data[1]);
+    */
+
     for (int i=0; i<3; i++) {
-        constexpr float max_cmd_val = 30.0f;
+        constexpr float max_cmd_val = 180.0f;
         limit_val(out_data[i], -max_cmd_val, max_cmd_val);
         ang_ref_data_[i] = out_data[i];
     }
@@ -49,7 +62,7 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
     low_pass_filter(cutoff_freq, pre_filtered_control_data_, out_data, filtered_out_data);
 
     for (int i=0; i<3; i++) {
-        constexpr float max_cmd_val = 50.0f;
+        constexpr float max_cmd_val = 255.0f;
         limit_val(out_data[i], -max_cmd_val, max_cmd_val);
         angvel_ctl_data_[i] = out_data[i];
     }
@@ -103,4 +116,7 @@ void Control::get_control_val(float ctl_data[3]) {
     ctl_data[0] = angvel_ctl_data_[0];
     ctl_data[1] = angvel_ctl_data_[1];
     ctl_data[2] = angvel_ctl_data_[2];
+    //ctl_data[0] = ang_ref_data_[0];
+    //ctl_data[1] = ang_ref_data_[1];
+    //ctl_data[2] = ang_ref_data_[2];
 }
