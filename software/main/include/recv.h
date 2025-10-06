@@ -5,6 +5,7 @@
 #include "BluetoothSerial.h"
 #include "arm.h"
 #include "motor.h"
+#include "esp_bt.h"
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it

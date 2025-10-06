@@ -6,6 +6,11 @@ Receiver::Receiver() {}
 
 void Receiver::setup() {
     Serial.begin(115200);
+
+    btStop();
+    esp_bt_controller_mem_release(ESP_BT_MODE_BLE);
+    btStart();
+
     SerialBT.begin("ESP32test");  // Bluetooth device name
     Serial.println("The device started, now you can pair it with bluetooth!");
     notify_bluetooth_setup_finished();
