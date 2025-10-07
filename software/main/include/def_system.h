@@ -16,7 +16,8 @@
 const int PMW3901_CS_PIN = 5;
 
 // System setting
-#define SAMPLING_TIME_MS 20
+#define SAMPLING_OUTER_TIME_MS 10
+#define SAMPLING_INNER_TIME_MS 1
 #define RECEIVE_DATA_SIZE 7
 #define PID_MAX 2000
 #define LIMIT_MOTOR 255

@@ -131,7 +131,7 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, int16_t height
 
     int motor_data[4] = {0, 0, 0, 0};
     int cmd_thrust = 0;
-    double thrust_scale = 0.7;
+    double thrust_scale = 0.8;
 
     //cmd_thrust = calculate_thrust(thrust_scale, cmd_data);
     cmd_thrust = calculate_thrust_based_on_height(cmd_data, height, thrust_scale);
@@ -200,7 +200,7 @@ int Motor::calculate_thrust_based_on_height(int cmd_data[4], int16_t height, dou
 }
 
 void Motor::calculate_motor_control(float ctl_data[3], int motor_data[4]) {
-    double offset_motor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+    double offset_motor[4] = {30.0f, 30.0f, 0.0f, 0.0f};
     motor_data[0] = + ctl_data[0] - ctl_data[1] - ctl_data[2] + offset_motor[0];
     motor_data[1] = + ctl_data[0] + ctl_data[1] + ctl_data[2] + offset_motor[1];
     motor_data[2] = - ctl_data[0] + ctl_data[1] - ctl_data[2] + offset_motor[2];

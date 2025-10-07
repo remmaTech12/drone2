@@ -29,7 +29,7 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_dat
     else ref_data[2] = (float) (cmd_data[1] - 127.0f) / 2.0f;
 
     calculate_pid(ref_data, ang_data, err_ang_data_i_, pre_ang_data_, pre_filtered_ang_dterm_data_, out_data,
-                  Kp_ang_, Ki_ang_, Kd_ang_);
+                  Kp_ang_, Ki_ang_, Kd_ang_, SAMPLING_OUTER_TIME_MS);
 
     // add flow compensation
     /*
@@ -45,7 +45,7 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_dat
     */
 
     for (int i=0; i<3; i++) {
-        constexpr float max_cmd_val = 180.0f;
+        constexpr float max_cmd_val = 255.0f;
         limit_val(out_data[i], -max_cmd_val, max_cmd_val);
         ang_ref_data_[i] = out_data[i];
     }
@@ -55,7 +55,7 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
     float out_data[3] = {0.0f, 0.0f, 0.0f};
 
     calculate_pid(ang_ref_data_, angvel_data, err_angvel_data_i_, pre_angvel_data_, pre_filtered_angvel_dterm_data_, out_data,
-                  Kp_angvel_, Ki_angvel_, Kd_angvel_);
+                  Kp_angvel_, Ki_angvel_, Kd_angvel_, SAMPLING_INNER_TIME_MS);
 
     float filtered_out_data[3] = {0.0f, 0.0f, 0.0f};
     double cutoff_freq = 10;
@@ -70,14 +70,14 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
 
 void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
                             float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
-                            float Kp[3], float Ki[3], float Kd[3]) {
+                            float Kp[3], float Ki[3], float Kd[3], unsigned long sampling_time_ms) {
     float err_data_p[3];
     float data_d[3];
 
     for (int i=0; i<3; i++) {
         err_data_p[i]  = ref_data[i] - cur_data[i];
         err_data_i[i] += err_data_p[i];
-        data_d[i]      = - (cur_data[i] - pre_data[i]) / ((float)SAMPLING_TIME_MS/1000.0f);
+        data_d[i]      = - (cur_data[i] - pre_data[i]) / ((float)sampling_time_ms/1000.0f);
 
         constexpr float max_err_val = 180.0f;
         limit_val(err_data_i[i], -max_err_val, max_err_val);
@@ -99,8 +99,8 @@ void Control::limit_val(float &val, float min, float max) {
 }
 
 void Control::low_pass_filter(float cutoff_freq, float pre_filtered_data[3], float cur_data[3], float filtered_data[3]) {
-    float Tsamp = SAMPLING_TIME_MS / 1000.0f;
-    float tau   = 1.0f / (2.0f * M_PI * cutoff_freq);
+    //float Tsamp = SAMPLING_TIME_MS / 1000.0f;
+    //float tau   = 1.0f / (2.0f * M_PI * cutoff_freq);
     //float kpre  = tau / (Tsamp + tau);
     constexpr float kpre = 0.4;
     // reference: https://qiita.com/motorcontrolman/items/39d4abc6c4862817e646

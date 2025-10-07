@@ -15,18 +15,21 @@ class Control {
     void get_control_val(float ctl_data[3]);
 
    private:
-    void calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3], float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3], float Kp[3], float Ki[3], float Kd[3]);
+    void calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
+                       float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
+                       float Kp[3], float Ki[3], float Kd[3],
+                       unsigned long sampling_time_ms);
     void calculate_id_term();
     void limit_val(float &val, float min, float max);
     void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
 
     // Gain for angles: roll, pitch, yaw
-    float Kp_ang_[3] = { 2.0f,  2.0f,  1.0f};
+    float Kp_ang_[3] = { 1.0f,  1.0f,  1.0f};
     float Ki_ang_[3] = { 0.0f,  0.0f,  0.0f};
     float Kd_ang_[3] = { 0.0f,  0.0f,  0.0f};
 
     // Gain for angular velocities: roll, pitch, yaw
-    float Kp_angvel_[3] = { 0.5f,  0.5f,  0.5f};
+    float Kp_angvel_[3] = { 1.0f,  1.0f,  1.0f};
     float Ki_angvel_[3] = { 0.0f,  0.0f,  0.0f};
     float Kd_angvel_[3] = { 0.0f,  0.0f,  0.0f};
 

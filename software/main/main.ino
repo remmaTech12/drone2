@@ -1,6 +1,5 @@
 #include "./include/recv.h"
 #include "./include/imu_bno055.h"
-#include "./include/pid.h"
 #include "./include/motor.h"
 #include "./include/led.h"
 #include "./include/def_system.h"
@@ -13,13 +12,13 @@ imu_bno055 imu_sensor;
 flow_pmw3901 flow_sensor;
 tof_vl53l1x tof_sensor;
 Receiver receiver;
-PID pid;
 Motor motor;
 Arm arm;
 Emergency emergency;
 Control control;
 led led;
-unsigned long previous_ms = 0;
+unsigned long previous_outer_ms = 0;
+unsigned long previous_inner_ms = 0;
 
 void setup() {
     Serial.begin(115200);
@@ -41,37 +40,43 @@ float angvel_data[3];
 float ctl_data[3];
 int flow_data[2];
 int16_t distance;
+double height;
 
 void loop() {
     unsigned long current_ms = millis();
-    if (current_ms - previous_ms < SAMPLING_TIME_MS) return;
-    previous_ms = current_ms;
+    if (current_ms - previous_outer_ms > SAMPLING_OUTER_TIME_MS) {
+        receiver.update_data();
+        receiver.get_command(cmd_data);
+        receiver.set_arm_status(arm);
+        receiver.emergency_stop(arm, motor);
 
-    receiver.update_data();
-    receiver.get_command(cmd_data);
-    receiver.set_arm_status(arm);
-    receiver.emergency_stop(arm, motor);
+        if (arm.get_arm_status()) led.on();
+        else led.off();
 
-    if (arm.get_arm_status()) led.on();
-    else led.off();
+        imu_sensor.get_attitude_data(ang_data);
+        control.calculate_pid_ang(cmd_data, ang_data, flow_data);
 
-    imu_sensor.get_attitude_data(ang_data);
-    imu_sensor.get_angvel_data(angvel_data);
+        flow_sensor.readMotionCount(flow_data);
+        //flow_sensor.printMotionCount();
 
-    flow_sensor.readMotionCount(flow_data);
-    //flow_sensor.printMotionCount();
+        tof_sensor.readDistance(distance);
+        height = tof_sensor.getDistance();
+        //tof_sensor.printDistance();
 
-    tof_sensor.readDistance(distance);
-    const double height = tof_sensor.getDistance();
-    //tof_sensor.printDistance();
+        previous_outer_ms = current_ms;
+    }
 
-    cmd_data[1] = 127.0f;
-    cmd_data[2] = 127.0f;
-    cmd_data[3] = 127.0f;
-    control.calculate_pid_ang(cmd_data, ang_data, flow_data);
-    control.calculate_pid_angvel(angvel_data);
-    control.get_control_val(ctl_data);
+    if (current_ms - previous_inner_ms > SAMPLING_INNER_TIME_MS) {
+        cmd_data[1] = 127.0f;
+        cmd_data[2] = 127.0f;
+        cmd_data[3] = 127.0f;
+        imu_sensor.get_angvel_data(angvel_data);
+        control.calculate_pid_angvel(angvel_data);
+        control.get_control_val(ctl_data);
 
-    motor.control(cmd_data, ctl_data, arm, height);
-    //motor.test_control(cmd_data[0]);
+        motor.control(cmd_data, ctl_data, arm, height);
+        //motor.test_control(cmd_data[0]);
+
+        previous_inner_ms = current_ms;
+    }
 }
