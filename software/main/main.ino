@@ -54,6 +54,9 @@ void loop() {
         else led.off();
 
         imu_sensor.get_attitude_data(ang_data);
+        cmd_data[1] = 127.0f;
+        cmd_data[2] = 127.0f;
+        cmd_data[3] = 127.0f;
         control.calculate_pid_ang(cmd_data, ang_data, flow_data);
 
         flow_sensor.readMotionCount(flow_data);
@@ -67,9 +70,6 @@ void loop() {
     }
 
     if (current_ms - previous_inner_ms > SAMPLING_INNER_TIME_MS) {
-        cmd_data[1] = 127.0f;
-        cmd_data[2] = 127.0f;
-        cmd_data[3] = 127.0f;
         imu_sensor.get_angvel_data(angvel_data);
         control.calculate_pid_angvel(angvel_data);
         control.get_control_val(ctl_data);
