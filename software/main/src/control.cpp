@@ -79,7 +79,7 @@ void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data
         err_data_i[i] += err_data_p[i];
         data_d[i]      = - (cur_data[i] - pre_data[i]) / ((float)sampling_time_ms/1000.0f);
 
-        constexpr float max_err_val = 180.0f;
+        constexpr float max_err_val = 60.0f;
         limit_val(err_data_i[i], -max_err_val, max_err_val);
         pre_data[i] = cur_data[i];
     }
@@ -102,7 +102,7 @@ void Control::low_pass_filter(float cutoff_freq, float pre_filtered_data[3], flo
     //float Tsamp = SAMPLING_TIME_MS / 1000.0f;
     //float tau   = 1.0f / (2.0f * M_PI * cutoff_freq);
     //float kpre  = tau / (Tsamp + tau);
-    constexpr float kpre = 0.4;
+    constexpr float kpre = 0.1;
     // reference: https://qiita.com/motorcontrolman/items/39d4abc6c4862817e646
     // cutoff_freq = 1000: kpre = 0.0157
 
