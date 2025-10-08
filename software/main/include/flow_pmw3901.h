@@ -11,7 +11,7 @@ class flow_pmw3901 {
     void readMotionCount(int data[2]);
     void printMotionCount();
     void calculate_velocity_position(double height);
-    void get_position_data(double data[2]);
+    void get_position_data(float data[2]);
 
   private:
     Bitcraze_PMW3901 sensor;

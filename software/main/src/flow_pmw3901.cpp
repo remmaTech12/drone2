@@ -52,7 +52,7 @@ void flow_pmw3901::printMotionCount() {
   Serial.println(dy);
 }
 
-void flow_pmw3901::get_position_data(double data[2]) {
+void flow_pmw3901::get_position_data(float data[2]) {
   data[0] = x;
   data[1] = y;
 }
