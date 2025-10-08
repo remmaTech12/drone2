@@ -1,5 +1,6 @@
 #pragma once
 #include "def_system.h"
+#include "arm.h"
 #include <Adafruit_BNO055.h>
 
 class imu_bno055 {
@@ -12,9 +13,11 @@ class imu_bno055 {
     void get_angvel_data(float data[3]);
     void calibrate();
     void printIMUEvent(sensors_event_t* event);
+    void emergency_stop(Arm &arm);
 
   private:
     Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &Wire);
     bool initialized_ = false;
     std::vector<float> initial_attitude_data_ = {0.0f, 0.0f, 0.0f};
+    std::vector<float> attitude_data_ = {0.0f, 0.0f, 0.0f};
 };

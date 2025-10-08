@@ -35,6 +35,9 @@ void imu_bno055::get_attitude_data(float data[3]) {
     initial_attitude_data_[2] = clamp(raw_pitch_deg);
     initialized_ = true;
   }
+  attitude_data_[0] = data[0];
+  attitude_data_[1] = data[1];
+  attitude_data_[2] = data[2];
 
 #ifdef DEBUG_IMU_ATTITUDE
   Serial.print("Euler: ");
@@ -124,4 +127,10 @@ void imu_bno055::printIMUEvent(sensors_event_t* event) {
   Serial.print(y);
   Serial.print(" |\tz= ");
   Serial.println(z);
+}
+
+void imu_bno055::emergency_stop(Arm &arm) {
+  if (std::abs(attitude_data_[0]) > 70.0f || std::abs(attitude_data_[1]) > 70.0f) {
+    arm.set_arm_status(false);
+  }
 }

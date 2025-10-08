@@ -56,6 +56,7 @@ void loop() {
         else led.off();
 
         imu_sensor.get_attitude_data(ang_data);
+        imu_sensor.emergency_stop(arm);
         tof_sensor.readDistance(distance);
         height = tof_sensor.getDistance();
         //tof_sensor.printDistance();
