@@ -3,13 +3,31 @@
 #include "def_system.h"
 #include "Arduino.h"
 
+// struct for gain
+struct PID {
+    // parameter
+    std::vector<float> Kp;
+    std::vector<float> Ki;
+    std::vector<float> Kd;
+    float max_err_i;
+
+    // state
+    std::vector<float> err_i;
+    std::vector<float> pre_filtered_d;
+    std::vector<float> pre_data;
+
+    // output
+    std::vector<float> out_data;
+};
+
 class Control {
    public:
     Control();
 
     void setup();
     void get_pid(float data[3]);
-    void calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_data[2]);
+    void calculate_pid_pos(float ref_data[2], float cur_data[2]);
+    void calculate_pid_ang(int cmd_data[4], float ang_data[3]);
     void calculate_pid_angvel(float angvel_data[3]);
     void calculate_and_remove_bias(bool is_armed);
     void get_control_val(float ctl_data[3]);
@@ -22,6 +40,9 @@ class Control {
     void calculate_id_term();
     void limit_val(float &val, float min, float max);
     void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
+
+    // PID control for position: x, y
+    PID pid_pos_;
 
     // Gain for angles: roll, pitch, yaw
     float Kp_ang_[3] = { 1.0f,  1.0f,  1.0f};

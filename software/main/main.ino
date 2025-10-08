@@ -39,7 +39,8 @@ float ang_data[3];
 float angvel_data[3];
 float ctl_data[3];
 int flow_data[2];
-double xy_data[2];
+float xy_data[2];
+float ref_xy_data[2] = {0.0f, 0.0f};
 int16_t distance;
 double height;
 
@@ -55,19 +56,19 @@ void loop() {
         else led.off();
 
         imu_sensor.get_attitude_data(ang_data);
-        cmd_data[1] = 127.0f;
-        cmd_data[2] = 127.0f;
-        cmd_data[3] = 127.0f;
-        control.calculate_pid_ang(cmd_data, ang_data, flow_data);
-
         tof_sensor.readDistance(distance);
         height = tof_sensor.getDistance();
         //tof_sensor.printDistance();
-
         flow_sensor.readMotionCount(flow_data);
         flow_sensor.calculate_velocity_position(height);
         flow_sensor.get_position_data(xy_data);
         //flow_sensor.printMotionCount();
+
+        control.calculate_pid_pos(ref_xy_data, xy_data);
+        cmd_data[1] = 127.0f;
+        cmd_data[2] = 127.0f;
+        cmd_data[3] = 127.0f;
+        control.calculate_pid_ang(cmd_data, ang_data);
 
         previous_outer_ms = current_ms;
     }

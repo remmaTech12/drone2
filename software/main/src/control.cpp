@@ -1,6 +1,16 @@
 #include "../include/control.h"
 
-Control::Control() {}
+Control::Control() {
+    // Initialize PID for position (x, y)
+    pid_pos_.Kp = {100.0f, 100.0f};
+    pid_pos_.Ki = {50.0f, 50.0f};
+    pid_pos_.Kd = {0.0f, 0.0f};
+    pid_pos_.max_err_i = 2.0f;
+    pid_pos_.err_i = {0.0f, 0.0f};
+    pid_pos_.pre_filtered_d = {0.0f, 0.0f};
+    pid_pos_.pre_data = {0.0f, 0.0f};
+    pid_pos_.out_data = {0.0f, 0.0f};
+}
 
 void Control::setup() {}
 
@@ -18,11 +28,50 @@ void Control::calculate_and_remove_bias(bool is_armed) {
     if (is_armed) cnt++;
 }
 
-void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_data[2]) {
+void Control::calculate_pid_pos(float ref_data[2], float cur_data[2]) {
+    float err_p[2];
+    float err_d[2];
+
+    for (int i=0; i<2; i++) {
+        // P
+        err_p[i] = ref_data[i] - cur_data[i];
+        // I
+        pid_pos_.err_i[i] += err_p[i];
+        limit_val(pid_pos_.err_i[i], -pid_pos_.max_err_i, pid_pos_.max_err_i);
+        // D
+        err_d[i] = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_OUTER_TIME_MS/1000.0f);
+        pid_pos_.pre_data[i] = cur_data[i];
+    }
+
+    constexpr float cutoff_freq = 1.0f;
+    float filtered_err_d[2] = {0.0f, 0.0f};
+    float pre_filtered_d[2] = {0.0f, 0.0f};
+    pre_filtered_d[0] = pid_pos_.pre_filtered_d[0];
+    pre_filtered_d[1] = pid_pos_.pre_filtered_d[1];
+    low_pass_filter(cutoff_freq, pre_filtered_d, err_d, filtered_err_d);
+    pid_pos_.pre_filtered_d[0] = pre_filtered_d[0];
+    pid_pos_.pre_filtered_d[1] = pre_filtered_d[1];
+
+    for (int i=0; i<2; i++) {
+        pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p[i]
+                             + pid_pos_.Ki[i]*pid_pos_.err_i[i]
+                             + pid_pos_.Kd[i]*filtered_err_d[i];
+    }
+}
+
+void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     float ref_data[3];
     float out_data[3] = {0.0f, 0.0f, 0.0f};
-    ref_data[0] = (float) (cmd_data[3] - 127.0f) / 2.0f;
-    ref_data[1] = (float) (cmd_data[2] - 127.0f) / 2.0f;
+    //ref_data[0] = (float) (cmd_data[3] - 127.0f) / 2.0f;
+    //ref_data[1] = (float) (cmd_data[2] - 127.0f) / 2.0f;
+    ref_data[0] = -pid_pos_.out_data[1];
+    ref_data[1] = +pid_pos_.out_data[0];
+    /*
+    Serial.print("roll control: ");
+    Serial.println(ref_data[0]);
+    Serial.print("pitch control: ");
+    Serial.println(ref_data[1]);
+    */
 
     double yaw_input_in_arm_threshold = 200;
     if (cmd_data[0] > yaw_input_in_arm_threshold) ref_data[2] = 0;  // exclude the case for arm
@@ -30,19 +79,6 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3], int flow_dat
 
     calculate_pid(ref_data, ang_data, err_ang_data_i_, pre_ang_data_, pre_filtered_ang_dterm_data_, out_data,
                   Kp_ang_, Ki_ang_, Kd_ang_, SAMPLING_OUTER_TIME_MS);
-
-    // add flow compensation
-    /*
-    float Kp_flow = 10.0f;
-    int dx = flow_data[0];
-    int dy = flow_data[1];
-    out_data[0] += Kp_flow * dy;
-    out_data[1] += Kp_flow * -dx;
-    Serial.print("roll: ");
-    Serial.println(out_data[0]);
-    Serial.print("pitch: ");
-    Serial.println(out_data[1]);
-    */
 
     for (int i=0; i<3; i++) {
         constexpr float max_cmd_val = 255.0f;
