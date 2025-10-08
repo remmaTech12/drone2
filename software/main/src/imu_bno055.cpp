@@ -23,14 +23,16 @@ void imu_bno055::get_attitude_data(float data[3]) {
     while (value < -180.0) value += 360.0;
     return value;
   };
-  data[0] = clamp(raw_roll_deg) - initial_attitude_data_[0];  // deg
-  data[1] = clamp(raw_pitch_deg) - initial_attitude_data_[1]; // deg
+  constexpr float offset_roll_deg = -5.0;
+  constexpr float offset_pitch_deg = 0.1;
+  data[0] = clamp(raw_roll_deg) - initial_attitude_data_[0] + offset_roll_deg;    // deg
+  data[1] = clamp(raw_pitch_deg) - initial_attitude_data_[1] + offset_pitch_deg ; // deg
   data[2] = clamp(raw_yaw_deg) - initial_attitude_data_[2];   // deg
 
   if (!initialized_) {
-    initial_attitude_data_[0] = data[0];
-    initial_attitude_data_[1] = data[1];
-    initial_attitude_data_[2] = data[2];
+    initial_attitude_data_[0] = clamp(raw_roll_deg);
+    initial_attitude_data_[1] = clamp(raw_pitch_deg);
+    initial_attitude_data_[2] = clamp(raw_pitch_deg);
     initialized_ = true;
   }
 
