@@ -30,10 +30,29 @@ void flow_pmw3901::readMotionCount(int data[2]) {
   data[1] = dy;
 }
 
+void flow_pmw3901::calculate_velocity_position(double height) {
+  double height_m = height / 1000.0;
+
+  unsigned long current_ms = millis();
+  const float dt = (current_ms - previous_ms) / 1000.0f;
+  previous_ms = current_ms;
+
+  constexpr float k = 0.0035;  // optical flow angular scale factor: original 0.021
+  vx = dx * k * height_m / dt;
+  vy = dy * k * height_m / dt;
+  x += dx * k * height_m;
+  y += dy * k * height_m;
+}
+
 void flow_pmw3901::printMotionCount() {
   //Serial.print("Optical Flow sensor output: dx: ");
   //Serial.print(" dx: ");
-  //Serial.println(dx);
+  Serial.println(dx);
   //Serial.print(" dy: ");
   Serial.println(dy);
+}
+
+void flow_pmw3901::get_position_data(double data[2]) {
+  data[0] = x;
+  data[1] = y;
 }

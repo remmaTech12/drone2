@@ -39,6 +39,7 @@ float ang_data[3];
 float angvel_data[3];
 float ctl_data[3];
 int flow_data[2];
+double xy_data[2];
 int16_t distance;
 double height;
 
@@ -59,12 +60,14 @@ void loop() {
         cmd_data[3] = 127.0f;
         control.calculate_pid_ang(cmd_data, ang_data, flow_data);
 
-        flow_sensor.readMotionCount(flow_data);
-        //flow_sensor.printMotionCount();
-
         tof_sensor.readDistance(distance);
         height = tof_sensor.getDistance();
         //tof_sensor.printDistance();
+
+        flow_sensor.readMotionCount(flow_data);
+        flow_sensor.calculate_velocity_position(height);
+        flow_sensor.get_position_data(xy_data);
+        //flow_sensor.printMotionCount();
 
         previous_outer_ms = current_ms;
     }
