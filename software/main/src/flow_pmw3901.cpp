@@ -47,8 +47,8 @@ void flow_pmw3901::calculate_velocity_position(double height, float ang_data[3])
   constexpr float k = 0.0035;  // optical flow angular scale factor: original 0.021
   vx = dx * k * height_m / dt;
   vy = dy * k * height_m / dt;
-  x += dx * k * height_m + delta_pitch_ang * distance_m;
-  y += dy * k * height_m - delta_roll_ang * distance_m;
+  x = dx * k * height_m + delta_pitch_ang * distance_m;
+  y = dy * k * height_m - delta_roll_ang * distance_m;
 
   /*
   Serial.print("x: ");
