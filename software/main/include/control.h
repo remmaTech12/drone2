@@ -45,14 +45,14 @@ class Control {
     PID pid_pos_;
 
     // Gain for angles: roll, pitch, yaw
-    float Kp_ang_[3] = { 1.0f,  1.0f,  1.0f};
+    float Kp_ang_[3] = { 1.0f,  2.0f,  1.0f};
     float Ki_ang_[3] = { 0.75f,  0.75f,  0.75f};
     float Kd_ang_[3] = { 0.0f,  0.0f,  0.0f};
 
     // Gain for angular velocities: roll, pitch, yaw
     float Kp_angvel_[3] = { 5.0f,  10.0f,  5.0f};
     float Ki_angvel_[3] = { 0.0f,  0.0f,  0.0f};
-    float Kd_angvel_[3] = { 0.1f,  0.1f,  0.1f};
+    float Kd_angvel_[3] = { 0.5f,  0.5f,  0.5f};
 
     // I values
     float err_ang_data_i_[3]    = {0.0f, 0.0f, 0.0f};
