@@ -8,7 +8,7 @@ void imu_bno055::setup() {
   {
     Serial.println("Ooops, no BNO055 detected ... Check your wiring or I2C ADDR!");
   }
-  calibrate();
+  //calibrate();
 }
 
 void imu_bno055::get_attitude_data(float data[3]) {
@@ -23,8 +23,8 @@ void imu_bno055::get_attitude_data(float data[3]) {
     while (value < -180.0) value += 360.0;
     return value;
   };
-  constexpr float offset_roll_deg = -5.0;
-  constexpr float offset_pitch_deg = 0.1;
+  constexpr float offset_roll_deg = 0.0;  //-5.0;
+  constexpr float offset_pitch_deg = 0.0;  //0.1;
   data[0] = clamp(raw_roll_deg) - initial_attitude_data_[0] + offset_roll_deg;    // deg
   data[1] = clamp(raw_pitch_deg) - initial_attitude_data_[1] + offset_pitch_deg ; // deg
   data[2] = clamp(raw_yaw_deg) - initial_attitude_data_[2];   // deg
@@ -55,6 +55,15 @@ void imu_bno055::get_accel_data(float data[3]) {
   data[0] = accelerometerData.acceleration.x;
   data[1] = accelerometerData.acceleration.y;
   data[2] = accelerometerData.acceleration.z;
+
+#ifdef DEBUG_IMU_ACCELERATION
+  Serial.print("Acceleration: ");
+  Serial.print(data[0]);
+  Serial.print(" ");
+  Serial.print(data[1]);
+  Serial.print(" ");
+  Serial.println(data[2]);
+#endif
 }
 
 void imu_bno055::get_angvel_data(float data[3]) {
