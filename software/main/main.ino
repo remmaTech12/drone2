@@ -61,7 +61,7 @@ void loop() {
         height = tof_sensor.getDistance();
         //tof_sensor.printDistance();
         flow_sensor.readMotionCount(flow_data);
-        flow_sensor.calculate_velocity_position(height);
+        flow_sensor.calculate_velocity_position(height, ang_data);
         flow_sensor.get_position_data(xy_data);
         //flow_sensor.printMotionCount();
 

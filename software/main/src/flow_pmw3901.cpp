@@ -30,18 +30,32 @@ void flow_pmw3901::readMotionCount(int data[2]) {
   data[1] = dy;
 }
 
-void flow_pmw3901::calculate_velocity_position(double height) {
-  double height_m = height / 1000.0;
-
-  unsigned long current_ms = millis();
+void flow_pmw3901::calculate_velocity_position(double height, float ang_data[3]) {
+  const unsigned long current_ms = millis();
   const float dt = (current_ms - previous_ms) / 1000.0f;
   previous_ms = current_ms;
+
+  const double roll_ang = ang_data[0] * DEG_TO_RAD;
+  const double pitch_ang = ang_data[1] * DEG_TO_RAD;
+  const double delta_roll_ang = roll_ang - pre_roll_ang;
+  const double delta_pitch_ang = pitch_ang - pre_pitch_ang;
+  pre_roll_ang = roll_ang;
+  pre_pitch_ang = pitch_ang;
+  const double distance_m = height / 1000.0;
+  const double height_m = height / 1000.0 * cos(roll_ang) * cos(pitch_ang);
 
   constexpr float k = 0.0035;  // optical flow angular scale factor: original 0.021
   vx = dx * k * height_m / dt;
   vy = dy * k * height_m / dt;
-  x += dx * k * height_m;
-  y += dy * k * height_m;
+  x += dx * k * height_m + delta_pitch_ang * distance_m;
+  y += dy * k * height_m - delta_roll_ang * distance_m;
+
+  /*
+  Serial.print("x: ");
+  Serial.println(x);
+  Serial.print("y: ");
+  Serial.println(y);
+  */
 }
 
 void flow_pmw3901::printMotionCount() {

@@ -10,7 +10,7 @@ class flow_pmw3901 {
     void setup();
     void readMotionCount(int data[2]);
     void printMotionCount();
-    void calculate_velocity_position(double height);
+    void calculate_velocity_position(double height, float ang_data[3]);
     void get_position_data(float data[2]);
 
   private:
@@ -23,4 +23,6 @@ class flow_pmw3901 {
     float vy = 0.0;
     float x = 0.0;
     float y = 0.0;
+    float pre_roll_ang = 0.0;
+    float pre_pitch_ang = 0.0;
 };
