@@ -9,7 +9,7 @@ void flow_pmw3901::setup() {
   }
   Serial.println("PMW3901 sensor initialized successfully!");
 
-  constexpr int window_size = 10;
+  constexpr int window_size = 1;
   dx_filter.setup(window_size);
   dy_filter.setup(window_size);
 }

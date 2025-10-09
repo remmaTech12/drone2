@@ -10,7 +10,7 @@ Control::Control() {
     pid_pos_.pre_filtered_d = {0.0f, 0.0f};
     pid_pos_.pre_data = {0.0f, 0.0f};
     pid_pos_.out_data = {0.0f, 0.0f};
-    pid_pos_.max_out_data = 20.0f;
+    pid_pos_.max_out_data = 10.0f;
 }
 
 void Control::setup() {}
