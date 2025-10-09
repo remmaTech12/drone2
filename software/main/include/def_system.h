@@ -31,6 +31,7 @@ const int PMW3901_CS_PIN = 5;
 // Debug setting
 //#define DEBUG_IMU_ATTITUDE
 //#define DEBUG_IMU_ANGVEL
+//#define DEBUG_IMU_ACCELERATION
 //#define DEBUG_RECV_SWITCH
 //#define DEBUG_RECV_JOYSTICK
 //#define DEBUG_PID_COMMAND
