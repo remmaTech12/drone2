@@ -38,6 +38,7 @@ void Control::calculate_pid_pos(float ref_data[2], float cur_data[2]) {
         // I
         pid_pos_.err_i[i] += err_p[i];
         limit_val(pid_pos_.err_i[i], -pid_pos_.max_err_i, pid_pos_.max_err_i);
+        if (std::abs(err_p[i]) < 0.05f) pid_pos_.err_i[i] = 0.0f;
         // D
         err_d[i] = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_OUTER_TIME_MS/1000.0f);
         pid_pos_.pre_data[i] = cur_data[i];
@@ -51,6 +52,8 @@ void Control::calculate_pid_pos(float ref_data[2], float cur_data[2]) {
     low_pass_filter(cutoff_freq, pre_filtered_d, err_d, filtered_err_d);
     pid_pos_.pre_filtered_d[0] = pre_filtered_d[0];
     pid_pos_.pre_filtered_d[1] = pre_filtered_d[1];
+    filtered_err_d[0] = 0.0f;
+    filtered_err_d[1] = 0.0f;
 
     for (int i=0; i<2; i++) {
         pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p[i]
@@ -64,12 +67,14 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     float out_data[3] = {0.0f, 0.0f, 0.0f};
     //ref_data[0] = (float) (cmd_data[3] - 127.0f) / 2.0f;
     //ref_data[1] = (float) (cmd_data[2] - 127.0f) / 2.0f;
-    ref_data[0] = -pid_pos_.out_data[1];
-    ref_data[1] = +pid_pos_.out_data[0];
+    //ref_data[0] = -pid_pos_.out_data[1];
+    //ref_data[1] = +pid_pos_.out_data[0];
+    ref_data[0] = 0.0;
+    ref_data[1] = 0.0;
     /*
-    Serial.print("roll control: ");
-    Serial.println(ref_data[0]);
-    Serial.print("pitch control: ");
+    Serial.print("roll pos: ");
+    Serial.print(ref_data[0]);
+    Serial.print(", pitch pos: ");
     Serial.println(ref_data[1]);
     */
 
@@ -85,6 +90,13 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
         limit_val(out_data[i], -max_cmd_val, max_cmd_val);
         ang_ref_data_[i] = out_data[i];
     }
+
+    /*
+    Serial.print("roll ang: ");
+    Serial.print(out_data[0]);
+    Serial.print(", pitch ang: ");
+    Serial.println(out_data[1]);
+    */
 }
 
 void Control::calculate_pid_angvel(float angvel_data[3]) {
@@ -102,6 +114,13 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
         limit_val(out_data[i], -max_cmd_val, max_cmd_val);
         angvel_ctl_data_[i] = out_data[i];
     }
+
+    /*
+    Serial.print("roll angvel: ");
+    Serial.println(out_data[0]);
+    Serial.print(", pitch angvel: ");
+    Serial.println(out_data[1]);
+    */
 }
 
 void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
@@ -117,6 +136,7 @@ void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data
 
         constexpr float max_err_val = 60.0f;
         limit_val(err_data_i[i], -max_err_val, max_err_val);
+        if (std::abs(err_data_p[i]) < 1.0f) err_data_i[i] = 0.0f;
         pre_data[i] = cur_data[i];
     }
 
