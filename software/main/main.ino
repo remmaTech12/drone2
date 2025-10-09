@@ -17,6 +17,7 @@ Arm arm;
 Emergency emergency;
 Control control;
 led led;
+unsigned long previous_position_control_ms = 0;
 unsigned long previous_outer_ms = 0;
 unsigned long previous_inner_ms = 0;
 
@@ -46,6 +47,20 @@ double height;
 
 void loop() {
     unsigned long current_ms = millis();
+    if (current_ms - previous_position_control_ms > SAMPLING_POSITION_CONTROL_TIME_MS) {
+        tof_sensor.readDistance(distance);
+        height = tof_sensor.getDistance();
+        //tof_sensor.printDistance();
+        flow_sensor.readMotionCount(flow_data);
+        flow_sensor.calculate_velocity_position(height, ang_data);
+        flow_sensor.get_position_data(xy_data);
+        //flow_sensor.printMotionCount();
+
+        control.calculate_pid_pos(ref_xy_data, xy_data);
+
+        previous_position_control_ms = current_ms;
+    }
+
     if (current_ms - previous_outer_ms > SAMPLING_OUTER_TIME_MS) {
         receiver.update_data();
         receiver.get_command(cmd_data);
@@ -57,15 +72,7 @@ void loop() {
 
         imu_sensor.get_attitude_data(ang_data);
         imu_sensor.emergency_stop(arm);
-        tof_sensor.readDistance(distance);
-        height = tof_sensor.getDistance();
-        //tof_sensor.printDistance();
-        flow_sensor.readMotionCount(flow_data);
-        flow_sensor.calculate_velocity_position(height, ang_data);
-        flow_sensor.get_position_data(xy_data);
-        //flow_sensor.printMotionCount();
 
-        control.calculate_pid_pos(ref_xy_data, xy_data);
         cmd_data[1] = 127.0f;
         cmd_data[2] = 127.0f;
         cmd_data[3] = 127.0f;

@@ -67,10 +67,10 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     float out_data[3] = {0.0f, 0.0f, 0.0f};
     //ref_data[0] = (float) (cmd_data[3] - 127.0f) / 2.0f;
     //ref_data[1] = (float) (cmd_data[2] - 127.0f) / 2.0f;
-    //ref_data[0] = -pid_pos_.out_data[1];
-    //ref_data[1] = +pid_pos_.out_data[0];
-    ref_data[0] = 0.0;
-    ref_data[1] = 0.0;
+    ref_data[0] = -pid_pos_.out_data[1];
+    ref_data[1] = +pid_pos_.out_data[0];
+    //ref_data[0] = 0.0;
+    //ref_data[1] = 0.0;
     /*
     Serial.print("roll pos: ");
     Serial.print(ref_data[0]);
