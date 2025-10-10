@@ -2,7 +2,7 @@
 
 Control::Control() {
     // Initialize PID for position (x, y)
-    pid_pos_.Kp = {100.0f, 100.0f};
+    pid_pos_.Kp = {300.0f, 300.0f};
     pid_pos_.Ki = {0.0f, 0.0f};
     pid_pos_.Kd = {0.0f, 0.0f};
     pid_pos_.max_err_i = 2.0f;
@@ -10,7 +10,7 @@ Control::Control() {
     pid_pos_.pre_filtered_d = {0.0f, 0.0f};
     pid_pos_.pre_data = {0.0f, 0.0f};
     pid_pos_.out_data = {0.0f, 0.0f};
-    pid_pos_.max_out_data = 10.0f;
+    pid_pos_.max_out_data = 5.0f;
 }
 
 void Control::setup() {}
@@ -60,7 +60,14 @@ void Control::calculate_pid_pos(float ref_data[2], float cur_data[2]) {
         pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p[i]
                              + pid_pos_.Ki[i]*pid_pos_.err_i[i]
                              + pid_pos_.Kd[i]*filtered_err_d[i];
-        limit_val(pid_pos_.out_data[i], -pid_pos_.max_out_data, pid_pos_.max_out_data);
+        //limit_val(pid_pos_.out_data[i], -pid_pos_.max_out_data, pid_pos_.max_out_data);
+    }
+    // tilt-cone limiter
+    const float alpha = std::hypot(pid_pos_.out_data[0], pid_pos_.out_data[1]);
+    const float alpha_max = 5.0;
+    for (int i=0; i<2; i++) {
+        float alpha_ratio = alpha < alpha_max ? 1.0f : alpha_max / alpha;
+        pid_pos_.out_data[i] *= alpha_ratio;
     }
 }
 
