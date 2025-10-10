@@ -17,6 +17,11 @@ void Motor::setup() {
     analogWrite(MOTOR_PWM5, 0);
     analogWrite(MOTOR_PWM6, 0);
 
+    low_pass_filter_.resize(4);
+    for (int i = 0; i < 4; i++) {
+        low_pass_filter_[i].setup(0.3);
+    }
+
     prev_time_ = millis();
 }
 
@@ -141,6 +146,7 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, int16_t height
         double ctl_limit = LIMIT_MOTOR * (1.0f - thrust_scale);
         limit_command(motor_data[i], 0, ctl_limit);
         motor_data[i] += cmd_thrust;
+        motor_data[i] = low_pass_filter_[i].filter(motor_data[i]);
         limit_command(motor_data[i], 0, LIMIT_MOTOR);
     };
 

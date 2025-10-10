@@ -3,6 +3,7 @@
 #include "arm.h"
 #include "Arduino.h"
 #include "def_system.h"
+#include "lib/low_pass_filter.h"
 
 class Motor {
    public:
@@ -23,6 +24,7 @@ class Motor {
 
     double err_height_i_ = 0.0;
     double prev_time_ = 0.0;
+    std::vector<LowPassFilter> low_pass_filter_;
 
     //void format_cmd_data(int cmd_data[4]);
     //void format_pid_data(float pid_rpy[3]);
