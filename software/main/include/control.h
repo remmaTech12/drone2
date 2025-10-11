@@ -42,7 +42,7 @@ class Control {
     void get_control_val(float ctl_data[3]);
 
    private:
-    void calculate_xy_command(float ref_data[2], int cmd_data[4]);
+    std::vector<float> calculate_joystick_to_xy_command(int cmd_data[4]);
     void calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
                        float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
                        float Kp[3], float Ki[3], float Kd[3],

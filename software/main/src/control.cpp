@@ -28,7 +28,8 @@ void Control::set_pos_pid_gain() {
     pid_pos_.max_out_data = 0.0f;
 }
 
-void Control::calculate_xy_command(float ref_data[2], int cmd_data[4]) {
+std::vector<float> Control::calculate_joystick_to_xy_command(int cmd_data[4]) {
+    std::vector<float> ref_data(2, 0.0f);
     constexpr float cmd_mid = 127;
     constexpr float dead_zone = 20;
     constexpr float cmd_min = cmd_mid - dead_zone;
@@ -42,13 +43,12 @@ void Control::calculate_xy_command(float ref_data[2], int cmd_data[4]) {
 
     if (cmd_min < hor_cmd && hor_cmd < cmd_max) ref_data[1] = 0.0f;
     else ref_data[1] = (float) -(hor_cmd - cmd_mid) / cmd_gain;
+
+    return ref_data;
 }
 
 void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
-    float ref_data[2];
-    calculate_xy_command(ref_data, cmd_data);
-
-    pid_pos_.ref_data = std::vector<float>(ref_data, ref_data + 2);
+    pid_pos_.ref_data = calculate_joystick_to_xy_command(cmd_data);
     pid_pos_.cur_data = std::vector<float>(cur_data, cur_data + 2);
     calculate_pid(pid_pos_);
 
