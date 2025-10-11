@@ -5,6 +5,8 @@ Control::Control() {}
 void Control::setup() {
     set_pos_pid();
     set_ang_pid();
+    set_angvel_pid();
+    set_angvel_output_filter();
 }
 
 void Control::set_pos_pid() {
@@ -52,6 +54,36 @@ void Control::set_ang_pid() {
     pid_ang_.max_out_data = 255.0f;
 }
 
+void Control::set_angvel_pid() {
+    // Initialize PID for angular velocity (roll, pitch, yaw)
+    pid_angvel_.Kp = {5.0f, 10.0f, 5.0f};
+    pid_angvel_.Ki = {0.05f, 0.05f, 0.05f};
+    pid_angvel_.Kd = {0.5f, 0.5f, 0.5f};
+    pid_angvel_.max_err_i = 60.0f;
+    pid_angvel_.sampling_time_ms = SAMPLING_INNER_TIME_MS;
+
+    pid_angvel_.d_filter = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
+    pid_angvel_.d_filter[0].setup(0.1f);
+    pid_angvel_.d_filter[1].setup(0.1f);
+    pid_angvel_.d_filter[2].setup(0.1f);
+
+    pid_angvel_.err_i = {0.0f, 0.0f, 0.0f};
+    pid_angvel_.pre_data = {0.0f, 0.0f, 0.0f};
+
+    pid_angvel_.ref_data = {0.0f, 0.0f, 0.0f};
+    pid_angvel_.cur_data = {0.0f, 0.0f, 0.0f};
+
+    pid_angvel_.out_data = {0.0f, 0.0f, 0.0f};
+    pid_angvel_.max_out_data = 255.0f;
+}
+
+void Control::set_angvel_output_filter() {
+    angvel_output_filter_ = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
+    angvel_output_filter_[0].setup(0.1f);
+    angvel_output_filter_[1].setup(0.1f);
+    angvel_output_filter_[2].setup(0.1f);
+}
+
 std::vector<float> Control::calculate_joystick_to_xy_command(int cmd_data[4]) {
     std::vector<float> ref_data(2, 0.0f);
     constexpr float cmd_mid = 127;
@@ -69,40 +101,6 @@ std::vector<float> Control::calculate_joystick_to_xy_command(int cmd_data[4]) {
     else ref_data[1] = (float) -(hor_cmd - cmd_mid) / cmd_gain;
 
     return ref_data;
-}
-
-void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
-    pid_pos_.ref_data = calculate_joystick_to_xy_command(cmd_data);
-    pid_pos_.cur_data = {cur_data[0], cur_data[1]};
-    calculate_pid(pid_pos_);
-
-    // tilt-cone limiter
-    const float alpha = std::hypot(pid_pos_.out_data[0], pid_pos_.out_data[1]);
-    const float alpha_max = 5.0;
-    for (int i=0; i<2; i++) {
-        float alpha_ratio = alpha < alpha_max ? 1.0f : alpha_max / alpha;
-        pid_pos_.out_data[i] *= alpha_ratio;
-    }
-}
-
-void Control::calculate_pid(PID &pid) {
-    for (int i=0; i<pid.ref_data.size(); i++) {
-        // P
-        const float err_p = pid.ref_data[i] - pid.cur_data[i];
-        // I
-        pid.err_i[i] += err_p;
-        limit_val(pid.err_i[i], -pid.max_err_i, pid.max_err_i);
-        // D
-        const float err_d = -(pid.cur_data[i] - pid.pre_data[i]) / ((float)pid.sampling_time_ms/1000.0f);
-        const float filtered_err_d = pid.d_filter[i].filter(err_d);
-        pid.pre_data[i] = pid.cur_data[i];
-
-        // output
-        pid.out_data[i] = pid.Kp[i]*err_p
-                        + pid.Ki[i]*pid.err_i[i]
-                        + pid.Kd[i]*filtered_err_d;
-        if (pid.max_out_data > 0.0f) limit_val(pid.out_data[i], -pid.max_out_data, pid.max_out_data);
-    }
 }
 
 std::vector<float> Control::calculate_xy_command_to_ang_command(int cmd_data[4]) {
@@ -126,13 +124,44 @@ std::vector<float> Control::calculate_xy_command_to_ang_command(int cmd_data[4])
     return ref_data;
 }
 
+void Control::calculate_pid(PID &pid) {
+    for (int i=0; i<pid.ref_data.size(); i++) {
+        // P
+        const float err_p = pid.ref_data[i] - pid.cur_data[i];
+        // I
+        pid.err_i[i] += err_p;
+        limit_val(pid.err_i[i], -pid.max_err_i, pid.max_err_i);
+        // D
+        const float err_d = -(pid.cur_data[i] - pid.pre_data[i]) / ((float)pid.sampling_time_ms/1000.0f);
+        const float filtered_err_d = pid.d_filter[i].filter(err_d);
+        pid.pre_data[i] = pid.cur_data[i];
+
+        // output
+        pid.out_data[i] = pid.Kp[i]*err_p
+                        + pid.Ki[i]*pid.err_i[i]
+                        + pid.Kd[i]*filtered_err_d;
+        if (pid.max_out_data > 0.0f) limit_val(pid.out_data[i], -pid.max_out_data, pid.max_out_data);
+    }
+}
+
+void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
+    pid_pos_.ref_data = calculate_joystick_to_xy_command(cmd_data);
+    pid_pos_.cur_data = {cur_data[0], cur_data[1]};
+    calculate_pid(pid_pos_);
+
+    // tilt-cone limiter
+    const float alpha = std::hypot(pid_pos_.out_data[0], pid_pos_.out_data[1]);
+    const float alpha_max = 5.0;
+    for (int i=0; i<2; i++) {
+        float alpha_ratio = alpha < alpha_max ? 1.0f : alpha_max / alpha;
+        pid_pos_.out_data[i] *= alpha_ratio;
+    }
+}
+
 void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     pid_ang_.ref_data = calculate_xy_command_to_ang_command(cmd_data);
     pid_ang_.cur_data = {ang_data[0], ang_data[1], ang_data[2]};
     calculate_pid(pid_ang_);
-    ang_ref_data_[0] = pid_ang_.out_data[0];
-    ang_ref_data_[1] = pid_ang_.out_data[1];
-    ang_ref_data_[2] = pid_ang_.out_data[2];
 
 #ifdef DEBUG_ATTITUDE_CONTROL
     Serial.print("Attitude control command, roll: ");
@@ -145,55 +174,22 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
 }
 
 void Control::calculate_pid_angvel(float angvel_data[3]) {
-    float out_data[3] = {0.0f, 0.0f, 0.0f};
+    pid_angvel_.ref_data = pid_ang_.out_data;
+    pid_angvel_.cur_data = {angvel_data[0], angvel_data[1], angvel_data[2]};
+    calculate_pid(pid_angvel_);
 
-    calculate_pid(ang_ref_data_, angvel_data, err_angvel_data_i_, pre_angvel_data_, pre_filtered_angvel_dterm_data_, out_data,
-                  Kp_angvel_, Ki_angvel_, Kd_angvel_, SAMPLING_INNER_TIME_MS);
-
-    float filtered_out_data[3] = {0.0f, 0.0f, 0.0f};
-    double cutoff_freq = 10;
-    low_pass_filter(cutoff_freq, pre_filtered_control_data_, out_data, filtered_out_data);
-
-    for (int i=0; i<3; i++) {
-        constexpr float max_cmd_val = 255.0f;
-        limit_val(out_data[i], -max_cmd_val, max_cmd_val);
-        angvel_ctl_data_[i] = out_data[i];
-    }
+    pid_angvel_.out_data[0] = angvel_output_filter_[0].filter(pid_angvel_.out_data[0]);
+    pid_angvel_.out_data[1] = angvel_output_filter_[1].filter(pid_angvel_.out_data[1]);
+    pid_angvel_.out_data[2] = angvel_output_filter_[2].filter(pid_angvel_.out_data[2]);
 
 #ifdef DEBUG_ANGVEL_CONTROL
     Serial.print("Angular velocity control command, roll: ");
-    Serial.println(out_data[0]);
+    Serial.println(pid_angvel_.out_data[0]);
     Serial.print(", pitch: ");
-    Serial.print(out_data[1]);
+    Serial.print(pid_angvel_.out_data[1]);
     Serial.print(", yaw: ");
-    Serial.println(out_data[2]);
+    Serial.println(pid_angvel_.out_data[2]);
 #endif
-}
-
-void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
-                            float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
-                            float Kp[3], float Ki[3], float Kd[3], unsigned long sampling_time_ms) {
-    float err_data_p[3];
-    float data_d[3];
-
-    for (int i=0; i<3; i++) {
-        err_data_p[i]  = ref_data[i] - cur_data[i];
-        err_data_i[i] += err_data_p[i];
-        data_d[i]      = - (cur_data[i] - pre_data[i]) / ((float)sampling_time_ms/1000.0f);
-
-        constexpr float max_err_val = 60.0f;
-        limit_val(err_data_i[i], -max_err_val, max_err_val);
-        //if (std::abs(err_data_p[i]) < 1.0f) err_data_i[i] = 0.0f;
-        pre_data[i] = cur_data[i];
-    }
-
-    float filtered_data_d[3] = {0.0f, 0.0f, 0.0f};
-    float cutoff_freq = 1.0f;
-    low_pass_filter(cutoff_freq, pre_filtered_dterm_data, data_d, filtered_data_d);
-
-    for (int i=0; i<3; i++) {
-        out_data[i] = Kp[i]*err_data_p[i] + Ki[i]*err_data_i[i] + Kd[i]*filtered_data_d[i];
-    }
 }
 
 void Control::limit_val(float &val, float min, float max) {
@@ -201,17 +197,8 @@ void Control::limit_val(float &val, float min, float max) {
     if (val < min) { val = min; }
 }
 
-void Control::low_pass_filter(float cutoff_freq, float pre_filtered_data[3], float cur_data[3], float filtered_data[3]) {
-    constexpr float kpre = 0.1;
-
-    for (int i=0; i<3; i++) {
-        filtered_data[i] = kpre*pre_filtered_data[i] + (1.0f - kpre)*cur_data[i];
-        pre_filtered_data[i] = filtered_data[i];
-    }
-}
-
 void Control::get_control_val(float ctl_data[3]) {
-    ctl_data[0] = angvel_ctl_data_[0];
-    ctl_data[1] = angvel_ctl_data_[1];
-    ctl_data[2] = angvel_ctl_data_[2];
+    ctl_data[0] = pid_angvel_.out_data[0];
+    ctl_data[1] = pid_angvel_.out_data[1];
+    ctl_data[2] = pid_angvel_.out_data[2];
 }

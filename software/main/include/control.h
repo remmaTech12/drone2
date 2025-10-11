@@ -34,56 +34,28 @@ class Control {
     Control();
 
     void setup();
-    void get_pid(float data[3]);
     void calculate_pid_pos(int cmd_data[4], float cur_data[2]);
     void calculate_pid_ang(int cmd_data[4], float ang_data[3]);
     void calculate_pid_angvel(float angvel_data[3]);
-    void calculate_and_remove_bias(bool is_armed);
     void get_control_val(float ctl_data[3]);
 
    private:
     std::vector<float> calculate_joystick_to_xy_command(int cmd_data[4]);
     std::vector<float> calculate_xy_command_to_ang_command(int cmd_data[4]);
-    void calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
-                       float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
-                       float Kp[3], float Ki[3], float Kd[3],
-                       unsigned long sampling_time_ms);
     void calculate_pid(PID &pid);
-    void calculate_id_term();
     void limit_val(float &val, float min, float max);
-    void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
     void set_pos_pid();
     void set_ang_pid();
+    void set_angvel_pid();
+    void set_angvel_output_filter();
 
     // PID
     PID pid_pos_;
     PID pid_ang_;
+    PID pid_angvel_;
 
-    // Gain for angular velocities: roll, pitch, yaw
-    float Kp_angvel_[3] = { 5.0f,  10.0f,  5.0f};
-    float Ki_angvel_[3] = { 0.05f,  0.05f,  0.05f};
-    float Kd_angvel_[3] = { 0.5f,  0.5f,  0.5f};
-
-    // I values
-    float err_angvel_data_i_[3] = {0.0f, 0.0f, 0.0f};
-
-    // Previous values
-    float pre_angvel_data_[3] = {0.0f, 0.0f, 0.0f};
-
-    float pre_filtered_angvel_dterm_data_[3] = {0.0f, 0.0f, 0.0f};
-    
-    // Previous filtered value
-    float pre_filtered_dterm_data_[3]   = {0.0f, 0.0f, 0.0f};
-    float pre_filtered_control_data_[3] = {0.0f, 0.0f, 0.0f};
-
-    // Output data
-    float ang_ref_data_[3]    = {0.0f, 0.0f, 0.0f};
-    float angvel_ctl_data_[3] = {0.0f, 0.0f, 0.0f};
-
-    // Trim
-    float ctl_bias_sum_data_[3] = {0.0f, 0.0f, 0.0f};
-    float ctl_bias_ave_data_[3] = {0.0f, 0.0f, 0.0f};
-    int cnt = 0;
+    // filter
+    std::vector<LowPassFilter> angvel_output_filter_;
 };
 
 #endif  // #ifndef Control_h
