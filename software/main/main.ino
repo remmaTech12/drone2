@@ -27,6 +27,7 @@ void setup() {
     tof_sensor.setup();
     receiver.setup();
     motor.setup();
+    control.setup();
     led.setup();
 
     delay(300);

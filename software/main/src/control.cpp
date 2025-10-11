@@ -1,6 +1,12 @@
 #include "../include/control.h"
 
-Control::Control() {
+Control::Control() {}
+
+void Control::setup() {
+    set_pos_pid_gain();
+}
+
+void Control::set_pos_pid_gain() {
     // Initialize PID for position (x, y)
     pid_pos_.Kp = {300.0f, 300.0f};
     pid_pos_.Ki = {0.0f, 0.0f};
@@ -18,10 +24,7 @@ Control::Control() {
     pid_pos_.max_out_data = 5.0f;
 }
 
-void Control::setup() {}
-
-void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
-    float ref_data[2];
+void Control::calculate_xy_command(float ref_data[2], int cmd_data[4]) {
     constexpr float cmd_mid = 127;
     constexpr float dead_zone = 20;
     constexpr float cmd_min = cmd_mid - dead_zone;
@@ -29,10 +32,17 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     constexpr float cmd_gain = 100.0f;
     const int ver_cmd = cmd_data[2];  // vertical
     const int hor_cmd = cmd_data[3];  // horizontal
+
     if (cmd_min < ver_cmd && ver_cmd < cmd_max) ref_data[0] = 0.0f;
     else ref_data[0] = (float) +(ver_cmd - cmd_mid) / cmd_gain;
+
     if (cmd_min < hor_cmd && hor_cmd < cmd_max) ref_data[1] = 0.0f;
     else ref_data[1] = (float) -(hor_cmd - cmd_mid) / cmd_gain;
+}
+
+void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
+    float ref_data[2];
+    calculate_xy_command(ref_data, cmd_data);
 
     float err_p[2];
     float filtered_err_d[2] = {0.0f, 0.0f};

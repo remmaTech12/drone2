@@ -37,6 +37,7 @@ class Control {
     void get_control_val(float ctl_data[3]);
 
    private:
+    void calculate_xy_command(float ref_data[2], int cmd_data[4]);
     void calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
                        float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
                        float Kp[3], float Ki[3], float Kd[3],
@@ -44,6 +45,7 @@ class Control {
     void calculate_id_term();
     void limit_val(float &val, float min, float max);
     void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
+    void set_pos_pid_gain();
 
     // PID control for position: x, y
     PID pid_pos_;
