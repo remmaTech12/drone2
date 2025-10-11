@@ -27,7 +27,7 @@ class Control {
 
     void setup();
     void get_pid(float data[3]);
-    void calculate_pid_pos(float ref_data[2], float cur_data[2]);
+    void calculate_pid_pos(int cmd_data[4], float cur_data[2]);
     void calculate_pid_ang(int cmd_data[4], float ang_data[3]);
     void calculate_pid_angvel(float angvel_data[3]);
     void calculate_and_remove_bias(bool is_armed);

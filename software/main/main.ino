@@ -56,7 +56,7 @@ void loop() {
         flow_sensor.get_position_data(xy_data);
         //flow_sensor.printMotionCount();
 
-        control.calculate_pid_pos(ref_xy_data, xy_data);
+        control.calculate_pid_pos(cmd_data, xy_data);
 
         previous_position_control_ms = current_ms;
     }
@@ -68,14 +68,16 @@ void loop() {
         receiver.emergency_stop(arm, motor);
 
         if (arm.get_arm_status()) led.on();
-        else led.off();
+        else {
+            cmd_data[2] = 127;
+            cmd_data[3] = 127;
+            led.off();
+        }
 
         imu_sensor.get_attitude_data(ang_data);
         imu_sensor.emergency_stop(arm);
 
         cmd_data[1] = 127.0f;
-        cmd_data[2] = 127.0f;
-        cmd_data[3] = 127.0f;
         control.calculate_pid_ang(cmd_data, ang_data);
 
         previous_outer_ms = current_ms;
