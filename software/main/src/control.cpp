@@ -42,7 +42,7 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
         // I
         pid_pos_.err_i[i] += err_p[i];
         limit_val(pid_pos_.err_i[i], -pid_pos_.max_err_i, pid_pos_.max_err_i);
-        if (std::abs(err_p[i]) < 0.05f) pid_pos_.err_i[i] = 0.0f;
+        //if (std::abs(err_p[i]) < 0.05f) pid_pos_.err_i[i] = 0.0f;
         // D
         const float err_d = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_POSITION_CONTROL_TIME_MS/1000.0f);
         filtered_err_d[i] = pid_pos_.low_pass_filter[i].filter(err_d);
@@ -134,7 +134,7 @@ void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data
 
         constexpr float max_err_val = 60.0f;
         limit_val(err_data_i[i], -max_err_val, max_err_val);
-        if (std::abs(err_data_p[i]) < 1.0f) err_data_i[i] = 0.0f;
+        //if (std::abs(err_data_p[i]) < 1.0f) err_data_i[i] = 0.0f;
         pre_data[i] = cur_data[i];
     }
 
