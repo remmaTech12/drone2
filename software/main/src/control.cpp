@@ -30,17 +30,21 @@ void Control::calculate_and_remove_bias(bool is_armed) {
 }
 
 void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
+    float ref_data[2];
+    constexpr float cmd_mid = 127;
+    constexpr float dead_zone = 20;
+    constexpr float cmd_min = cmd_mid - dead_zone;
+    constexpr float cmd_max = cmd_mid + dead_zone;
+    constexpr float cmd_gain = 100.0f;
+    const int ver_cmd = cmd_data[2];  // vertical
+    const int hor_cmd = cmd_data[3];  // horizontal
+    if (cmd_min < ver_cmd && ver_cmd < cmd_max) ref_data[0] = 0.0f;
+    else ref_data[0] = (float) +(ver_cmd - cmd_mid) / cmd_gain;
+    if (cmd_min < hor_cmd && hor_cmd < cmd_max) ref_data[1] = 0.0f;
+    else ref_data[1] = (float) -(hor_cmd - cmd_mid) / cmd_gain;
+
     float err_p[2];
     float err_d[2];
-
-    float ref_data[2];
-    constexpr int cmd_min = 107;
-    constexpr int cmd_max = 147;
-    if (cmd_min < cmd_data[2] && cmd_data[2] < cmd_max) ref_data[0] = 0.0f;
-    else ref_data[0] = (float) +(cmd_data[2] - 127.0f) / 100.0f;
-    if (cmd_min < cmd_data[3] && cmd_data[3] < cmd_max) ref_data[1] = 0.0f;
-    else ref_data[1] = (float) -(cmd_data[3] - 127.0f) / 100.0f;
-
     for (int i=0; i<2; i++) {
         // P
         err_p[i] = ref_data[i] - cur_data[i];
