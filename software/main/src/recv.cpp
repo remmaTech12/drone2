@@ -13,18 +13,6 @@ void Receiver::setup() {
 
     SerialBT.begin("ESP32test");  // Bluetooth device name
     Serial.println("The device started, now you can pair it with bluetooth!");
-    notify_bluetooth_setup_finished();
-}
-
-void Receiver::notify_bluetooth_setup_finished() {
-    pinMode(BUILTIN_LED, OUTPUT);
-    char blink_times = 3;
-    for (int i = 0; i < blink_times; i++) {
-        digitalWrite(BUILTIN_LED, HIGH);
-        delay(50);
-        digitalWrite(BUILTIN_LED, LOW);
-        delay(50);
-    }
 }
 
 uint8_t Receiver::calculate_checksum() {
@@ -107,18 +95,23 @@ void Receiver::get_command(int data[4]) {
 }
 
 void Receiver::set_arm_status(Arm &arm) {
-    int left_x_val = recv_data[1];
-    int left_y_val = recv_data[2];
-    if (left_x_val <= 50 && left_y_val >= 230 ) {
+    constexpr int left_x_val_thre = 50;
+    constexpr int left_y_val_thre = 230;
+    const int left_x_val = recv_data[1];
+    const int left_y_val = recv_data[2];
+    if (left_x_val <= left_x_val_thre && left_y_val >= left_y_val_thre ) {
         arm.set_arm_status(true);
     }
 }
 
-void Receiver::emergency_stop(Arm &arm, Motor &motor) {
+void Receiver::emergency_stop(Arm &arm) {
     if (is_left_switch_pressed()) {
         arm.set_arm_status(false);
     }
-    if (disconnect_count > 10 || checksum_success == false || first_byte_check == false) {
+    constexpr int disconnect_count_thre = 10;
+    if (disconnect_count > disconnect_count_thre
+        || checksum_success == false
+        || first_byte_check == false) {
         arm.set_arm_status(false);
     }
 }

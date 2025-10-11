@@ -1,10 +1,8 @@
-#ifndef Receiver_h
-#define Receiver_h
+#pragma once
 #include "def_system.h"
 #include "Arduino.h"
 #include "BluetoothSerial.h"
 #include "arm.h"
-#include "motor.h"
 #include "esp_bt.h"
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -19,8 +17,7 @@ class Receiver {
     void update_data();
     void get_command(int data[4]);
     void set_arm_status(Arm &arm);
-    void emergency_stop(Arm &arm, Motor &motor);
-    bool is_left_switch_pressed();
+    void emergency_stop(Arm &arm);
 
    private:
     int disconnect_count = 0;
@@ -30,9 +27,7 @@ class Receiver {
     uint8_t pre_left_sw_data  = 0x00;
     uint8_t pre_right_sw_data = 0x00;
 
-    void notify_bluetooth_setup_finished();
     uint8_t calculate_checksum();
+    bool is_left_switch_pressed();
     bool is_right_switch_pressed();
 };
-
-#endif  // #ifndef Receiver_h

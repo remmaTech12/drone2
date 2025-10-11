@@ -61,7 +61,7 @@ void loop() {
         receiver.update_data();
         receiver.get_command(cmd_data);
         receiver.set_arm_status(arm);
-        receiver.emergency_stop(arm, motor);
+        receiver.emergency_stop(arm);
 
         if (arm.get_arm_status()) led.on();
         else {
