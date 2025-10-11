@@ -20,20 +20,6 @@ Control::Control() {
 
 void Control::setup() {}
 
-void Control::calculate_and_remove_bias(bool is_armed) {
-    if (cnt > CTL_CNT_START_NUM && cnt <= CTL_CNT_START_NUM + CTL_CNT_TOTAL_NUM) {
-        for (int i=0; i<3; i++) {
-            ctl_bias_sum_data_[i] += angvel_ctl_data_[i];
-        }
-    } else if (cnt > CTL_CNT_START_NUM + CTL_CNT_TOTAL_NUM) {
-        for (int i=0; i<3; i++) {
-            ctl_bias_ave_data_[i] = ctl_bias_sum_data_[i] / CTL_CNT_TOTAL_NUM;
-            angvel_ctl_data_[i] -= ctl_bias_ave_data_[i];
-        }
-    }
-    if (is_armed) cnt++;
-}
-
 void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     float ref_data[2];
     constexpr float cmd_mid = 127;
@@ -81,12 +67,8 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
 void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     float ref_data[3];
     float out_data[3] = {0.0f, 0.0f, 0.0f};
-    //ref_data[0] = (float) (cmd_data[3] - 127.0f) / 2.0f;
-    //ref_data[1] = (float) (cmd_data[2] - 127.0f) / 2.0f;
     ref_data[0] = -pid_pos_.out_data[1];
     ref_data[1] = +pid_pos_.out_data[0];
-    //ref_data[0] = 0.0;
-    //ref_data[1] = 0.0;
     /*
     Serial.print("roll pos: ");
     Serial.print(ref_data[0]);
@@ -171,12 +153,7 @@ void Control::limit_val(float &val, float min, float max) {
 }
 
 void Control::low_pass_filter(float cutoff_freq, float pre_filtered_data[3], float cur_data[3], float filtered_data[3]) {
-    //float Tsamp = SAMPLING_TIME_MS / 1000.0f;
-    //float tau   = 1.0f / (2.0f * M_PI * cutoff_freq);
-    //float kpre  = tau / (Tsamp + tau);
     constexpr float kpre = 0.1;
-    // reference: https://qiita.com/motorcontrolman/items/39d4abc6c4862817e646
-    // cutoff_freq = 1000: kpre = 0.0157
 
     for (int i=0; i<3; i++) {
         filtered_data[i] = kpre*pre_filtered_data[i] + (1.0f - kpre)*cur_data[i];
@@ -188,7 +165,4 @@ void Control::get_control_val(float ctl_data[3]) {
     ctl_data[0] = angvel_ctl_data_[0];
     ctl_data[1] = angvel_ctl_data_[1];
     ctl_data[2] = angvel_ctl_data_[2];
-    //ctl_data[0] = ang_ref_data_[0];
-    //ctl_data[1] = ang_ref_data_[1];
-    //ctl_data[2] = ang_ref_data_[2];
 }
