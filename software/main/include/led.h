@@ -12,5 +12,4 @@ class led {
     void off();
 
   private:
-    int led_pin;
 };
