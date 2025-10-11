@@ -1,7 +1,7 @@
 #pragma once
 #include "def_system.h"
 #include "Bitcraze_PMW3901.h"
-#include "lib/moving_average.hpp"
+#include "lib/moving_average.h"
 
 class flow_pmw3901 {
   public:
