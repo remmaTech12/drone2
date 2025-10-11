@@ -52,9 +52,9 @@ void flow_pmw3901::calculate_velocity_position(double height, float ang_data[3])
 
   /*
   Serial.print("x: ");
-  Serial.println(x);
+  Serial.println(x, 4);
   Serial.print("y: ");
-  Serial.println(y);
+  Serial.println(y, 4);
   */
 }
 
