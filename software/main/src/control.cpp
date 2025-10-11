@@ -44,27 +44,24 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     float ref_data[2];
     calculate_xy_command(ref_data, cmd_data);
 
-    float err_p[2];
-    float filtered_err_d[2] = {0.0f, 0.0f};
     for (int i=0; i<2; i++) {
         // P
-        err_p[i] = ref_data[i] - cur_data[i];
+        const float err_p = ref_data[i] - cur_data[i];
         // I
-        pid_pos_.err_i[i] += err_p[i];
+        pid_pos_.err_i[i] += err_p;
         limit_val(pid_pos_.err_i[i], -pid_pos_.max_err_i, pid_pos_.max_err_i);
-        //if (std::abs(err_p[i]) < 0.05f) pid_pos_.err_i[i] = 0.0f;
         // D
         const float err_d = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_POSITION_CONTROL_TIME_MS/1000.0f);
-        filtered_err_d[i] = pid_pos_.low_pass_filter[i].filter(err_d);
+        const float filtered_err_d = pid_pos_.low_pass_filter[i].filter(err_d);
         pid_pos_.pre_data[i] = cur_data[i];
-    }
 
-    for (int i=0; i<2; i++) {
-        pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p[i]
+        // PID
+        pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p
                              + pid_pos_.Ki[i]*pid_pos_.err_i[i]
-                             + pid_pos_.Kd[i]*filtered_err_d[i];
+                             + pid_pos_.Kd[i]*filtered_err_d;
         //limit_val(pid_pos_.out_data[i], -pid_pos_.max_out_data, pid_pos_.max_out_data);
     }
+
     // tilt-cone limiter
     const float alpha = std::hypot(pid_pos_.out_data[0], pid_pos_.out_data[1]);
     const float alpha_max = 5.0;
@@ -80,7 +77,7 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     ref_data[0] = -pid_pos_.out_data[1];
     ref_data[1] = +pid_pos_.out_data[0];
 
-#ifdef DEBUG_ATTITUDE_CONTROL
+#ifdef DEBUG_POSITON_CONTROL
     Serial.print("Position control command, roll: ");
     Serial.print(ref_data[0]);
     Serial.print(", pitch: ");
