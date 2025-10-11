@@ -3,10 +3,11 @@
 Control::Control() {}
 
 void Control::setup() {
-    set_pos_pid_gain();
+    set_pos_pid();
+    set_ang_pid();
 }
 
-void Control::set_pos_pid_gain() {
+void Control::set_pos_pid() {
     // Initialize PID for position (x, y)
     pid_pos_.Kp = {300.0f, 300.0f};
     pid_pos_.Ki = {0.0f, 0.0f};
@@ -26,6 +27,29 @@ void Control::set_pos_pid_gain() {
 
     pid_pos_.out_data = {0.0f, 0.0f};
     pid_pos_.max_out_data = 0.0f;
+}
+
+void Control::set_ang_pid() {
+    // Initialize PID for attitude (roll, pitch, yaw)
+    pid_ang_.Kp = {3.0f, 6.0f, 3.0f};
+    pid_ang_.Ki = {0.75f, 0.75f, 0.75f};
+    pid_ang_.Kd = {0.0f, 0.0f, 0.0f};
+    pid_ang_.max_err_i = 60.0f;
+    pid_ang_.sampling_time_ms = SAMPLING_OUTER_TIME_MS;
+
+    pid_ang_.d_filter = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
+    pid_ang_.d_filter[0].setup(0.1f);
+    pid_ang_.d_filter[1].setup(0.1f);
+    pid_ang_.d_filter[2].setup(0.1f);
+
+    pid_ang_.err_i = {0.0f, 0.0f, 0.0f};
+    pid_ang_.pre_data = {0.0f, 0.0f, 0.0f};
+
+    pid_ang_.ref_data = {0.0f, 0.0f, 0.0f};
+    pid_ang_.cur_data = {0.0f, 0.0f, 0.0f};
+
+    pid_ang_.out_data = {0.0f, 0.0f, 0.0f};
+    pid_ang_.max_out_data = 255.0f;
 }
 
 std::vector<float> Control::calculate_joystick_to_xy_command(int cmd_data[4]) {
@@ -100,22 +124,20 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     if (cmd_data[0] > yaw_input_in_arm_threshold) ref_data[2] = 0;  // exclude the case for arm
     else ref_data[2] = (float) (cmd_data[1] - 127.0f) / 2.0f;
 
-    calculate_pid(ref_data, ang_data, err_ang_data_i_, pre_ang_data_, pre_filtered_ang_dterm_data_, out_data,
-                  Kp_ang_, Ki_ang_, Kd_ang_, SAMPLING_OUTER_TIME_MS);
-
-    for (int i=0; i<3; i++) {
-        constexpr float max_cmd_val = 255.0f;
-        limit_val(out_data[i], -max_cmd_val, max_cmd_val);
-        ang_ref_data_[i] = out_data[i];
-    }
+    pid_ang_.ref_data = {ref_data[0], ref_data[1], ref_data[2]};
+    pid_ang_.cur_data = {ang_data[0], ang_data[1], ang_data[2]};
+    calculate_pid(pid_ang_);
+    ang_ref_data_[0] = pid_ang_.out_data[0];
+    ang_ref_data_[1] = pid_ang_.out_data[1];
+    ang_ref_data_[2] = pid_ang_.out_data[2];
 
 #ifdef DEBUG_ATTITUDE_CONTROL
     Serial.print("Attitude control command, roll: ");
-    Serial.print(out_data[0]);
+    Serial.print(ang_ref_data_[0]);
     Serial.print(", pitch: ");
-    Serial.print(out_data[1]);
+    Serial.print(ang_ref_data_[1]);
     Serial.print(", yaw: ");
-    Serial.println(out_data[2]);
+    Serial.println(ang_ref_data_[2]);
 #endif
 }
 

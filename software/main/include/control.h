@@ -51,15 +51,12 @@ class Control {
     void calculate_id_term();
     void limit_val(float &val, float min, float max);
     void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
-    void set_pos_pid_gain();
+    void set_pos_pid();
+    void set_ang_pid();
 
-    // PID control for position: x, y
+    // PID
     PID pid_pos_;
-
-    // Gain for angles: roll, pitch, yaw
-    float Kp_ang_[3] = { 3.0f,  6.0f,  3.0f};
-    float Ki_ang_[3] = { 0.75f,  0.75f,  0.75f};
-    float Kd_ang_[3] = { 0.0f,  0.0f,  0.0f};
+    PID pid_ang_;
 
     // Gain for angular velocities: roll, pitch, yaw
     float Kp_angvel_[3] = { 5.0f,  10.0f,  5.0f};
@@ -67,14 +64,11 @@ class Control {
     float Kd_angvel_[3] = { 0.5f,  0.5f,  0.5f};
 
     // I values
-    float err_ang_data_i_[3]    = {0.0f, 0.0f, 0.0f};
     float err_angvel_data_i_[3] = {0.0f, 0.0f, 0.0f};
 
     // Previous values
-    float pre_ang_data_[3]    = {0.0f, 0.0f, 0.0f};
     float pre_angvel_data_[3] = {0.0f, 0.0f, 0.0f};
 
-    float pre_filtered_ang_dterm_data_[3]    = {0.0f, 0.0f, 0.0f};
     float pre_filtered_angvel_dterm_data_[3] = {0.0f, 0.0f, 0.0f};
     
     // Previous filtered value
