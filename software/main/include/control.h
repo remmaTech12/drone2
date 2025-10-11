@@ -1,5 +1,4 @@
-#ifndef Control_h
-#define Control_h
+#pragma once
 #include "def_system.h"
 #include "lib/low_pass_filter.h"
 #include "Arduino.h"
@@ -57,5 +56,3 @@ class Control {
     // filter
     std::vector<LowPassFilter> angvel_output_filter_;
 };
-
-#endif  // #ifndef Control_h
