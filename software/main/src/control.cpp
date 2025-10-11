@@ -79,12 +79,15 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     float out_data[3] = {0.0f, 0.0f, 0.0f};
     ref_data[0] = -pid_pos_.out_data[1];
     ref_data[1] = +pid_pos_.out_data[0];
-    /*
-    Serial.print("roll pos: ");
+
+#ifdef DEBUG_ATTITUDE_CONTROL
+    Serial.print("Position control command, roll: ");
     Serial.print(ref_data[0]);
-    Serial.print(", pitch pos: ");
+    Serial.print(", pitch: ");
     Serial.println(ref_data[1]);
-    */
+    Serial.print(", yaw: ");
+    Serial.println(ref_data[2]);
+#endif
 
     double yaw_input_in_arm_threshold = 200;
     if (cmd_data[0] > yaw_input_in_arm_threshold) ref_data[2] = 0;  // exclude the case for arm
@@ -99,12 +102,14 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
         ang_ref_data_[i] = out_data[i];
     }
 
-    /*
-    Serial.print("roll ang: ");
+#ifdef DEBUG_ATTITUDE_CONTROL
+    Serial.print("Attitude control command, roll: ");
     Serial.print(out_data[0]);
-    Serial.print(", pitch ang: ");
-    Serial.println(out_data[1]);
-    */
+    Serial.print(", pitch: ");
+    Serial.print(out_data[1]);
+    Serial.print(", yaw: ");
+    Serial.println(out_data[2]);
+#endif
 }
 
 void Control::calculate_pid_angvel(float angvel_data[3]) {
@@ -123,12 +128,14 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
         angvel_ctl_data_[i] = out_data[i];
     }
 
-    /*
-    Serial.print("roll angvel: ");
+#ifdef DEBUG_ANGVEL_CONTROL
+    Serial.print("Angular velocity control command, roll: ");
     Serial.println(out_data[0]);
-    Serial.print(", pitch angvel: ");
-    Serial.println(out_data[1]);
-    */
+    Serial.print(", pitch: ");
+    Serial.print(out_data[1]);
+    Serial.print(", yaw: ");
+    Serial.println(out_data[2]);
+#endif
 }
 
 void Control::calculate_pid(float ref_data[3], float cur_data[3], float err_data_i[3],
