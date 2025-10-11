@@ -12,16 +12,20 @@ void Control::set_pos_pid_gain() {
     pid_pos_.Ki = {0.0f, 0.0f};
     pid_pos_.Kd = {0.0f, 0.0f};
     pid_pos_.max_err_i = 2.0f;
+    pid_pos_.sampling_time_ms = SAMPLING_POSITION_CONTROL_TIME_MS;
 
-    pid_pos_.low_pass_filter = {LowPassFilter(), LowPassFilter()};
-    pid_pos_.low_pass_filter[0].setup(0.1f);
-    pid_pos_.low_pass_filter[1].setup(0.1f);
+    pid_pos_.d_filter = {LowPassFilter(), LowPassFilter()};
+    pid_pos_.d_filter[0].setup(0.1f);
+    pid_pos_.d_filter[1].setup(0.1f);
 
     pid_pos_.err_i = {0.0f, 0.0f};
     pid_pos_.pre_data = {0.0f, 0.0f};
 
+    pid_pos_.ref_data = {0.0f, 0.0f};
+    pid_pos_.cur_data = {0.0f, 0.0f};
+
     pid_pos_.out_data = {0.0f, 0.0f};
-    pid_pos_.max_out_data = 5.0f;
+    pid_pos_.max_out_data = 0.0f;
 }
 
 void Control::calculate_xy_command(float ref_data[2], int cmd_data[4]) {
@@ -44,23 +48,9 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     float ref_data[2];
     calculate_xy_command(ref_data, cmd_data);
 
-    for (int i=0; i<2; i++) {
-        // P
-        const float err_p = ref_data[i] - cur_data[i];
-        // I
-        pid_pos_.err_i[i] += err_p;
-        limit_val(pid_pos_.err_i[i], -pid_pos_.max_err_i, pid_pos_.max_err_i);
-        // D
-        const float err_d = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_POSITION_CONTROL_TIME_MS/1000.0f);
-        const float filtered_err_d = pid_pos_.low_pass_filter[i].filter(err_d);
-        pid_pos_.pre_data[i] = cur_data[i];
-
-        // PID
-        pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p
-                             + pid_pos_.Ki[i]*pid_pos_.err_i[i]
-                             + pid_pos_.Kd[i]*filtered_err_d;
-        //limit_val(pid_pos_.out_data[i], -pid_pos_.max_out_data, pid_pos_.max_out_data);
-    }
+    pid_pos_.ref_data = std::vector<float>(ref_data, ref_data + 2);
+    pid_pos_.cur_data = std::vector<float>(cur_data, cur_data + 2);
+    calculate_pid(pid_pos_);
 
     // tilt-cone limiter
     const float alpha = std::hypot(pid_pos_.out_data[0], pid_pos_.out_data[1]);
@@ -68,6 +58,26 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     for (int i=0; i<2; i++) {
         float alpha_ratio = alpha < alpha_max ? 1.0f : alpha_max / alpha;
         pid_pos_.out_data[i] *= alpha_ratio;
+    }
+}
+
+void Control::calculate_pid(PID &pid) {
+    for (int i=0; i<pid.ref_data.size(); i++) {
+        // P
+        const float err_p = pid.ref_data[i] - pid.cur_data[i];
+        // I
+        pid.err_i[i] += err_p;
+        limit_val(pid.err_i[i], -pid.max_err_i, pid.max_err_i);
+        // D
+        const float err_d = -(pid.cur_data[i] - pid.pre_data[i]) / ((float)pid.sampling_time_ms/1000.0f);
+        const float filtered_err_d = pid.d_filter[i].filter(err_d);
+        pid.pre_data[i] = pid.cur_data[i];
+
+        // output
+        pid.out_data[i] = pid.Kp[i]*err_p
+                        + pid.Ki[i]*pid.err_i[i]
+                        + pid.Kd[i]*filtered_err_d;
+        if (pid.max_out_data > 0.0f) limit_val(pid.out_data[i], -pid.max_out_data, pid.max_out_data);
     }
 }
 

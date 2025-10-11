@@ -11,13 +11,18 @@ struct PID {
     std::vector<float> Ki;
     std::vector<float> Kd;
     float max_err_i;
+    unsigned long sampling_time_ms;
 
     // filter
-    std::vector<LowPassFilter> low_pass_filter;
+    std::vector<LowPassFilter> d_filter;
 
     // state
     std::vector<float> err_i;
     std::vector<float> pre_data;
+
+    // input
+    std::vector<float> ref_data;
+    std::vector<float> cur_data;
 
     // output
     std::vector<float> out_data;
@@ -42,6 +47,7 @@ class Control {
                        float pre_data[3], float pre_filtered_dterm_data[3], float out_data[3],
                        float Kp[3], float Ki[3], float Kd[3],
                        unsigned long sampling_time_ms);
+    void calculate_pid(PID &pid);
     void calculate_id_term();
     void limit_val(float &val, float min, float max);
     void low_pass_filter(float cutoff_freq,float pre_filtered_data[3],  float cur_data[3], float filtered_data[3]);
