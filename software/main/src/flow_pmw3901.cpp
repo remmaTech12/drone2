@@ -50,12 +50,10 @@ void flow_pmw3901::calculate_velocity_position(double height, float ang_data[3])
   x = dx * k * height_m + delta_pitch_ang * distance_m;
   y = dy * k * height_m - delta_roll_ang * distance_m;
 
-  /*
   Serial.print("x: ");
   Serial.println(x, 4);
   Serial.print("y: ");
   Serial.println(y, 4);
-  */
 }
 
 void flow_pmw3901::printMotionCount() {

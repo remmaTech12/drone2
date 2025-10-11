@@ -30,29 +30,11 @@ void Motor::test_control(int motor_val) {
     int test_motor_val = (motor_val - offset) * 2.0;
     limit_command(test_motor_val, 0, 255);
 
-    //if (digitalRead(EMERGENCY_SWITCH) == LOW) { test_motor_val = 0; }
-    //else { test_motor_val = 100; }
-
     analogWrite(MOTOR_PWM6, test_motor_val);
     analogWrite(MOTOR_PWM5, test_motor_val);
     analogWrite(MOTOR_PWM2, test_motor_val);
     analogWrite(MOTOR_PWM1, test_motor_val);
 }
-
-/*
-void Motor::test_count() {
-    if (pre_button == HIGH && digitalRead(EMERGENCY_SWITCH) == LOW) {
-        tcount += 5;
-    }
-    int test_motor_val = (tcount % 26) * 10;
-    ledcWrite(0, test_motor_val);
-    ledcWrite(1, test_motor_val);
-    ledcWrite(2, test_motor_val);
-    ledcWrite(3, test_motor_val);
-
-    pre_button = digitalRead(EMERGENCY_SWITCH);
-}
-*/
 
 void Motor::limit_command(int &cmd, int min, int max) {
     if (cmd > max) { cmd = max; }
@@ -98,23 +80,6 @@ void Motor::format_cmd_data(int cmd_data[4]) {
 #ifdef DEBUG_RECV_COMMAND
     Serial.print("RECEIVE COMMAND: ");
     debug_print(m_recv_cmd);
-#endif
-}
-
-void Motor::format_pid_data(float pid_data[3]) {
-    int thrust = 0;
-    m_pid_cmd[0] = - pid_data[0] + pid_data[1] + pid_data[2] + thrust;
-    m_pid_cmd[1] = - pid_data[0] - pid_data[1] - pid_data[2] + thrust;
-    m_pid_cmd[2] = + pid_data[0] - pid_data[1] + pid_data[2] + thrust;
-    m_pid_cmd[3] = + pid_data[0] + pid_data[1] - pid_data[2] + thrust;
-
-    for (int i=0; i<4; i++) {
-        limit_command(m_pid_cmd[i], 0, PID_MAX);
-        m_pid_cmd[i] = LIMIT_MOTOR*m_pid_cmd[i]/PID_MAX;
-    };
-#ifdef DEBUG_PID_COMMAND
-    Serial.print("PID COMMAND: ");
-    debug_print(m_pid_cmd);
 #endif
 }
 */

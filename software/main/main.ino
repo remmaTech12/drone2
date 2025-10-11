@@ -59,7 +59,7 @@ void loop() {
         previous_position_control_ms = current_ms;
     }
 
-    if (current_ms - previous_outer_ms > SAMPLING_OUTER_TIME_MS) {
+    if (current_ms - previous_outer_ms > SAMPLING_ATTITUDE_CONTROL_TIME_MS) {
         receiver.update_data();
         receiver.get_command(cmd_data);
         receiver.set_arm_status(arm);
@@ -81,7 +81,7 @@ void loop() {
         previous_outer_ms = current_ms;
     }
 
-    if (current_ms - previous_inner_ms > SAMPLING_INNER_TIME_MS) {
+    if (current_ms - previous_inner_ms > SAMPLING_ANGVEL_CONTROL_TIME_MS) {
         imu_sensor.get_angvel_data(angvel_data);
         control.calculate_pid_angvel(angvel_data);
         control.get_control_val(ctl_data);

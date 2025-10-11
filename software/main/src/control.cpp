@@ -37,7 +37,7 @@ void Control::set_ang_pid() {
     pid_ang_.Ki = {0.75f, 0.75f, 0.75f};
     pid_ang_.Kd = {0.0f, 0.0f, 0.0f};
     pid_ang_.max_err_i = 60.0f;
-    pid_ang_.sampling_time_ms = SAMPLING_OUTER_TIME_MS;
+    pid_ang_.sampling_time_ms = SAMPLING_ATTITUDE_CONTROL_TIME_MS;
 
     pid_ang_.d_filter = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
     pid_ang_.d_filter[0].setup(0.1f);
@@ -60,7 +60,7 @@ void Control::set_angvel_pid() {
     pid_angvel_.Ki = {0.05f, 0.05f, 0.05f};
     pid_angvel_.Kd = {0.5f, 0.5f, 0.5f};
     pid_angvel_.max_err_i = 60.0f;
-    pid_angvel_.sampling_time_ms = SAMPLING_INNER_TIME_MS;
+    pid_angvel_.sampling_time_ms = SAMPLING_ANGVEL_CONTROL_TIME_MS;
 
     pid_angvel_.d_filter = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
     pid_angvel_.d_filter[0].setup(0.1f);
