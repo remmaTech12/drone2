@@ -8,21 +8,19 @@ class flow_pmw3901 {
     flow_pmw3901();
 
     void setup();
-    void readMotionCount(int data[2]);
-    void printMotionCount();
-    void calculate_velocity_position(double height, float ang_data[3]);
-    void get_position_data(float data[2]);
+    void read_motion_count();
+    void calculate_delta_position(double height, float ang_data[3]);
+    void get_delta_position_data(float data[2]);
 
   private:
     Bitcraze_PMW3901 sensor;
-    int16_t dx, dy;
-    MovingAverage dx_filter;
-    MovingAverage dy_filter;
-    unsigned long previous_ms = 0;
-    float vx = 0.0;
-    float vy = 0.0;
-    float x = 0.0;
-    float y = 0.0;
-    float pre_roll_ang = 0.0;
-    float pre_pitch_ang = 0.0;
+
+    int16_t pixel_dx_, pixel_dy_;
+    MovingAverage pixel_dx_filter_;
+    MovingAverage pixel_dy_filter_;
+
+    float position_dx_ = 0.0;
+    float position_dy_ = 0.0;
+    float pre_roll_ang_ = 0.0;
+    float pre_pitch_ang_ = 0.0;
 };

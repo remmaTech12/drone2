@@ -10,61 +10,54 @@ void flow_pmw3901::setup() {
   Serial.println("PMW3901 sensor initialized successfully!");
 
   constexpr int window_size = 1;
-  dx_filter.setup(window_size);
-  dy_filter.setup(window_size);
+  pixel_dx_filter_.setup(window_size);
+  pixel_dy_filter_.setup(window_size);
 }
 
-void flow_pmw3901::readMotionCount(int data[2]) {
-  int16_t tmp_dx, tmp_dy;
-  sensor.readMotionCount(&tmp_dx, &tmp_dy);
+void flow_pmw3901::read_motion_count() {
+  int16_t raw_pixel_dx, raw_pixel_dy;
+  sensor.readMotionCount(&raw_pixel_dx, &raw_pixel_dy);
 
   // coordinate transformation
-  dx = -tmp_dy;
-  dy = -tmp_dx;
+  pixel_dx_ = -raw_pixel_dy;
+  pixel_dy_ = -raw_pixel_dx;
 
-  dx = dx_filter.filter(static_cast<float>(dx));
-  dy = dy_filter.filter(static_cast<float>(dy));
+  pixel_dx_ = pixel_dx_filter_.filter(static_cast<float>(pixel_dx_));
+  pixel_dy_ = pixel_dy_filter_.filter(static_cast<float>(pixel_dy_));
 
-  // store the data
-  data[0] = dx;
-  data[1] = dy;
+#ifdef DEBUG_FLOW_PIXEL_DELTA
+  Serial.print("pixel_dx: ");
+  Serial.println(pixel_dx_, 4);
+  Serial.print("pixel_dy: ");
+  Serial.println(pixel_dy_, 4);
+#endif
 }
 
-void flow_pmw3901::calculate_velocity_position(double height, float ang_data[3]) {
-  const unsigned long current_ms = millis();
-  const float dt = (current_ms - previous_ms) / 1000.0f;
-  previous_ms = current_ms;
-
+void flow_pmw3901::calculate_delta_position(double height, float ang_data[3]) {
   const double roll_ang = ang_data[0] * DEG_TO_RAD;
   const double pitch_ang = ang_data[1] * DEG_TO_RAD;
-  const double delta_roll_ang = roll_ang - pre_roll_ang;
-  const double delta_pitch_ang = pitch_ang - pre_pitch_ang;
-  pre_roll_ang = roll_ang;
-  pre_pitch_ang = pitch_ang;
+  const double delta_roll_ang = roll_ang - pre_roll_ang_;
+  const double delta_pitch_ang = pitch_ang - pre_pitch_ang_;
+  pre_roll_ang_ = roll_ang;
+  pre_pitch_ang_ = pitch_ang;
+
+  // mm to m
   const double distance_m = height / 1000.0;
   const double height_m = height / 1000.0 * cos(roll_ang) * cos(pitch_ang);
 
   constexpr float k = 0.0035;  // optical flow angular scale factor: original 0.021
-  vx = dx * k * height_m / dt;
-  vy = dy * k * height_m / dt;
-  x = dx * k * height_m + delta_pitch_ang * distance_m;
-  y = dy * k * height_m - delta_roll_ang * distance_m;
+  position_dx_ = pixel_dx_ * k * height_m + delta_pitch_ang * distance_m;
+  position_dy_ = pixel_dy_ * k * height_m - delta_roll_ang * distance_m;
 
-  Serial.print("x: ");
-  Serial.println(x, 4);
-  Serial.print("y: ");
-  Serial.println(y, 4);
+#ifdef DEBUG_FLOW_POSITION_DELTA
+  Serial.print("position_dx: ");
+  Serial.println(position_dx_, 4);
+  Serial.print("position_dy: ");
+  Serial.println(position_dy_, 4);
+#endif
 }
 
-void flow_pmw3901::printMotionCount() {
-  //Serial.print("Optical Flow sensor output: dx: ");
-  //Serial.print(" dx: ");
-  Serial.println(dx);
-  //Serial.print(" dy: ");
-  Serial.println(dy);
-}
-
-void flow_pmw3901::get_position_data(float data[2]) {
-  data[0] = x;
-  data[1] = y;
+void flow_pmw3901::get_delta_position_data(float data[2]) {
+  data[0] = position_dx_;
+  data[1] = position_dy_;
 }
