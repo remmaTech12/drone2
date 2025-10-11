@@ -20,4 +20,6 @@ class imu_bno055 {
     bool initialized_ = false;
     std::vector<float> initial_attitude_data_ = {0.0f, 0.0f, 0.0f};
     std::vector<float> attitude_data_ = {0.0f, 0.0f, 0.0f};
+    std::vector<float> angvel_data_ = {0.0f, 0.0f, 0.0f};
+    template<typename T> bool is_nan_or_inf(const std::vector<T> &arr);
 };

@@ -72,6 +72,9 @@ void imu_bno055::get_angvel_data(float data[3]) {
   data[0] = angVelocityData.gyro.x * RAD_TO_DEG;
   data[1] = angVelocityData.gyro.y * RAD_TO_DEG;
   data[2] = angVelocityData.gyro.z * RAD_TO_DEG;
+  angvel_data_[0] = data[0];
+  angvel_data_[1] = data[1];
+  angvel_data_[2] = data[2];
 
 #ifdef DEBUG_IMU_ANGVEL
   Serial.print("Gyro: ");
@@ -142,4 +145,17 @@ void imu_bno055::emergency_stop(Arm &arm) {
   if (std::abs(attitude_data_[0]) > 70.0f || std::abs(attitude_data_[1]) > 70.0f) {
     arm.set_arm_status(false);
   }
+
+  if (is_nan_or_inf(attitude_data_) || is_nan_or_inf(angvel_data_)) {
+    arm.set_arm_status(false);
+  }
+}
+
+template<typename T> bool imu_bno055::is_nan_or_inf(const std::vector<T> &arr) {
+  for (size_t i = 0; i < arr.size(); i++) {
+    if (std::isnan(arr[i]) || std::isinf(arr[i])) {
+      return true;
+    }
+  }
+  return false;
 }
