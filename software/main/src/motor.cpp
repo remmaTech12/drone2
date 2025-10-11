@@ -5,15 +5,11 @@ Motor::Motor() {}
 void Motor::setup() {
     pinMode(MOTOR_PWM1, OUTPUT);
     pinMode(MOTOR_PWM2, OUTPUT);
-//    pinMode(MOTOR_PWM3, OUTPUT);
-//    pinMode(MOTOR_PWM4, OUTPUT);
     pinMode(MOTOR_PWM5, OUTPUT);
     pinMode(MOTOR_PWM6, OUTPUT);
 
     analogWrite(MOTOR_PWM1, 0);
     analogWrite(MOTOR_PWM2, 0);
-//    analogWrite(MOTOR_PWM3, 0);
-//    analogWrite(MOTOR_PWM4, 0);
     analogWrite(MOTOR_PWM5, 0);
     analogWrite(MOTOR_PWM6, 0);
 
@@ -21,19 +17,17 @@ void Motor::setup() {
     for (int i = 0; i < 4; i++) {
         low_pass_filter_[i].setup(0.3);
     }
-
-    prev_time_ = millis();
 }
 
-void Motor::test_control(int motor_val) {
+void Motor::test_control(int cmd_val) {
     constexpr int offset = 118;
-    int test_motor_val = (motor_val - offset) * 2.0;
-    limit_command(test_motor_val, 0, 255);
+    int test_val = (cmd_val - offset) * 2.0;
+    limit_command(test_val, 0, 255);
 
-    analogWrite(MOTOR_PWM6, test_motor_val);
-    analogWrite(MOTOR_PWM5, test_motor_val);
-    analogWrite(MOTOR_PWM2, test_motor_val);
-    analogWrite(MOTOR_PWM1, test_motor_val);
+    analogWrite(MOTOR_PWM6, test_val);
+    analogWrite(MOTOR_PWM5, test_val);
+    analogWrite(MOTOR_PWM2, test_val);
+    analogWrite(MOTOR_PWM1, test_val);
 }
 
 void Motor::limit_command(int &cmd, int min, int max) {
@@ -44,45 +38,9 @@ void Motor::limit_command(int &cmd, int min, int max) {
 void Motor::stop_motor() {
     analogWrite(MOTOR_PWM1, 0);
     analogWrite(MOTOR_PWM2, 0);
-    analogWrite(MOTOR_PWM3, 0);
-    analogWrite(MOTOR_PWM4, 0);
     analogWrite(MOTOR_PWM5, 0);
     analogWrite(MOTOR_PWM6, 0);
 }
-
-/*
-void Motor::debug_print(int data[4]) {
-    Serial.print("thrust: ");
-    Serial.print(data[0]);
-    Serial.print(", roll: ");
-    Serial.print(data[3]);
-    Serial.print(", pitch: ");
-    Serial.print(data[2]);
-    Serial.print(", yaw: ");
-    Serial.println(data[1]);
-}
-
-void Motor::format_cmd_data(int cmd_data[4]) {
-    int control_damper = 3;
-    int cmd_thrust = cmd_data[0];
-    int cmd_roll   = (cmd_data[3] - 127)/control_damper;
-    int cmd_pitch  = (cmd_data[2] - 127)/control_damper;
-    int cmd_yaw    = (cmd_data[1] - 127)/control_damper;
-
-    m_recv_cmd[0] = + cmd_roll - cmd_pitch - cmd_yaw + cmd_thrust;
-    m_recv_cmd[1] = + cmd_roll + cmd_pitch + cmd_yaw + cmd_thrust;
-    m_recv_cmd[2] = - cmd_roll + cmd_pitch - cmd_yaw + cmd_thrust;
-    m_recv_cmd[3] = - cmd_roll - cmd_pitch + cmd_yaw + cmd_thrust;
-
-    for (int i = 0; i < 4; i++) {
-        limit_command(m_recv_cmd[i], 0, LIMIT_MOTOR);
-    };
-#ifdef DEBUG_RECV_COMMAND
-    Serial.print("RECEIVE COMMAND: ");
-    debug_print(m_recv_cmd);
-#endif
-}
-*/
 
 void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, int16_t height) {
     if (arm.get_arm_status() == false) { 
@@ -158,9 +116,7 @@ int Motor::calculate_thrust_based_on_height(int cmd_data[4], int16_t height, dou
     constexpr double Ki = 0.0;
 
     const double err_height = target_height - height;
-    const double curr_time = millis();
-    const double dt = (curr_time - prev_time_) / 1000.0;
-    prev_time_ = curr_time;
+    const double dt = SAMPLING_ANGVEL_CONTROL_TIME_MS / 1000.0;
     err_height_i_ += err_height * dt;
     err_height_i_ = std::clamp(err_height_i_, -500.0, 500.0);
 
@@ -174,7 +130,7 @@ int Motor::calculate_thrust_based_on_height(int cmd_data[4], int16_t height, dou
 }
 
 void Motor::calculate_motor_control(float ctl_data[3], int motor_data[4]) {
-    double offset_motor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+    float offset_motor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
     motor_data[0] = + ctl_data[0] - ctl_data[1] - ctl_data[2] + offset_motor[0];
     motor_data[1] = + ctl_data[0] + ctl_data[1] + ctl_data[2] + offset_motor[1];
     motor_data[2] = - ctl_data[0] + ctl_data[1] - ctl_data[2] + offset_motor[2];
