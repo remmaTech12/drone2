@@ -73,7 +73,7 @@ std::vector<float> Control::calculate_joystick_to_xy_command(int cmd_data[4]) {
 
 void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     pid_pos_.ref_data = calculate_joystick_to_xy_command(cmd_data);
-    pid_pos_.cur_data = std::vector<float>(cur_data, cur_data + 2);
+    pid_pos_.cur_data = {cur_data[0], cur_data[1]};
     calculate_pid(pid_pos_);
 
     // tilt-cone limiter
@@ -105,11 +105,14 @@ void Control::calculate_pid(PID &pid) {
     }
 }
 
-void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
-    float ref_data[3];
-    float out_data[3] = {0.0f, 0.0f, 0.0f};
+std::vector<float> Control::calculate_xy_command_to_ang_command(int cmd_data[4]) {
+    std::vector<float> ref_data(3, 0.0f);
     ref_data[0] = -pid_pos_.out_data[1];
     ref_data[1] = +pid_pos_.out_data[0];
+
+    double yaw_input_in_arm_threshold = 200;
+    if (cmd_data[0] > yaw_input_in_arm_threshold) ref_data[2] = 0;  // exclude the case for arm
+    else ref_data[2] = (float) (cmd_data[1] - 127.0f) / 2.0f;
 
 #ifdef DEBUG_POSITON_CONTROL
     Serial.print("Position control command, roll: ");
@@ -120,11 +123,11 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
     Serial.println(ref_data[2]);
 #endif
 
-    double yaw_input_in_arm_threshold = 200;
-    if (cmd_data[0] > yaw_input_in_arm_threshold) ref_data[2] = 0;  // exclude the case for arm
-    else ref_data[2] = (float) (cmd_data[1] - 127.0f) / 2.0f;
+    return ref_data;
+}
 
-    pid_ang_.ref_data = {ref_data[0], ref_data[1], ref_data[2]};
+void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
+    pid_ang_.ref_data = calculate_xy_command_to_ang_command(cmd_data);
     pid_ang_.cur_data = {ang_data[0], ang_data[1], ang_data[2]};
     calculate_pid(pid_ang_);
     ang_ref_data_[0] = pid_ang_.out_data[0];
@@ -133,11 +136,11 @@ void Control::calculate_pid_ang(int cmd_data[4], float ang_data[3]) {
 
 #ifdef DEBUG_ATTITUDE_CONTROL
     Serial.print("Attitude control command, roll: ");
-    Serial.print(ang_ref_data_[0]);
+    Serial.print(pid_ang_.out_data[0]);
     Serial.print(", pitch: ");
-    Serial.print(ang_ref_data_[1]);
+    Serial.print(pid_ang_.out_data[1]);
     Serial.print(", yaw: ");
-    Serial.println(ang_ref_data_[2]);
+    Serial.println(pid_ang_.out_data[2]);
 #endif
 }
 
