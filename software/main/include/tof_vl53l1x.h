@@ -7,11 +7,11 @@ class tof_vl53l1x {
     tof_vl53l1x();
 
     void setup();
-    void readDistance(int16_t &dist);
-    int16_t getDistance();
-    void printDistance();
+    void read_distance();
+    float get_distance();
+    float get_height(float ang_data[3]);
 
   private:
-    VL53L1X sensor;
-    int16_t distance;
+    VL53L1X sensor_;
+    float distance_;
 };

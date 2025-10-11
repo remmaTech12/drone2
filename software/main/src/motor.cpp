@@ -42,7 +42,7 @@ void Motor::stop_motor() {
     analogWrite(MOTOR_PWM6, 0);
 }
 
-void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, int16_t height) {
+void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, float height) {
     if (arm.get_arm_status() == false) { 
         stop_motor();
         return;
@@ -105,7 +105,7 @@ int Motor::calculate_thrust(double thrust_scale, int cmd_data[4]) {
     return cmd_thrust;
 }
 
-int Motor::calculate_thrust_based_on_height(int cmd_data[4], int16_t height, double thrust_scale) {
+int Motor::calculate_thrust_based_on_height(int cmd_data[4], float height, double thrust_scale) {
     // TODO: should be in control.cpp
     constexpr double max_height = 200.0;
     constexpr double max_cmd_thrust = 255.0;

@@ -39,17 +39,17 @@ float angvel_data[3];
 float ctl_data[3];
 float xy_data[2];
 float ref_xy_data[2] = {0.0f, 0.0f};
-int16_t distance;
-double height;
+float distance;
+float height;
 
 void loop() {
     unsigned long current_ms = millis();
     if (current_ms - previous_position_control_ms > SAMPLING_POSITION_CONTROL_TIME_MS) {
-        tof_sensor.readDistance(distance);
-        height = tof_sensor.getDistance();
-        //tof_sensor.printDistance();
+        tof_sensor.read_distance();
+        distance = tof_sensor.get_distance();
+        height = tof_sensor.get_height(ang_data);
         flow_sensor.read_motion_count();
-        flow_sensor.calculate_delta_position(height, ang_data);
+        flow_sensor.calculate_delta_position(distance, height, ang_data);
         flow_sensor.get_delta_position_data(xy_data);
 
         control.calculate_pid_pos(cmd_data, xy_data);

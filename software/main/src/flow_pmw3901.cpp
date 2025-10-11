@@ -33,7 +33,7 @@ void flow_pmw3901::read_motion_count() {
 #endif
 }
 
-void flow_pmw3901::calculate_delta_position(double height, float ang_data[3]) {
+void flow_pmw3901::calculate_delta_position(double distance, double height, float ang_data[3]) {
   const double roll_ang = ang_data[0] * DEG_TO_RAD;
   const double pitch_ang = ang_data[1] * DEG_TO_RAD;
   const double delta_roll_ang = roll_ang - pre_roll_ang_;
@@ -42,8 +42,8 @@ void flow_pmw3901::calculate_delta_position(double height, float ang_data[3]) {
   pre_pitch_ang_ = pitch_ang;
 
   // mm to m
-  const double distance_m = height / 1000.0;
-  const double height_m = height / 1000.0 * cos(roll_ang) * cos(pitch_ang);
+  const double distance_m = distance / 1000.0;
+  const double height_m = height / 1000.0;
 
   constexpr float k = 0.0035;  // optical flow angular scale factor: original 0.021
   position_dx_ = pixel_dx_ * k * height_m + delta_pitch_ang * distance_m;

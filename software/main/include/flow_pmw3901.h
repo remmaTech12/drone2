@@ -9,7 +9,7 @@ class flow_pmw3901 {
 
     void setup();
     void read_motion_count();
-    void calculate_delta_position(double height, float ang_data[3]);
+    void calculate_delta_position(double distance, double height, float ang_data[3]);
     void get_delta_position_data(float data[2]);
 
   private:

@@ -5,28 +5,40 @@ tof_vl53l1x::tof_vl53l1x() {
 
 void tof_vl53l1x::setup() {
   Wire.setClock(400000);
-  sensor.setTimeout(500);
-  while (!sensor.init()) {
+  sensor_.setTimeout(500);
+  while (!sensor_.init()) {
     Serial.println("Ooops, no VL53L1X detected ... Check your wiring or I2C ADDR!");
   }
-  sensor.setDistanceMode(VL53L1X::Long);
-  sensor.setMeasurementTimingBudget(40000);
-  sensor.startContinuous(60);
+  sensor_.setDistanceMode(VL53L1X::Long);
+  sensor_.setMeasurementTimingBudget(40000);
+  sensor_.startContinuous(60);
 }
 
-void tof_vl53l1x::readDistance(int16_t &dist) {
-  if (sensor.dataReady()) {
-    dist = sensor.read();
-    distance = dist;
+void tof_vl53l1x::read_distance() {
+  if (sensor_.dataReady()) {
+    distance_ = sensor_.read();
   }
 }
 
-int16_t tof_vl53l1x::getDistance() {
-  return distance;
+float tof_vl53l1x::get_distance() {
+#ifdef DEBUG_TOF_DISTANCE
+  Serial.print("VL53L1X sensor output: distance: ");
+  Serial.print(distance_);
+  Serial.println(" mm");
+#endif
+
+  return distance_;
 }
 
-void tof_vl53l1x::printDistance() {
-  Serial.print("VL53L1X sensor output: distance: ");
-  Serial.print(distance);
+float tof_vl53l1x::get_height(float ang_data[3]) {
+  const float roll_ang_rad  = ang_data[0] * DEG_TO_RAD;
+  const float pitch_ang_rad = ang_data[1] * DEG_TO_RAD;
+  const float height = distance_ * cos(roll_ang_rad) * cos(pitch_ang_rad);
+#ifdef DEBUG_TOF_HEIGHT
+  Serial.print("VL53L1X sensor output: height: ");
+  Serial.print(height);
   Serial.println(" mm");
+#endif
+
+  return height;
 }
