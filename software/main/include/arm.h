@@ -1,5 +1,4 @@
-#ifndef Arm_h
-#define Arm_h
+#pragma once
 #include "Arduino.h"
 #include "def_system.h"
 
@@ -14,5 +13,3 @@ class Arm {
    private:
     bool m_armed = false;
 };
-
-#endif  // #ifndef Arm_h
