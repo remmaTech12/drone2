@@ -117,10 +117,8 @@ void Receiver::set_arm_status(Arm &arm) {
 void Receiver::emergency_stop(Arm &arm, Motor &motor) {
     if (is_left_switch_pressed()) {
         arm.set_arm_status(false);
-        //motor.stop_motor();
     }
     if (disconnect_count > 10 || checksum_success == false || first_byte_check == false) {
         arm.set_arm_status(false);
-        //motor.stop_motor();
     }
 }
