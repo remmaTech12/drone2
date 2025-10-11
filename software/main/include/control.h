@@ -1,6 +1,7 @@
 #ifndef Control_h
 #define Control_h
 #include "def_system.h"
+#include "lib/low_pass_filter.h"
 #include "Arduino.h"
 
 // struct for gain
@@ -11,9 +12,11 @@ struct PID {
     std::vector<float> Kd;
     float max_err_i;
 
+    // filter
+    std::vector<LowPassFilter> low_pass_filter;
+
     // state
     std::vector<float> err_i;
-    std::vector<float> pre_filtered_d;
     std::vector<float> pre_data;
 
     // output

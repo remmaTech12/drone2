@@ -6,9 +6,14 @@ Control::Control() {
     pid_pos_.Ki = {0.0f, 0.0f};
     pid_pos_.Kd = {0.0f, 0.0f};
     pid_pos_.max_err_i = 2.0f;
+
+    pid_pos_.low_pass_filter = {LowPassFilter(), LowPassFilter()};
+    pid_pos_.low_pass_filter[0].setup(0.1f);
+    pid_pos_.low_pass_filter[1].setup(0.1f);
+
     pid_pos_.err_i = {0.0f, 0.0f};
-    pid_pos_.pre_filtered_d = {0.0f, 0.0f};
     pid_pos_.pre_data = {0.0f, 0.0f};
+
     pid_pos_.out_data = {0.0f, 0.0f};
     pid_pos_.max_out_data = 5.0f;
 }
@@ -44,7 +49,7 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
     else ref_data[1] = (float) -(hor_cmd - cmd_mid) / cmd_gain;
 
     float err_p[2];
-    float err_d[2];
+    float filtered_err_d[2] = {0.0f, 0.0f};
     for (int i=0; i<2; i++) {
         // P
         err_p[i] = ref_data[i] - cur_data[i];
@@ -53,20 +58,10 @@ void Control::calculate_pid_pos(int cmd_data[4], float cur_data[2]) {
         limit_val(pid_pos_.err_i[i], -pid_pos_.max_err_i, pid_pos_.max_err_i);
         if (std::abs(err_p[i]) < 0.05f) pid_pos_.err_i[i] = 0.0f;
         // D
-        err_d[i] = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_OUTER_TIME_MS/1000.0f);
+        const float err_d = -(cur_data[i] - pid_pos_.pre_data[i]) / ((float)SAMPLING_POSITION_CONTROL_TIME_MS/1000.0f);
+        filtered_err_d[i] = pid_pos_.low_pass_filter[i].filter(err_d);
         pid_pos_.pre_data[i] = cur_data[i];
     }
-
-    constexpr float cutoff_freq = 1.0f;
-    float filtered_err_d[2] = {0.0f, 0.0f};
-    float pre_filtered_d[2] = {0.0f, 0.0f};
-    pre_filtered_d[0] = pid_pos_.pre_filtered_d[0];
-    pre_filtered_d[1] = pid_pos_.pre_filtered_d[1];
-    low_pass_filter(cutoff_freq, pre_filtered_d, err_d, filtered_err_d);
-    pid_pos_.pre_filtered_d[0] = pre_filtered_d[0];
-    pid_pos_.pre_filtered_d[1] = pre_filtered_d[1];
-    filtered_err_d[0] = 0.0f;
-    filtered_err_d[1] = 0.0f;
 
     for (int i=0; i<2; i++) {
         pid_pos_.out_data[i] = pid_pos_.Kp[i]*err_p[i]
