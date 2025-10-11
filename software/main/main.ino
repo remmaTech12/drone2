@@ -3,7 +3,6 @@
 #include "./include/motor.h"
 #include "./include/led.h"
 #include "./include/def_system.h"
-#include "./include/emergency.h"
 #include "./include/control.h"
 #include "./include/flow_pmw3901.h"
 #include "./include/tof_vl53l1x.h"
@@ -14,7 +13,6 @@ tof_vl53l1x tof_sensor;
 Receiver receiver;
 Motor motor;
 Arm arm;
-Emergency emergency;
 Control control;
 led led;
 unsigned long previous_position_control_ms = 0;
@@ -29,13 +27,12 @@ void setup() {
     tof_sensor.setup();
     receiver.setup();
     motor.setup();
-    emergency.setup();
     led.setup();
 
     delay(300);
 }
 
-int cmd_data[4];
+int cmd_data[4] = {0, 127, 127, 127};
 float ang_data[3];
 float angvel_data[3];
 float ctl_data[3];
