@@ -33,10 +33,10 @@ void Control::set_pos_pid() {
 
 void Control::set_ang_pid() {
     // Initialize PID for attitude (roll, pitch, yaw)
-    pid_ang_.Kp = {3.0f, 6.0f, 3.0f};
-    pid_ang_.Ki = {0.75f, 0.75f, 0.75f};
+    pid_ang_.Kp = {22.5f, 22.5f, 22.5f};
+    pid_ang_.Ki = {0.5f, 0.5f, 0.5f};
     pid_ang_.Kd = {0.0f, 0.0f, 0.0f};
-    pid_ang_.max_err_i = 60.0f;
+    pid_ang_.max_err_i = 50.0f;
     pid_ang_.sampling_time_ms = SAMPLING_ATTITUDE_CONTROL_TIME_MS;
 
     pid_ang_.d_filter = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
@@ -56,10 +56,10 @@ void Control::set_ang_pid() {
 
 void Control::set_angvel_pid() {
     // Initialize PID for angular velocity (roll, pitch, yaw)
-    pid_angvel_.Kp = {5.0f, 10.0f, 5.0f};
+    pid_angvel_.Kp = {0.5f, 0.5f, 0.5f};
     pid_angvel_.Ki = {0.05f, 0.05f, 0.05f};
-    pid_angvel_.Kd = {0.5f, 0.5f, 0.5f};
-    pid_angvel_.max_err_i = 60.0f;
+    pid_angvel_.Kd = {0.1f, 0.1f, 0.1f};
+    pid_angvel_.max_err_i = 50.0f;
     pid_angvel_.sampling_time_ms = SAMPLING_ANGVEL_CONTROL_TIME_MS;
 
     pid_angvel_.d_filter = {LowPassFilter(), LowPassFilter(), LowPassFilter()};
@@ -116,7 +116,7 @@ std::vector<float> Control::calculate_xy_command_to_ang_command(int cmd_data[4])
     Serial.print("Position control command, roll: ");
     Serial.print(ref_data[0]);
     Serial.print(", pitch: ");
-    Serial.println(ref_data[1]);
+    Serial.print(ref_data[1]);
     Serial.print(", yaw: ");
     Serial.println(ref_data[2]);
 #endif
@@ -184,7 +184,7 @@ void Control::calculate_pid_angvel(float angvel_data[3]) {
 
 #ifdef DEBUG_ANGVEL_CONTROL
     Serial.print("Angular velocity control command, roll: ");
-    Serial.println(pid_angvel_.out_data[0]);
+    Serial.print(pid_angvel_.out_data[0]);
     Serial.print(", pitch: ");
     Serial.print(pid_angvel_.out_data[1]);
     Serial.print(", yaw: ");

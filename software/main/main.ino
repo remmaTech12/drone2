@@ -85,7 +85,7 @@ void loop() {
         control.get_control_val(ctl_data);
 
         motor.control(cmd_data, ctl_data, arm, height);
-        //motor.test_control(cmd_data[0]);
+        //motor.test_control(cmd_data[0], arm);
 
         previous_inner_ms = current_ms;
     }

@@ -19,7 +19,12 @@ void Motor::setup() {
     }
 }
 
-void Motor::test_control(int cmd_val) {
+void Motor::test_control(int cmd_val, Arm &arm) {
+    if (arm.get_arm_status() == false) {
+        stop_motor();
+        return;
+    }
+
     constexpr int offset = 118;
     int test_val = (cmd_val - offset) * 2.0;
     limit_command(test_val, 0, 255);
@@ -48,23 +53,13 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, float height) 
         return;
     }
 
-#ifdef DEBUG_MOTOR_COMMAND
-    Serial.print("roll_ctrl: ");
-    Serial.print(ctl_data[0]);
-    Serial.print(", pitch_ctrl: ");
-    Serial.print(ctl_data[1]);
-    Serial.print(", yaw_ctrl: ");
-    Serial.println(ctl_data[2]);
-#endif
-
     int motor_data[4] = {0, 0, 0, 0};
-    int cmd_thrust = 0;
-    double thrust_scale = 0.6;
-
-    cmd_thrust = calculate_thrust(thrust_scale, cmd_data);
+    const int cmd_thrust = cmd_data[0];
     //cmd_thrust = calculate_thrust_based_on_height(cmd_data, height, thrust_scale);
-    calculate_motor_control(ctl_data, motor_data);
+    calculate_motor_control(ctl_data, motor_data, cmd_thrust);
 
+    // old algorithm
+    /*
     for (int i = 0; i < 4; i++) {
         double ctl_limit = LIMIT_MOTOR * (1.0f - thrust_scale);
         limit_command(motor_data[i], 0, ctl_limit);
@@ -72,22 +67,65 @@ void Motor::control(int cmd_data[4], float ctl_data[3], Arm &arm, float height) 
         motor_data[i] = low_pass_filter_[i].filter(motor_data[i]);
         limit_command(motor_data[i], 0, LIMIT_MOTOR);
     };
+    */
+
+    // new algorithm
+    int min_motor_data = 1000;
+    for (int i = 0; i < 4; i++) {
+        min_motor_data = std::min(min_motor_data, motor_data[i]);
+    };
+
+    if (min_motor_data < 0) {
+        int shift_up = std::abs(min_motor_data);
+        for (int i = 0; i < 4; i++) {
+            motor_data[i] += shift_up;
+        }
+    }
+
+    for (int i = 0; i < 4; i++) {
+        //motor_data[i] = low_pass_filter_[i].filter(motor_data[i]);
+        limit_command(motor_data[i], 0, LIMIT_MOTOR);
+    }
 
     analogWrite(MOTOR_PWM6, motor_data[0]);
     analogWrite(MOTOR_PWM5, motor_data[1]);
     analogWrite(MOTOR_PWM2, motor_data[2]);
     analogWrite(MOTOR_PWM1, motor_data[3]);
 
+#ifdef DEBUG_ANGVEL_COMMAND
+    static unsigned long last_print_time_angvel = 0;
+    if (millis() - last_print_time_angvel >= 10) {
+        last_print_time_angvel = millis();
+
+//        Serial.print("roll_ctrl: ");
+        Serial.print(ctl_data[0]);
+        Serial.print("\t");
+//        Serial.print(", pitch_ctrl: ");
+        Serial.print(ctl_data[1]);
+        Serial.print("\t");
+//        Serial.print(", yaw_ctrl: ");
+        Serial.println(ctl_data[2]);
+
+#endif
+
 #ifdef DEBUG_MOTOR_COMMAND
-    Serial.print("MOTOR COMMAND: ");
-    Serial.print("motor0: ");
-    Serial.print(motor_data[0]);
-    Serial.print(", motor1: ");
-    Serial.print(motor_data[1]);
-    Serial.print(", motor2: ");
-    Serial.print(motor_data[2]);
-    Serial.print(", motor3: ");
-    Serial.println(motor_data[3]);
+    static unsigned long last_print_time_motor = 0;
+    if (millis() - last_print_time_motor >= 10) {
+        last_print_time_motor = millis();
+
+//        Serial.print("MOTOR COMMAND: ");
+//        Serial.print("motor0: ");
+        Serial.print(motor_data[0]);
+        Serial.print("\t");
+//        Serial.print(", motor1: ");
+        Serial.print(motor_data[1]);
+        Serial.print("\t");
+//        Serial.print(", motor2: ");
+        Serial.print(motor_data[2]);
+        Serial.print("\t");
+//        Serial.print(", motor3: ");
+        Serial.println(motor_data[3]);
+    }
 #endif
 }
 
@@ -129,10 +167,11 @@ int Motor::calculate_thrust_based_on_height(int cmd_data[4], float height, doubl
     return cmd_thrust;
 }
 
-void Motor::calculate_motor_control(float ctl_data[3], int motor_data[4]) {
+void Motor::calculate_motor_control(float ctl_data[3], int motor_data[4], int cmd_thrust) {
     float offset_motor[4] = {0.0f, 0.0f, 0.0f, 0.0f};
-    motor_data[0] = + ctl_data[0] - ctl_data[1] - ctl_data[2] + offset_motor[0];
-    motor_data[1] = + ctl_data[0] + ctl_data[1] + ctl_data[2] + offset_motor[1];
-    motor_data[2] = - ctl_data[0] + ctl_data[1] - ctl_data[2] + offset_motor[2];
-    motor_data[3] = - ctl_data[0] - ctl_data[1] + ctl_data[2] + offset_motor[3];
+    constexpr float yaw_constant = 1.0f;
+    motor_data[0] = + ctl_data[0] - ctl_data[1] - ctl_data[2] * yaw_constant + offset_motor[0] + cmd_thrust;
+    motor_data[1] = + ctl_data[0] + ctl_data[1] + ctl_data[2] * yaw_constant + offset_motor[1] + cmd_thrust;
+    motor_data[2] = - ctl_data[0] + ctl_data[1] - ctl_data[2] * yaw_constant + offset_motor[2] + cmd_thrust;
+    motor_data[3] = - ctl_data[0] - ctl_data[1] + ctl_data[2] * yaw_constant + offset_motor[3] + cmd_thrust;
 }

@@ -18,6 +18,8 @@ class flow_pmw3901 {
     int16_t pixel_dx_, pixel_dy_;
     MovingAverage pixel_dx_filter_;
     MovingAverage pixel_dy_filter_;
+    MovingAverage position_dx_filter_;
+    MovingAverage position_dy_filter_;
 
     float position_dx_ = 0.0;
     float position_dy_ = 0.0;

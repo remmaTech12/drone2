@@ -82,11 +82,11 @@ void imu_bno055::get_angvel_data(float data[3]) {
   angvel_data_[2] = data[2] = angVelocityData.gyro.z * RAD_TO_DEG;
 
 #ifdef DEBUG_IMU_ANGVEL
-  Serial.print("Gyro: ");
+  //Serial.print("Gyro: ");
   Serial.print(data[0]);
-  Serial.print(" ");
+  Serial.print("\t");
   Serial.print(data[1]);
-  Serial.print(" ");
+  Serial.print("\t");
   Serial.println(data[2]);
 #endif
 }
