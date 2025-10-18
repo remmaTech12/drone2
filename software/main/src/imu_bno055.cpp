@@ -36,7 +36,7 @@ void imu_bno055::get_attitude_data(float data[3]) {
   if (!initialized_) {
     initial_attitude_data_[0] = clamp_deg(raw_roll_deg);
     initial_attitude_data_[1] = clamp_deg(raw_pitch_deg);
-    initial_attitude_data_[2] = clamp_deg(raw_pitch_deg);
+    initial_attitude_data_[2] = clamp_deg(raw_yaw_deg);
     initialized_ = true;
   }
 
